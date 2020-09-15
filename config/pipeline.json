@@ -17,7 +17,7 @@
     "model_pvc_size": "1Gi"
   },
   "pipeline_metadata": {
-    "experiment_id": "3a556a1f-6629-4b84-948c-79e4a6d95283",
+    "experiment_id": "0bdae264-7f34-452f-a52e-7ddab7931e17",
     "pipeline_id": "89b7a571-10d3-4ca7-9922-e8a847adfd12",
     "pipeline_run_name": "Fintech Jenkins triggered run"
   }
