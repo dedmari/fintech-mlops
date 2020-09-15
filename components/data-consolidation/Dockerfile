@@ -4,7 +4,7 @@ FROM tensorflow/tensorflow:1.15.0-py3
 RUN mkdir /workdir
 
 # Install Kaggle package
-RUN pip install kaggle
+RUN pip3 install kaggle
 
 # Copy source code to docker image
 COPY src/download_kaggle_dataset.py /workdir
