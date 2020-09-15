@@ -1,7 +1,7 @@
 FROM tensorflow/tensorflow:1.15.0-py3
 
 # Install dependencies
-RUN pip3 install pandas
+RUN pip install pandas
 
 # Directory for src code
 RUN mkdir /workdir
