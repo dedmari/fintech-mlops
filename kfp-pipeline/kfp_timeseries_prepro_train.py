@@ -29,7 +29,7 @@ def download_kaggle_dataset(
 
     cop = dsl.ContainerOp(
         name='consolidate data',
-        image='muneer7589/kaggle-dataset-download',  # Download data from Kaggle and use Kaggle credentials (username and key) from secret
+        image='muneer7589/fintech-dataset-download',  # Download data from Kaggle and use Kaggle credentials (username and key) from secret
         command=['python3.6', 'download_kaggle_dataset.py'],
         arguments=[
             '--dataset_name', kaggle_dataset_name,
@@ -65,7 +65,7 @@ def download_and_preprocess_data(raw_data_dir='djia_30_stock_data',
     """
     return dsl.ContainerOp(
         name='preprocess stock data',
-        image='muneer7589/timeseries-preprocess-data',
+        image='muneer7589/fintech-preprocess-data',
         # Preprocess stock data to log timeseries and store as timeseries.cvs
         command=['python3.6', 'preprocess_data.py'],
         arguments=[
@@ -93,7 +93,7 @@ def preprocess_data(raw_data_dir='djia_30_stock_data',
     """
     return dsl.ContainerOp(
         name='preprocess stock data',
-        image='muneer7589/timeseries-preprocess-data',
+        image='muneer7589/fintech-preprocess-data',
         # Preprocess stock data to log timeseries and store as timeseries.cvs
         command=['python3.6', 'preprocess_data.py'],
         arguments=[
@@ -117,7 +117,7 @@ def train_use_existing_model_pvc(model_name='FlatModel',
                                  ):
     return dsl.ContainerOp(
         name='training using existing PVC for training model',
-        image='muneer7589/timeseries-train',
+        image='muneer7589/fintech-train',
         # Training on pre-processed time series data
         command=['python3.6', 'timeseries_training.py'],
         arguments=[
@@ -154,7 +154,7 @@ def train_create_model_pvc(model_name='FlatModel',
 
     return dsl.ContainerOp(
         name='training using existing PVC for training model',
-        image='muneer7589/timeseries-train',
+        image='muneer7589/fintech-train',
         # Training on pre-processed time series data
         command=['python3.6', 'timeseries_training.py'],
         arguments=[

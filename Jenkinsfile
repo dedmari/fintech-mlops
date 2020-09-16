@@ -15,9 +15,9 @@ node {
         echo "Some automated code tests..."
       }
       else if (env.BRANCH_NAME.startsWith("build-components")) {
-        component1 = docker.build("muneer7589/kaggle-dataset-download", "-f ${env.WORKSPACE}/components/data-consolidation/Dockerfile .")
-        component2 = docker.build("muneer7589/timeseries-preprocess-data", "-f ${env.WORKSPACE}/components/timeseries-preprocessing/Dockerfile .")
-        component3 = docker.build("muneer7589/timeseries-train", "-f ${env.WORKSPACE}/components/timeseries-training/Dockerfile .")
+        component1 = docker.build("muneer7589/fintech-dataset-download", "-f ${env.WORKSPACE}/components/data-consolidation/Dockerfile .")
+        component2 = docker.build("muneer7589/fintech-preprocess-data", "-f ${env.WORKSPACE}/components/timeseries-preprocessing/Dockerfile .")
+        component3 = docker.build("muneer7589/fintech-train", "-f ${env.WORKSPACE}/components/timeseries-training/Dockerfile .")
 
         /* Using DockerHub as docker registry. You need to registry before you can push image to your account. */
         /* Arguments for docker.Registry: Registry URL followed by Credential(e.g. docker_login) stored on Jenkins server */
