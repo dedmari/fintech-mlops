@@ -7,7 +7,7 @@ FROM muneer7589/kaggle-dataset-download
 # RUN pip3 install kaggle
 
 # Copy source code to docker image
-COPY src/download_kaggle_dataset.py /workdir
+COPY components/data-consolidation/src/download_kaggle_dataset.py /workdir
 
 # Change working directory to app
 WORKDIR /workdir

@@ -7,7 +7,7 @@ FROM muneer7589/timeseries-preprocess-data
 # RUN mkdir /workdir
 
 # Copy source code to docker image
-COPY src/preprocess_data.py /workdir
+COPY components/timeseries-preprocessing/src/preprocess_data.py /workdir
 
 # Change working directory to app
 WORKDIR /workdir
