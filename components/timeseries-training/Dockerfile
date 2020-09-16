@@ -7,7 +7,7 @@ FROM muneer7589/timeseries-train
 # RUN mkdir /workdir
 
 # Copy source code to docker image
-COPY src/timeseries_training.py /workdir
+COPY components/timeseries-training/src/timeseries_training.py /workdir
 
 # Change working directory to app
 WORKDIR /workdir
