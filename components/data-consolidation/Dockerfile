@@ -1,10 +1,10 @@
-FROM tensorflow/tensorflow:1.15.0-py3
+FROM muneer7589/kaggle-dataset-download
 
 # Directory for src code
-RUN mkdir /workdir
+# RUN mkdir /workdir
 
 # Install Kaggle package
-RUN pip3 install kaggle
+# RUN pip3 install kaggle
 
 # Copy source code to docker image
 COPY src/download_kaggle_dataset.py /workdir
