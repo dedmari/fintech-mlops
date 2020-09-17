@@ -258,6 +258,6 @@ def stock_time_series(
 if __name__ == '__main__':
     pipeline_file_name = "fintech_timeseries-prep-train-pipeline.yaml"
     kfp.compiler.Compiler().compile(stock_time_series, pipeline_file_name)
-    kfp.client.upload_pipeline(pipeline_package_path=pipeline_file_name,
+    kfp.Client().upload_pipeline(pipeline_package_path=pipeline_file_name,
                                pipeline_name="Stock Time-series Forecast",
                                description="Time Series Forecast for stock based on historic data.")
