@@ -1,13 +1,16 @@
 import kfp
 from kfp import dsl
 from kubernetes import client as k8s_client
+import json
+import argparse
+
 
 def download_kaggle_dataset(
-        kaggle_dataset_name = "szrlee/stock-time-series-20050101-to-20171231",
-        download_dir = "djia_30_stock_data",
-        data_pvc_name = "djia-kaggle-dataset",
-        data_pvc_size = "1Gi",
-        kaggle_credentials_k8s_secret = "muneer-kaggle-credentials"
+        kaggle_dataset_name="szrlee/stock-time-series-20050101-to-20171231",
+        download_dir="djia_30_stock_data",
+        data_pvc_name="djia-kaggle-dataset",
+        data_pvc_size="1Gi",
+        kaggle_credentials_k8s_secret="muneer-kaggle-credentials"
 ):
     """
 
@@ -29,7 +32,8 @@ def download_kaggle_dataset(
 
     cop = dsl.ContainerOp(
         name='consolidate data',
-        image='muneer7589/fintech-dataset-download',  # Download data from Kaggle and use Kaggle credentials (username and key) from secret
+        image='muneer7589/fintech-dataset-download',
+        # Download data from Kaggle and use Kaggle credentials (username and key) from secret
         command=['python3.6', 'download_kaggle_dataset.py'],
         arguments=[
             '--dataset_name', kaggle_dataset_name,
@@ -37,21 +41,22 @@ def download_kaggle_dataset(
         ],
         pvolumes={"/mnt/data": vop.volume}
     ).add_pvolumes({
-            '/mnt/secret': k8s_client.V1Volume(
-                name='kaggle-credentials',
-                secret=k8s_client.V1SecretVolumeSource(
-                    secret_name=kaggle_credentials_k8s_secret
-                )
+        '/mnt/secret': k8s_client.V1Volume(
+            name='kaggle-credentials',
+            secret=k8s_client.V1SecretVolumeSource(
+                secret_name=kaggle_credentials_k8s_secret
             )
-        }
+        )
+    }
 
     )
 
     return vop, cop
 
+
 def download_and_preprocess_data(raw_data_dir='djia_30_stock_data',
-                    processed_data_dir='preproc_djia_30_stock_data',
-                    data_pvc='djia-kaggle-dataset'):
+                                 processed_data_dir='preproc_djia_30_stock_data',
+                                 data_pvc='djia-kaggle-dataset'):
     """ Pre-processing raw stock data using just created PVC.
 
     Args:
@@ -76,6 +81,7 @@ def download_and_preprocess_data(raw_data_dir='djia_30_stock_data',
             "/mnt/data": data_pvc.volume
         }
     )
+
 
 def preprocess_data(raw_data_dir='djia_30_stock_data',
                     processed_data_dir='preproc_djia_30_stock_data',
@@ -113,8 +119,15 @@ def train_use_existing_model_pvc(model_name='FlatModel',
                                  processed_data_dir='preproc_djia_30_stock_data/',
                                  model_path='models/',
                                  model_pvc_name='djia-time-series-model',
+                                 download_data=False,
+                                 data_pvc='djia-kaggle-dataset',
                                  data_pvc_name='djia-kaggle-dataset'
                                  ):
+    if download_data:
+        data_volume = data_pvc.volume
+    else:
+        data_volume = dsl.PipelineVolume(pvc=data_pvc_name)
+
     return dsl.ContainerOp(
         name='training using existing PVC for training model',
         image='muneer7589/fintech-train',
@@ -130,7 +143,7 @@ def train_use_existing_model_pvc(model_name='FlatModel',
 
         ],
         pvolumes={"/mnt/models": dsl.PipelineVolume(pvc=model_pvc_name),
-                  "/mnt/data": dsl.PipelineVolume(pvc=data_pvc_name)},
+                  "/mnt/data": data_volume},
         file_outputs={'mlpipeline_metrics': '/mlpipeline-metrics.json',
                       'accuracy': '/tmp/accuracy'}
     )
@@ -144,8 +157,15 @@ def train_create_model_pvc(model_name='FlatModel',
                            model_path='models/',
                            model_pvc_name='djia-time-series-model',
                            model_pvc_size='1Gi',
+                           download_data=False,
+                           data_pvc='djia-kaggle-dataset',
                            data_pvc_name='djia-kaggle-dataset'
                            ):
+    if download_data:
+        data_volume = data_pvc.volume
+    else:
+        data_volume = dsl.PipelineVolume(pvc=data_pvc_name)
+
     model_vop = dsl.VolumeOp(
         name="model volume creation",
         resource_name=model_pvc_name,
@@ -167,7 +187,7 @@ def train_create_model_pvc(model_name='FlatModel',
 
         ],
         pvolumes={"/mnt/models": model_vop.volume,
-                  "/mnt/data": dsl.PipelineVolume(pvc=data_pvc_name)},
+                  "/mnt/data": data_volume},
         file_outputs={'mlpipeline_metrics': '/mlpipeline-metrics.json',
                       'accuracy': '/tmp/accuracy'}
     )
@@ -179,12 +199,12 @@ def train_create_model_pvc(model_name='FlatModel',
 )
 def stock_time_series(
         download_data="False",
-        kaggle_dataset_name = "szrlee/stock-time-series-20050101-to-20171231",
+        kaggle_dataset_name="szrlee/stock-time-series-20050101-to-20171231",
         data_pvc_name="djia-kaggle-dataset",
         raw_data_dir="djia_30_stock_data",
         processed_data_dir="preproc_djia_30_stock_data",
-        data_pvc_size = "1Gi",
-        kaggle_credentials_k8s_secret = "muneer-kaggle-credentials",
+        data_pvc_size="1Gi",
+        kaggle_credentials_k8s_secret="muneer-kaggle-credentials",
         itr=3000,
         input_features=24,
         model_name='FlatModel',
@@ -197,16 +217,16 @@ def stock_time_series(
     """:arg"""
     with dsl.Condition(download_data == "True"):
         vop, _download_data = download_kaggle_dataset(
-                kaggle_dataset_name=kaggle_dataset_name,
-                download_dir=raw_data_dir,
-                data_pvc_name=data_pvc_name,
-                data_pvc_size=data_pvc_size,
-                kaggle_credentials_k8s_secret=kaggle_credentials_k8s_secret
+            kaggle_dataset_name=kaggle_dataset_name,
+            download_dir=raw_data_dir,
+            data_pvc_name=data_pvc_name,
+            data_pvc_size=data_pvc_size,
+            kaggle_credentials_k8s_secret=kaggle_credentials_k8s_secret
         )
 
         _download_preprocess_data = download_and_preprocess_data(raw_data_dir=raw_data_dir,
-                                           processed_data_dir=processed_data_dir,
-                                           data_pvc=vop).after(_download_data)
+                                                                 processed_data_dir=processed_data_dir,
+                                                                 data_pvc=vop).after(_download_data)
 
         with dsl.Condition(use_existing_model_pvc == "True"):
             train_use_existing_model_pvc(model_name=model_name,
@@ -216,7 +236,8 @@ def stock_time_series(
                                          processed_data_dir=processed_data_dir,
                                          model_path=model_path,
                                          model_pvc_name=model_pvc_name,
-                                         data_pvc_name=data_pvc_name).after(_download_preprocess_data),
+                                         download_data=True,
+                                         data_pvc=vop).after(_download_preprocess_data),
 
         with dsl.Condition(use_existing_model_pvc == "False"):
             train_create_model_pvc(model_name=model_name,
@@ -227,12 +248,15 @@ def stock_time_series(
                                    model_path=model_path,
                                    model_pvc_name=model_pvc_name,
                                    model_pvc_size=model_pvc_size,
-                                   data_pvc_name=data_pvc_name).after(_download_preprocess_data)
+                                   data_pvc_name=data_pvc_name,
+                                   download_data=True,
+                                   data_pvc=vop).after(_download_preprocess_data)
 
     with dsl.Condition(download_data == "False"):
         _preprocess_data = preprocess_data(raw_data_dir=raw_data_dir,
-                                       processed_data_dir=processed_data_dir,
-                                       data_pvc_name=data_pvc_name)
+                                           processed_data_dir=processed_data_dir,
+                                           data_pvc_name=data_pvc_name)
+
         with dsl.Condition(use_existing_model_pvc == "True"):
             train_use_existing_model_pvc(model_name=model_name,
                                          itr=itr,
@@ -241,6 +265,7 @@ def stock_time_series(
                                          processed_data_dir=processed_data_dir,
                                          model_path=model_path,
                                          model_pvc_name=model_pvc_name,
+                                         download_data=False,
                                          data_pvc_name=data_pvc_name).after(_preprocess_data),
 
         with dsl.Condition(use_existing_model_pvc == "False"):
@@ -252,12 +277,30 @@ def stock_time_series(
                                    model_path=model_path,
                                    model_pvc_name=model_pvc_name,
                                    model_pvc_size=model_pvc_size,
+                                   download_data=False,
                                    data_pvc_name=data_pvc_name).after(_preprocess_data)
 
 
 if __name__ == '__main__':
+
+    # Using Jenkins ID with pipeline name to create unique pipeline version names linked with Jenkins build
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--build_num', required=True)
+    args = parser.parse_args()
+
     pipeline_file_name = "fintech_timeseries-prep-train-pipeline.yaml"
     kfp.compiler.Compiler().compile(stock_time_series, pipeline_file_name)
-    kfp.Client().upload_pipeline(pipeline_package_path=pipeline_file_name,
-                               pipeline_name="Stock Time-series Forecast",
-                               description="Time Series Forecast for stock based on historic data.")
+
+    with open('./config/pipeline.json') as pipeline_config:
+        data = json.load(pipeline_config)
+        pipeline_metadata = data['pipeline_metadata']
+
+    if pipeline_metadata['use_existing_pipeline'] == "True":
+        kfp.Client().upload_pipeline_version(pipeline_package_path=pipeline_file_name,
+                                             pipeline_id=pipeline_metadata['pipeline_id'],
+                                             pipeline_version_name=pipeline_metadata['pipeline_name'] + str(
+                                                 args.build_num))
+    else:
+        kfp.Client().upload_pipeline(pipeline_package_path=pipeline_file_name,
+                                     pipeline_name=pipeline_metadata['pipeline_name'] + str(args.build_num),
+                                     description=pipeline_metadata['description'])

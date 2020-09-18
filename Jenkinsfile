@@ -38,7 +38,7 @@ node {
     }
     stage('Kubeflow Pipeline Update') {
       if (env.BRANCH_NAME.startsWith("kf-pipeline")) {
-        sh "python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_timeseries_prepro_train.py"
+        sh "python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_timeseries_prepro_train.py --build_num ${env.BUILD_NUMBER}"
       }
     }
     stage('Kubeflow Pipeline Run') {
