@@ -21,7 +21,7 @@ pipeline_version_id = pipeline_metadata['pipeline_version_id']
 client = kfp.Client()
 
 if pipeline_metadata['use_existing_pipeline'] == "True":
-    run = client.run_pipeline(experiment_id=experiment_id, pipeline_id=pipeline_id, version_id=pipeline_version_id,
+    run = client.run_pipeline(experiment_id=experiment_id, version_id=pipeline_version_id,
                               job_name=run_name,
                               params=pipeline_run_params)
 else:
