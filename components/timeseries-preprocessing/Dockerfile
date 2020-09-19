@@ -1,4 +1,5 @@
-FROM timeseries-train
+
+FROM muneer7589/timeseries-preprocess-data
 
 # Install dependencies
 # RUN pip3 install pandas
@@ -7,7 +8,7 @@ FROM timeseries-train
 # RUN mkdir /workdir
 
 # Copy source code to docker image
-COPY src/preprocess_data.py /workdir
+COPY components/timeseries-preprocessing/src/preprocess_data.py /workdir
 
 # Change working directory to app
 WORKDIR /workdir
