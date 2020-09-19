@@ -283,7 +283,7 @@ def stock_time_series(
 
 if __name__ == '__main__':
 
-    # Using Jenkins ID with pipeline name to create unique pipeline version names linked with Jenkins build
+    # Using Jenkins build number with pipeline name to create unique pipeline version names linked with Jenkins build
     parser = argparse.ArgumentParser()
     parser.add_argument('--build_num', required=True)
     args = parser.parse_args()
