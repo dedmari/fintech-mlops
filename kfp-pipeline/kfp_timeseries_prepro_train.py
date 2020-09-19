@@ -202,7 +202,7 @@ def stock_time_series(
         kaggle_dataset_name="szrlee/stock-time-series-20050101-to-20171231",
         data_pvc_name="djia-kaggle-dataset",
         raw_data_dir="djia_30_stock_data/",
-        processed_data_dir="preproc_djia_30_stock_data",
+        processed_data_dir="preproc_djia_30_stock_data/",
         data_pvc_size="1Gi",
         kaggle_credentials_k8s_secret="muneer-kaggle-credentials",
         itr=3000,
