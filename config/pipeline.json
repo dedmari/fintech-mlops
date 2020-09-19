@@ -22,6 +22,7 @@
     "experiment_id": "0bdae264-7f34-452f-a52e-7ddab7931e17",
     "pipeline_id": "dc89851a-f50f-4109-be03-87ad9d84d040",
     "pipeline_run_name": "Fintech Jenkins triggered run",
-    "use_existing_pipeline": "True"
+    "use_existing_pipeline": "True",
+    "pipeline_version_id": "6529bdee-05df-488a-836d-48238faf1572"
   }
 }

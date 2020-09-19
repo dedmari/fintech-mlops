@@ -285,7 +285,7 @@ if __name__ == '__main__':
 
     # Using Jenkins ID with pipeline name to create unique pipeline version names linked with Jenkins build
     parser = argparse.ArgumentParser()
-    parser.add_argument('--build_id', type=str, required=True)
+    parser.add_argument('--build_num', required=True)
     args = parser.parse_args()
 
     pipeline_file_name = "fintech_timeseries-prep-train-pipeline.yaml"
@@ -299,8 +299,8 @@ if __name__ == '__main__':
         kfp.Client().upload_pipeline_version(pipeline_package_path=pipeline_file_name,
                                              pipeline_id=pipeline_metadata['pipeline_id'],
                                              pipeline_version_name=pipeline_metadata['pipeline_name'] + str(
-                                                 args.build_id))
+                                                 args.build_num))
     else:
         kfp.Client().upload_pipeline(pipeline_package_path=pipeline_file_name,
-                                     pipeline_name=pipeline_metadata['pipeline_name'] + str(args.build_id),
+                                     pipeline_name=pipeline_metadata['pipeline_name'] + str(args.build_num),
                                      description=pipeline_metadata['description'])
