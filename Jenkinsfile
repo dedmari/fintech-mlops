@@ -58,6 +58,7 @@ node {
       /* Later utilise script used to get new volume names with update_config script to automate updating newly created volume names */
       /* It can also be used to upload model metrics to git and run some-tests before deploying model to production */
       else {
+        sh "python3.6 ${env.WORKSPACE}/config/test_jenkins_python_exec.py"
         sh "git checkout -B ds1"
         echo "PWD"
         sh "pwd"
