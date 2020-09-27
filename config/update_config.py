@@ -21,6 +21,9 @@ def update_pipeline_config(key_type, key, value):
     pipeline_keytype_params[key] = value
     data[key_type] = pipeline_keytype_params
 
+    print("updated data")
+    print(data)
+
     # Updating config file with new value
     with open('./config/pipeline.json', 'w+') as pipeline_config:
         json.dump(data, pipeline_config)
