@@ -58,6 +58,7 @@ node {
       /* Later utilise script used to get new volume names with update_config script to automate updating newly created volume names */
       /* It can also be used to upload model metrics to git and run some-tests before deploying model to production */
       else {
+        sh "git checkout -B ds1"
         sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
         sh "git status"
         /* sh "git checkout -B ds1" */
