@@ -1,13 +1,16 @@
 node {
   try {
-    stage('Checkout') {
-      checkout scm
-      sh "git clean -fdx"
-    }
+
     stage('Prepare') {
       sh "git clean -fdx"
       sh "git config user.name 'dedmari'"
       sh "git config user.email 'muneer7589@gmail.com'"
+      withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+          sh ('''
+                git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
+                git pull origin ds1
+          ''')
+        }
     }
     stage('Build Tests') {
       echo "Some automated tests..."
@@ -63,7 +66,16 @@ node {
       /* Later utilise script used to get new volume names with update_config script to automate updating newly created volume names */
       /* It can also be used to upload model metrics to git and run some-tests before deploying model to production */
       else {
+        sh "ls ${env.WORKSPACE}/config/"
+        sh "python3.6 ${env.WORKSPACE}/config/test_jenkins_python_exec.py"
+        /* sh "git checkout -B ds1" */
+        echo "PWD"
+        sh "cat ${env.WORKSPACE}/config/pipeline.json"
         sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
+        echo "After Update..."
+        sh "cat ${env.WORKSPACE}/config/pipeline.json"
+        sh "git status"
+        /* sh "git checkout -B ds1" */
 
         withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
 
@@ -71,7 +83,7 @@ node {
                 git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
                 git add .
                 git commit -m 'testing pushing code using Jenkins pipeline'
-                git push origin ds1
+                git push origin HEAD:ds1
           ''')
         }
       }
