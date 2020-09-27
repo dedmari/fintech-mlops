@@ -1,9 +1,6 @@
 node {
   try {
-     stage('Checkout') {
-      checkout scm
-      sh "git clean -fdx"
-    }
+
     stage('Prepare') {
       sh "git clean -fdx"
       sh "git config user.name 'dedmari'"
