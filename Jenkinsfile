@@ -56,6 +56,16 @@ node {
             message: "Kubeflow Pipeline Run has been finished. Run Id: ${run_id}",
             status: 'Success'
       }
+      /* Updating pipeline config after run. Mainly used to update pvc names as kubeflow pipeline is prepends workspace name before volume name */
+      /* Currently just testing pushing updates to git. Later this code is going to be executd only for training brancg, hence goes in "if" block above. */
+      /* Later utilise script used to get new volume names with update_config script to automate updating newly created volume names */
+      /* It can also be used to upload model metrics to git and run some-tests before deploying model to production */
+      else {
+        sh "python3.6 {env.WORKSPACE}/config/update_config.py"
+        sh "git add ."
+        sh "git commit -m "testing pushing code using Jenkins pipeline"
+        sh "git push origin ds1"
+      }
     }
     stage('deploy') {
       echo "stage2: deploy model in production..."
