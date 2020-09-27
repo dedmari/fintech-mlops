@@ -1,11 +1,6 @@
 node {
   try {
-    stage('Checkout') {
-      checkout scm
-      sh "git clean -fdx"
-    }
     stage('Prepare') {
-      sh "git clean -fdx"
       sh "git config user.name 'dedmari'"
       sh "git config user.email 'muneer7589@gmail.com'"
     }
@@ -64,6 +59,7 @@ node {
       /* It can also be used to upload model metrics to git and run some-tests before deploying model to production */
       else {
         sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
+        sh "git checkout -B ds1"
 
         withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
 
