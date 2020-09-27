@@ -63,7 +63,7 @@ node {
       else {
         sh "python3.6 {env.WORKSPACE}/config/update_config.py"
         sh "git add ."
-        sh "git commit -m "testing pushing code using Jenkins pipeline"
+        sh "git commit -m 'testing pushing code using Jenkins pipeline'"
         sh "git push origin ds1"
       }
     }
