@@ -5,6 +5,12 @@ node {
       sh "git clean -fdx"
       sh "git config user.name 'dedmari'"
       sh "git config user.email 'muneer7589@gmail.com'"
+      withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+          sh ('''
+                git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
+                git pull origin ds1
+          ''')
+        }
     }
     stage('Build Tests') {
       echo "Some automated tests..."
