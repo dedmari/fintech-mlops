@@ -71,7 +71,7 @@ node {
                 git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
                 git add .
                 git commit -m 'testing pushing code using Jenkins pipeline'
-                git push origin ds1
+                git push origin HEAD:ds1
           ''')
         }
       }
