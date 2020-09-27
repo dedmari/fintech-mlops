@@ -59,6 +59,8 @@ node {
       /* It can also be used to upload model metrics to git and run some-tests before deploying model to production */
       else {
         sh "git checkout -B ds1"
+        echo "PWD"
+        sh "pwd"
         sh "cat ${env.WORKSPACE}/config/pipeline.json"
         sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
         echo "After Update..."
