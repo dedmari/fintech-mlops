@@ -6,6 +6,8 @@ node {
     }
     stage('Prepare') {
       sh "git clean -fdx"
+      sh "git config user.name 'dedmari'"
+      sh "git config user.email 'muneer7589@gmail.com'"
     }
     stage('Build Tests') {
       echo "Some automated tests..."
@@ -62,9 +64,16 @@ node {
       /* It can also be used to upload model metrics to git and run some-tests before deploying model to production */
       else {
         sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
-        sh "git add ."
-        sh "git commit -m 'testing pushing code using Jenkins pipeline'"
-        sh "git push origin ds1"
+
+        withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+
+          sh ('''
+                git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
+                git add .
+                git commit -m 'testing pushing code using Jenkins pipeline'
+                git push origin ds1
+          ''')
+        }
       }
     }
     stage('deploy') {
