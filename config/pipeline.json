@@ -3,8 +3,8 @@
     "download_data": "True",
     "kaggle_dataset_name": "szrlee/stock-time-series-20050101-to-20171231",
     "data_pvc_name": "djia-kaggle-dataset",
-    "raw_data_dir": "djia_30_stock_data",
-    "processed_data_dir": "preproc_djia_30_stock_data",
+    "raw_data_dir": "djia_30_stock_data/",
+    "processed_data_dir": "preproc_djia_30_stock_data/",
     "data_pvc_size": "1Gi",
     "kaggle_credentials_k8s_secret": "muneer-kaggle-credentials",
     "itr": "3000",
@@ -23,6 +23,6 @@
     "pipeline_id": "dc89851a-f50f-4109-be03-87ad9d84d040",
     "pipeline_run_name": "Fintech Jenkins triggered run",
     "use_existing_pipeline": "True",
-    "pipeline_version_id": "447a0c7b-09b9-4e5c-8e28-15ba48a39291"
+    "pipeline_version_id": "6529bdee-05df-488a-836d-48238faf1572"
   }
 }
