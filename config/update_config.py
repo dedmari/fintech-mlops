@@ -27,4 +27,4 @@ def update_pipeline_config(key_type, key, value):
 
 
 if __name__ == '__main__':
-    update_pipeline_config("pipeline_metadata", "pipeline_run_name", "Fintech Jenkins triggered run")
+    update_pipeline_config("pipeline_metadata", "pipeline_run_name", "Testing Jenkins git push-Fintech Jenkins triggered run")
