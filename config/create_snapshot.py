@@ -1,7 +1,7 @@
 from kubernetes import client, config
 
 def main():
-    config.load_kube_config()
+    config.load_incluster_config()
 
     api = client.CustomObjectsApi()
 
