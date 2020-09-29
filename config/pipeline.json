@@ -1,1 +1,28 @@
-{"pipeline_run_params": {"download_data": "True", "kaggle_dataset_name": "szrlee/stock-time-series-20050101-to-20171231", "data_pvc_name": "djia-kaggle-dataset", "raw_data_dir": "djia_30_stock_data/", "processed_data_dir": "preproc_djia_30_stock_data/", "data_pvc_size": "1Gi", "kaggle_credentials_k8s_secret": "muneer-kaggle-credentials", "itr": "3000", "input_features": "24", "model_name": "FlatModel", "model_tag": "v1", "model_path": "models/", "use_existing_model_pvc": "False", "model_pvc_name": "djia-time-series-model", "model_pvc_size": "1Gi"}, "pipeline_metadata": {"pipeline_name": "Stock Time-series Forecast", "description": "Time Series Forecast for stock based on historic data.", "experiment_id": "0bdae264-7f34-452f-a52e-7ddab7931e17", "pipeline_id": "dc89851a-f50f-4109-be03-87ad9d84d040", "pipeline_run_name": "Jenkins test git push - Fintech Jenkins triggered run", "use_existing_pipeline": "True", "pipeline_version_id": "6529bdee-05df-488a-836d-48238faf1572"}}
+{
+  "pipeline_run_params": {
+    "download_data": "True",
+    "kaggle_dataset_name": "szrlee/stock-time-series-20050101-to-20171231",
+    "data_pvc_name": "djia-kaggle-dataset",
+    "raw_data_dir": "djia_30_stock_data/",
+    "processed_data_dir": "preproc_djia_30_stock_data/",
+    "data_pvc_size": "1Gi",
+    "kaggle_credentials_k8s_secret": "muneer-kaggle-credentials",
+    "itr": "3000",
+    "input_features": "24",
+    "model_name": "FlatModel",
+    "model_tag": "v1",
+    "model_path": "models/",
+    "use_existing_model_pvc": "False",
+    "model_pvc_name": "djia-time-series-model",
+    "model_pvc_size": "1Gi"
+  },
+  "pipeline_metadata": {
+    "pipeline_name": "Stock Time-series Forecast",
+    "description": "Time Series Forecast for stock based on historic data.",
+    "experiment_id": "0bdae264-7f34-452f-a52e-7ddab7931e17",
+    "pipeline_id": "dc89851a-f50f-4109-be03-87ad9d84d040",
+    "pipeline_run_name": "Fintech Jenkins triggered run",
+    "use_existing_pipeline": "True",
+    "pipeline_version_id": "6529bdee-05df-488a-836d-48238faf1572"
+  }
+}

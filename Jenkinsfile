@@ -54,7 +54,7 @@ node {
             status: 'Success'
       }
     }
-    stage('kfpRunStatus') {
+    stage('Kubeflow Pipeline Run Status') {
       if (env.BRANCH_NAME.startsWith("training")) {
         def run_id = sh(script:"python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_run_completion.py", returnStdout:true)
         office365ConnectorSend webhookUrl: 'https://outlook.office.com/webhook/8ff9afd3-5134-49a0-8dca-be6884951125@4b0911a0-929b-4715-944b-c03745165b3a/JenkinsCI/6d2b6238d4b74f6ba1541496b8aad9ab/02438fa1-3250-4de7-a462-8238a6e99ca9',
@@ -66,27 +66,21 @@ node {
       /* Later utilise script used to get new volume names with update_config script to automate updating newly created volume names */
       /* It can also be used to upload model metrics to git and run some-tests before deploying model to production */
       else {
-        sh "ls ${env.WORKSPACE}/config/"
-        sh "python3.6 ${env.WORKSPACE}/config/test_jenkins_python_exec.py"
-        /* sh "git checkout -B ds1" */
-        echo "PWD"
-        sh "cat ${env.WORKSPACE}/config/pipeline.json"
         sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
-        echo "After Update..."
-        sh "cat ${env.WORKSPACE}/config/pipeline.json"
-        sh "git status"
-        /* sh "git checkout -B ds1" */
 
         withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
 
           sh ('''
                 git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
                 git add .
-                git commit -m 'testing pushing code using Jenkins pipeline'
+                git commit -m 'Jenkins: Updated Pipeline config'
                 git push origin HEAD:ds1
           ''')
         }
       }
+    }
+    stage('Data and Model versioning') {
+      sh "python3.6 ${env.WORKSPACE}/config/create_snapshot.py"
     }
     stage('deploy') {
       echo "stage2: deploy model in production..."
