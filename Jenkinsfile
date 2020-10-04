@@ -43,7 +43,8 @@ node {
     }
     stage('Kubeflow Pipeline Update') {
       if (env.BRANCH_NAME.startsWith("kf-pipeline")) {
-        sh "python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_timeseries_prepro_train.py --build_num ${env.BUILD_NUMBER}"
+        /* sh "python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_timeseries_prepro_train.py --build_num ${env.BUILD_NUMBER}" */
+        sh "python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_timeseries_prepro_train.py --commit_id ${env.GIT_COMMIT}
       }
     }
     stage('Kubeflow Pipeline Run') {
@@ -61,29 +62,36 @@ node {
             message: "Kubeflow Pipeline Run has been finished. Run Id: ${run_id}",
             status: 'Success'
       }
+    }
+    stage('Data and Model versioning') {
+      if (env.BRANCH_NAME.startsWith("training")) {
+        sh "python3.6 ${env.WORKSPACE}/config/create_snapshot.py"
+      }
+    }
+    stage('Push changes to repo'){
       /* Updating pipeline config after run. Mainly used to update pvc names as kubeflow pipeline is prepends workspace name before volume name */
       /* Currently just testing pushing updates to git. Later this code is going to be executd only for training brancg, hence goes in "if" block above. */
       /* Later utilise script used to get new volume names with update_config script to automate updating newly created volume names */
       /* It can also be used to upload model metrics to git and run some-tests before deploying model to production */
-      else {
+
+      if (env.BRANCH_NAME.startsWith("training")) {
         sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
 
-        withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-
-          sh ('''
-                git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
-                git add .
-                git commit -m 'Jenkins: Updated Pipeline config'
-                git push origin HEAD:ds1
-          ''')
+        def git_push_flag = sh(script:"python3.6 ${env.WORKSPACE}/kfp-pipeline/return_git_flag.py", returnStdout:true)
+        if (git_push_flag=='True'){
+          withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+            sh ('''
+                  git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
+                  git add .
+                  git commit -m 'Jenkins: Updated Pipeline config'
+                  git push origin HEAD:ds1
+            ''')
+          }
         }
       }
     }
-    stage('Data and Model versioning') {
-      sh "python3.6 ${env.WORKSPACE}/config/create_snapshot.py"
-    }
     stage('deploy') {
-      echo "stage2: deploy model in production..."
+      echo "deploy model in production..."
     }
   } finally {
     stage('cleanup') {
