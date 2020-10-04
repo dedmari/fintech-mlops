@@ -25,7 +25,7 @@
     "pipeline_id": "dc89851a-f50f-4109-be03-87ad9d84d040",
     "pipeline_run_name": "Fintech Jenkins triggered run",
     "use_existing_pipeline": "True",
-    "pipeline_version_id": "6529bdee-05df-488a-836d-48238faf1572",
+    "pipeline_version_id": "2fde92f8-2ce2-4ffe-9137-2dbce30055c7",
     "enable_snapshot": "True",
     "volume_snapshot_class_name": "netapp-snapclass"
   }
