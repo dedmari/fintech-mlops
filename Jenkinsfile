@@ -44,7 +44,7 @@ node {
     stage('Kubeflow Pipeline Update') {
       if (env.BRANCH_NAME.startsWith("kf-pipeline")) {
         /* sh "python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_timeseries_prepro_train.py --build_num ${env.BUILD_NUMBER}" */
-        sh "python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_timeseries_prepro_train.py --commit_id ${env.GIT_COMMIT}
+        sh "python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_timeseries_prepro_train.py --git_commit ${env.GIT_COMMIT}"
       }
     }
     stage('Kubeflow Pipeline Run') {
@@ -65,7 +65,7 @@ node {
     }
     stage('Data and Model versioning') {
       if (env.BRANCH_NAME.startsWith("training")) {
-        sh "python3.6 ${env.WORKSPACE}/config/create_snapshot.py"
+        sh "python3.6 ${env.WORKSPACE}/config/create_snapshot.py --git_commit ${env.GIT_COMMIT}"
       }
     }
     stage('Push changes to repo'){
