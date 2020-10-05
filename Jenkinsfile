@@ -11,6 +11,9 @@ node {
                 git pull origin ds1
           ''')
         }
+
+      def git_commit_message = sh (script: "git log -1", returnStatus: true)
+      echo "git commit message value is: ${git_commit_message}"
     }
     stage('Build Tests') {
       echo "Some automated tests..."
@@ -48,7 +51,8 @@ node {
       }
     }
     stage('Kubeflow Pipeline Run') {
-      if (env.BRANCH_NAME.startsWith("training")) {
+      def auto_git_commit = sh (script: "git log -1 | grep 'Jenkins: Updated Pipeline config'", returnStatus: true)
+      if (env.BRANCH_NAME.startsWith("training") && auto_git_commit != 0) {
         def run_script_output = sh(script:"python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_run_pipeline.py", returnStdout:true)
         office365ConnectorSend webhookUrl: 'https://outlook.office.com/webhook/8ff9afd3-5134-49a0-8dca-be6884951125@4b0911a0-929b-4715-944b-c03745165b3a/JenkinsCI/6d2b6238d4b74f6ba1541496b8aad9ab/02438fa1-3250-4de7-a462-8238a6e99ca9',
             message: "Kubeflow Pipeline Run has been triggered. \n ${run_script_output}",
@@ -56,7 +60,8 @@ node {
       }
     }
     stage('Kubeflow Pipeline Run Status') {
-      if (env.BRANCH_NAME.startsWith("training")) {
+      def auto_git_commit = sh (script: "git log -1 | grep 'Jenkins: Updated Pipeline config'", returnStatus: true)
+      if (env.BRANCH_NAME.startsWith("training") && auto_git_commit != 0) {
         def run_id = sh(script:"python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_run_completion.py", returnStdout:true)
         office365ConnectorSend webhookUrl: 'https://outlook.office.com/webhook/8ff9afd3-5134-49a0-8dca-be6884951125@4b0911a0-929b-4715-944b-c03745165b3a/JenkinsCI/6d2b6238d4b74f6ba1541496b8aad9ab/02438fa1-3250-4de7-a462-8238a6e99ca9',
             message: "Kubeflow Pipeline Run has been finished. Run Id: ${run_id}",
@@ -64,7 +69,8 @@ node {
       }
     }
     stage('Data and Model versioning') {
-      if (env.BRANCH_NAME.startsWith("training")) {
+      def auto_git_commit = sh (script: "git log -1 | grep 'Jenkins: Updated Pipeline config'", returnStatus: true)
+      if (env.BRANCH_NAME.startsWith("training") && auto_git_commit != 0) {
         sh "python3.6 ${env.WORKSPACE}/config/create_snapshot.py --git_commit ${env.GIT_COMMIT}"
       }
     }
@@ -74,7 +80,8 @@ node {
       /* Later utilise script used to get new volume names with update_config script to automate updating newly created volume names */
       /* It can also be used to upload model metrics to git and run some-tests before deploying model to production */
 
-      if (env.BRANCH_NAME.startsWith("training")) {
+      def auto_git_commit = sh (script: "git log -1 | grep 'Jenkins: Updated Pipeline config'", returnStatus: true)
+      if (env.BRANCH_NAME.startsWith("training") && auto_git_commit != 0) {
         sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
 
         def git_push_flag = sh(script:"python3.6 ${env.WORKSPACE}/kfp-pipeline/return_git_flag.py", returnStdout:true)
