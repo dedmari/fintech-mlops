@@ -4,6 +4,7 @@ node {
     stage('Prepare') {
       sh "git clean -fdx"
       def scmVars = checkout scm
+      env.GIT_COMMIT = scmVars.GIT_COMMIT
 
     /*  sh "git config user.name 'dedmari'" */
     /*  sh "git config user.email 'muneer7589@gmail.com'" */
@@ -14,8 +15,8 @@ node {
     /*     ''') */
     /*    } */
 
-      def git_commit_message = sh (script: "git log -1", returnStatus: true)
-      echo "git commit id: ${scmVars.GIT_COMMIT}"
+    /*  def git_commit_message = sh (script: "git log -1", returnStatus: true) */
+    /*  echo "git commit id: ${scmVars.GIT_COMMIT}" */
     }
     stage('Build Tests') {
       echo "Some automated tests..."
