@@ -8,7 +8,7 @@ node {
       withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
           sh ('''
                 git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
-                git pull origin ds1
+                git pull origin ${env.BRANCH_NAME}
           ''')
         }
 
@@ -91,7 +91,7 @@ node {
                   git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
                   git add .
                   git commit -m 'Jenkins: Updated Pipeline config'
-                  git push origin HEAD:ds1
+                  git push origin HEAD:${env.BRANCH_NAME}
             ''')
           }
         }
