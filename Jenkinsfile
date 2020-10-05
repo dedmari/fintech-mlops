@@ -87,7 +87,7 @@ node {
       if (env.BRANCH_NAME.startsWith("training") && auto_git_commit != 0) {
         sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
 
-        def git_push_flag = sh(script:"python3.6 ${env.WORKSPACE}/kfp-pipeline/return_git_flag.py", returnStdout:true)
+        def git_push_flag = sh(script:"python3.6 ${env.WORKSPACE}/config/return_git_flag.py", returnStdout:true)
         if (git_push_flag=='True'){
           withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
             sh ('''
