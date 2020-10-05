@@ -88,7 +88,10 @@ node {
         sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
 
         def git_push_flag = sh(script:"python3.6 ${env.WORKSPACE}/config/return_git_flag.py", returnStdout:true)
-        if (git_push_flag=='True'){
+
+        echo "git push flag value: ${git_push_flag}"
+        if (git_push_flag == 'True'){
+          echo "Inside if git flag"
           withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
             sh ('''
                   git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
