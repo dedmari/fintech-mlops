@@ -1,6 +1,5 @@
 import json
 import kfp
-import ast
 import os
 
 # def update_pipeline_config(key_type, key, value):
@@ -43,15 +42,9 @@ if __name__ == '__main__':
     kfp_client = kfp.Client()
     run_info_dict = kfp_client.runs.get_run(run_id).to_dict()
 
-    print("run id: ", run_id)
-
-    print("-----------------------------------")
-
-    print(run_info_dict)
-
     # kubeflow pipeline run always prepends workflow name with volume name.
-    # content within 'workflow_manifest' key is string. Using ast.literal_eval to convert it to dict and return run's workflow name
-    run_workflow_name = ast.literal_eval(run_info_dict['pipeline_runtime']['workflow_manifest'])['metadata']['name']
+    # content within 'workflow_manifest' key is string. Using json.loads to convert it to dict and return run's workflow name
+    run_workflow_name = json.loads(run_info_dict['pipeline_runtime']['workflow_manifest'])['metadata']['name']
 
     config_updated = False
     # data PVC name update
