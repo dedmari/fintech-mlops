@@ -13,7 +13,7 @@ node {
         }
 
       def git_commit_message = sh (script: "git log -1", returnStatus: true)
-      echo "git commit message value is: ${git_commit_message}"
+      echo "git commit id: ${env.GIT_COMMIT}"
     }
     stage('Build Tests') {
       echo "Some automated tests..."
