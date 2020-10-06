@@ -91,10 +91,10 @@ node {
       if (env.BRANCH_NAME.startsWith("training") && auto_git_commit != 0) {
         sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
 
-        def git_push_flag = sh(script:"python3.6 ${env.WORKSPACE}/config/return_git_flag.py", returnStdout:true)
+        def git_push_flag = sh(script:"python3.6 ${env.WORKSPACE}/config/return_git_flag.py", returnStdout:true).toString().trim().toUpperCase()
 
         echo "git push flag value: ${git_push_flag}"
-        if (git_push_flag == "True"){
+        if (git_push_flag == "TRUE"){
           echo "Inside if git flag"
           sh "git config user.name 'dedmari'"
           sh "git config user.email 'muneer7589@gmail.com'"
