@@ -100,7 +100,7 @@ node {
             sh "git config --local credential.helper \"!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f\""
             sh "git add ."
             sh "git commit -m 'Jenkins: Updated Pipeline config'"
-            sh "git push origin HEAD:${env.BRANCH_NAME}"
+            sh "git push origin ${env.BRANCH_NAME}"
           }
         }
       }
