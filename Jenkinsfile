@@ -3,8 +3,6 @@ node {
 
     stage('Prepare') {
 
-      def kfp_version = sh(script:"python3.6 ${env.WORKSPACE}/config/kfp_version.py", returnStdout:true)
-      echo "kfp_version: ${kfp_version}"
       sh "git clean -fdx"
       def scmVars = checkout scm
       env.GIT_COMMIT = scmVars.GIT_COMMIT
@@ -20,6 +18,9 @@ node {
 
     /*  def git_commit_message = sh (script: "git log -1", returnStatus: true) */
     /*  echo "git commit id: ${scmVars.GIT_COMMIT}" */
+
+      def kfp_version = sh(script:"python3.6 ${env.WORKSPACE}/config/kfp_version.py", returnStdout:true)
+      echo "kfp_version: ${kfp_version}"
     }
     stage('Build Tests') {
       echo "Some automated tests..."
