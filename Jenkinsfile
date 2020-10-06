@@ -94,8 +94,8 @@ node {
         def git_push_flag = sh(script:"python3.6 ${env.WORKSPACE}/config/return_git_flag.py", returnStdout:true).toString().trim().toUpperCase()
 
         if (git_push_flag == "TRUE"){
-          /* sh "git config user.name 'dedmari'" */
-          /* sh "git config user.email 'muneer7589@gmail.com'" */
+          sh "git config user.name 'dedmari'"
+          sh "git config user.email 'muneer7589@gmail.com'"
           withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
             sh "git config --local credential.helper \"!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f\""
             sh "git add ."
