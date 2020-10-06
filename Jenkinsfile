@@ -2,6 +2,9 @@ node {
   try {
 
     stage('Prepare') {
+
+      def kfp_version = sh(script:"python3.6 ${env.WORKSPACE}/config/kfp_version.py", returnStdout:true)
+      echo "kfp_version: ${kfp_version}"
       sh "git clean -fdx"
       def scmVars = checkout scm
       env.GIT_COMMIT = scmVars.GIT_COMMIT
@@ -90,8 +93,10 @@ node {
         def git_push_flag = sh(script:"python3.6 ${env.WORKSPACE}/config/return_git_flag.py", returnStdout:true)
 
         echo "git push flag value: ${git_push_flag}"
-        if (git_push_flag == 'True'){
+        if (git_push_flag == "True"){
           echo "Inside if git flag"
+          sh "git config user.name 'dedmari'"
+          sh "git config user.email 'muneer7589@gmail.com'"
           withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
             sh ('''
                   git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"

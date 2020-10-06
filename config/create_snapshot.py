@@ -68,7 +68,7 @@ if __name__ == '__main__':
 
         # set git_push flag
         # flag used as a check whether git push is needed or not. Saving it to file so it will be used later by Jenkins
-        with open('git_push.txt', 'w') as git_push:
+        with open('git_push.txt', 'w+') as git_push:
             git_push.write("True")
     else:
         print("Snapshot is disabled!!!")
