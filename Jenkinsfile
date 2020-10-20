@@ -82,13 +82,13 @@ node {
       }
     }
     stage('Push changes to repo'){
-      /* Updating pipeline config after run. Mainly used to update pvc names as kubeflow pipeline is prepends workspace name before volume name */
+      /* Updating pipeline config after run. Mainly used to update training metrics and pvc names as kubeflow pipeline is prepends workspace name before volume name */
       /* Currently just testing pushing updates to git. Later this code is going to be executd only for training brancg, hence goes in "if" block above. */
       /* Later utilise script used to get new volume names with update_config script to automate updating newly created volume names */
       /* It can also be used to upload model metrics to git and run some-tests before deploying model to production */
 
-      def auto_git_commit = sh (script: "git log -1 | grep 'Jenkins: Updated Pipeline config'", returnStatus: true)
-      if (env.BRANCH_NAME.startsWith("training") && auto_git_commit != 0) {
+      def auto_git_commit = sh (script: "git log -1 | grep 'Skip: Jenkins updated Pipeline config'", returnStatus: true)
+      if ((env.BRANCH_NAME.startsWith("training") || env.BRANCH_NAME.startsWith("kf-pipeline")) && auto_git_commit != 0) {
         sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
 
         def git_push_flag = sh(script:"python3.6 ${env.WORKSPACE}/config/return_git_flag.py", returnStdout:true).toString().trim().toUpperCase()
@@ -99,14 +99,16 @@ node {
           withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
             sh "git config --local credential.helper \"!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f\""
             sh "git add ."
-            sh "git commit -m 'Jenkins: Updated Pipeline config'"
+            sh "git commit -m 'Skip: Jenkins updated Pipeline config'"
             sh "git push origin ${env.BRANCH_NAME}"
           }
         }
       }
     }
-    stage('deploy') {
-      echo "deploy model in production..."
+    stage('Deploy Model') {
+      if (env.BRANCH_NAME.startsWith("deploy")) {
+        sh "python3.6 ${env.WORKSPACE}/config/update_model_serve.py"
+      }
     }
   } finally {
     stage('cleanup') {

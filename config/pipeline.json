@@ -12,7 +12,7 @@
     "itr": "3000",
     "input_features": "24",
     "model_name": "FlatModel",
-    "model_tag": "v1",
+    "model_tag": "1",
     "model_path": "models/",
     "use_existing_model_pvc": "False",
     "model_pvc_name": "djia-time-series-model",
@@ -21,12 +21,33 @@
   "pipeline_metadata": {
     "pipeline_name": "Stock Time-series Forecast",
     "description": "Time Series Forecast for stock based on historic data.",
-    "experiment_id": "0bdae264-7f34-452f-a52e-7ddab7931e17",
-    "pipeline_id": "dc89851a-f50f-4109-be03-87ad9d84d040",
     "pipeline_run_name": "Fintech Jenkins triggered run",
     "use_existing_pipeline": "True",
+    "pipeline_id": "dc89851a-f50f-4109-be03-87ad9d84d040",
     "pipeline_version_id": "2fde92f8-2ce2-4ffe-9137-2dbce30055c7",
+    "use_existing_experiment": "True",
+    "experiment_name": "Team: Fintech",
     "enable_snapshot": "True",
     "volume_snapshot_class_name": "netapp-snapclass"
+  },
+  "model_metrics": [
+    {
+      "name": "accuracy_test",
+      "node_id": "stock-abc",
+      "number_value": 0.787,
+      "format": "PERCENT"
+    },
+    {
+      "name": "accuracy_train",
+      "node_id": "stock-abc",
+      "number_value": 0.9,
+      "format": "PERCENT"
+    }
+  ],
+  "model_serve": {
+    "tf_serve_name": "fintech",
+    "base_path": "/mnt",
+    "tf_serve_deploy_name": "fintech-v1",
+    "label_selector": "app=fintech"
   }
 }

@@ -345,11 +345,21 @@ if __name__ == '__main__':
         pipeline_metadata = data['pipeline_metadata']
 
     if pipeline_metadata['use_existing_pipeline'] == "True":
-        kfp.Client().upload_pipeline_version(pipeline_package_path=pipeline_file_name,
+        resp = kfp.Client().upload_pipeline_version(pipeline_package_path=pipeline_file_name,
                                              pipeline_id=pipeline_metadata['pipeline_id'],
                                              pipeline_version_name=pipeline_metadata['pipeline_name'] + str(
                                                  args.git_commit))
     else:
-        kfp.Client().upload_pipeline(pipeline_package_path=pipeline_file_name,
+        resp = kfp.Client().upload_pipeline(pipeline_package_path=pipeline_file_name,
                                      pipeline_name=pipeline_metadata['pipeline_name'] + str(args.git_commit),
                                      description=pipeline_metadata['description'])
+
+    # Updating pipeline_id in pipeline.config with newly created pipeline id
+    pipeline_metadata['pipeline_id'] = resp.to_dict()['id']
+
+    # Updating pipeline_version_id pipeline.config
+    pipeline_metadata['pipeline_version_id'] = resp.to_dict()['default_version']['id']
+
+    # flag used as a check whether git push is needed or not. Saving it to file so it will be used later by Jenkins
+    with open('git_push.txt', 'w') as git_push:
+        git_push.write("True")
