@@ -368,11 +368,6 @@ if __name__ == '__main__':
     # Delete KF pipeline file after upload
     os.remove(pipeline_file_name)
 
-
-    
-    # Updating pipeline_version_id pipeline.config
-    pipeline_config_data['pipeline_metadata']['pipeline_version_id'] = resp.to_dict()['default_version']['id']
-
     # Updating config file
     with open('./config/pipeline.json', 'w+') as pipeline_config:
         json.dump(pipeline_config_data, pipeline_config)
