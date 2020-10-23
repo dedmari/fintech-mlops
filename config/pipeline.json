@@ -30,6 +30,20 @@
     "enable_snapshot": "True",
     "volume_snapshot_class_name": "netapp-snapclass"
   },
+  "model_metrics": [
+    {
+      "name": "accuracy_test",
+      "node_id": "stock-abc",
+      "number_value": 0.787,
+      "format": "PERCENT"
+    },
+    {
+      "name": "accuracy_train",
+      "node_id": "stock-abc",
+      "number_value": 0.9,
+      "format": "PERCENT"
+    }
+  ],
   "model_serve": {
     "tf_serve_name": "fintech",
     "base_path": "/mnt",
