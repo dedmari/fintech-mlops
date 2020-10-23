@@ -83,20 +83,36 @@ def download_and_preprocess_data(raw_data_dir='djia_30_stock_data',
     )
 
 
+def restore_data_from_snapshot(data_snapshot_name, data_pvc_size, data_pvc_name):
+    return dsl.VolumeOp(
+        name="restore_data_from_snapshot",
+        resource_name=data_pvc_name,
+        data_source=data_snapshot_name,
+        size=data_pvc_size
+    )
+
+
 def preprocess_data(raw_data_dir='djia_30_stock_data',
                     processed_data_dir='preproc_djia_30_stock_data',
-                    data_pvc_name='djia-kaggle-dataset'):
+                    data_pvc_name='djia-kaggle-dataset', restored_snapshot=False):
     """ Pre-processing raw stock data using existing volume.
 
     Args:
         raw_data_dir: Directory where raw dataset is stored in persistent volume
         processed_data: Directory where pre-processed data will be stored in persistent volume
         data_pvc_name: PVC name where data (raw and pre-processed) is stored
+        restored_snapshot (bool): True/False.
 
     Returns:
         dsl.ContainerOp object: Kubeflow Pipeline component for pre-processing data
 
     """
+
+    if restored_snapshot:
+        data_volume = data_pvc_name.volume
+    else:
+        data_volume = dsl.PipelineVolume(pvc=data_pvc_name)
+
     return dsl.ContainerOp(
         name='preprocess stock data',
         image='muneer7589/fintech-preprocess-data',
@@ -107,7 +123,7 @@ def preprocess_data(raw_data_dir='djia_30_stock_data',
             '--preprocessed_dir', processed_data_dir
         ],
         pvolumes={
-            "/mnt/data": dsl.PipelineVolume(pvc=data_pvc_name)
+            "/mnt/data": data_volume
         }
     )
 
@@ -119,11 +135,11 @@ def train_use_existing_model_pvc(model_name='FlatModel',
                                  processed_data_dir='preproc_djia_30_stock_data/',
                                  model_path='models/',
                                  model_pvc_name='djia-time-series-model',
-                                 download_data=False,
+                                 download_or_snapshot_data=False,
                                  data_pvc='djia-kaggle-dataset',
                                  data_pvc_name='djia-kaggle-dataset'
                                  ):
-    if download_data:
+    if download_or_snapshot_data:
         data_volume = data_pvc.volume
     else:
         data_volume = dsl.PipelineVolume(pvc=data_pvc_name)
@@ -157,11 +173,11 @@ def train_create_model_pvc(model_name='FlatModel',
                            model_path='models/',
                            model_pvc_name='djia-time-series-model',
                            model_pvc_size='1Gi',
-                           download_data=False,
+                           download_or_snapshot_data=False,
                            data_pvc='djia-kaggle-dataset',
                            data_pvc_name='djia-kaggle-dataset'
                            ):
-    if download_data:
+    if download_or_snapshot_data:
         data_volume = data_pvc.volume
     else:
         data_volume = dsl.PipelineVolume(pvc=data_pvc_name)
@@ -198,12 +214,14 @@ def train_create_model_pvc(model_name='FlatModel',
     description="Time Series Forecast for stock based on historic data."
 )
 def stock_time_series(
-        download_data="False",
+        download_data="True",
         kaggle_dataset_name="szrlee/stock-time-series-20050101-to-20171231",
         data_pvc_name="djia-kaggle-dataset",
         raw_data_dir="djia_30_stock_data/",
         processed_data_dir="preproc_djia_30_stock_data/",
         data_pvc_size="1Gi",
+        restore_data_from_snasphot="False",
+        data_snapshot_name="snapshot-djia-kaggle-dataset",
         kaggle_credentials_k8s_secret="muneer-kaggle-credentials",
         itr=3000,
         input_features=24,
@@ -236,7 +254,7 @@ def stock_time_series(
                                          processed_data_dir=processed_data_dir,
                                          model_path=model_path,
                                          model_pvc_name=model_pvc_name,
-                                         download_data=True,
+                                         download_or_snapshot_data=True,
                                          data_pvc=vop).after(_download_preprocess_data),
 
         with dsl.Condition(use_existing_model_pvc == "False"):
@@ -249,43 +267,74 @@ def stock_time_series(
                                    model_pvc_name=model_pvc_name,
                                    model_pvc_size=model_pvc_size,
                                    data_pvc_name=data_pvc_name,
-                                   download_data=True,
+                                   download_or_snapshot_data=True,
                                    data_pvc=vop).after(_download_preprocess_data)
 
     with dsl.Condition(download_data == "False"):
-        _preprocess_data = preprocess_data(raw_data_dir=raw_data_dir,
-                                           processed_data_dir=processed_data_dir,
-                                           data_pvc_name=data_pvc_name)
+        with dsl.Condition(restore_data_from_snasphot == "False"):
+            _preprocess_data = preprocess_data(raw_data_dir=raw_data_dir,
+                                               processed_data_dir=processed_data_dir,
+                                               data_pvc_name=data_pvc_name)
 
-        with dsl.Condition(use_existing_model_pvc == "True"):
-            train_use_existing_model_pvc(model_name=model_name,
-                                         itr=itr,
-                                         input_features=input_features,
-                                         model_tag=model_tag,
-                                         processed_data_dir=processed_data_dir,
-                                         model_path=model_path,
-                                         model_pvc_name=model_pvc_name,
-                                         download_data=False,
-                                         data_pvc_name=data_pvc_name).after(_preprocess_data),
+            with dsl.Condition(use_existing_model_pvc == "True"):
+                train_use_existing_model_pvc(model_name=model_name,
+                                             itr=itr,
+                                             input_features=input_features,
+                                             model_tag=model_tag,
+                                             processed_data_dir=processed_data_dir,
+                                             model_path=model_path,
+                                             model_pvc_name=model_pvc_name,
+                                             download_or_snapshot_data=False,
+                                             data_pvc_name=data_pvc_name).after(_preprocess_data),
 
-        with dsl.Condition(use_existing_model_pvc == "False"):
-            train_create_model_pvc(model_name=model_name,
-                                   itr=itr,
-                                   input_features=input_features,
-                                   model_tag=model_tag,
-                                   processed_data_dir=processed_data_dir,
-                                   model_path=model_path,
-                                   model_pvc_name=model_pvc_name,
-                                   model_pvc_size=model_pvc_size,
-                                   download_data=False,
-                                   data_pvc_name=data_pvc_name).after(_preprocess_data)
+            with dsl.Condition(use_existing_model_pvc == "False"):
+                train_create_model_pvc(model_name=model_name,
+                                       itr=itr,
+                                       input_features=input_features,
+                                       model_tag=model_tag,
+                                       processed_data_dir=processed_data_dir,
+                                       model_path=model_path,
+                                       model_pvc_name=model_pvc_name,
+                                       model_pvc_size=model_pvc_size,
+                                       download_or_snapshot_data=False,
+                                       data_pvc_name=data_pvc_name).after(_preprocess_data)
+
+        with dsl.Condition(restore_data_from_snasphot == "True"):
+            vop = restore_data_from_snapshot(data_snapshot_name, data_pvc_size, data_pvc_name)
+
+            _preprocess_data = preprocess_data(raw_data_dir=raw_data_dir,
+                                               processed_data_dir=processed_data_dir,
+                                               data_pvc_name=vop, restored_snapshot=True)
+
+            with dsl.Condition(use_existing_model_pvc == "True"):
+                train_use_existing_model_pvc(model_name=model_name,
+                                             itr=itr,
+                                             input_features=input_features,
+                                             model_tag=model_tag,
+                                             processed_data_dir=processed_data_dir,
+                                             model_path=model_path,
+                                             model_pvc_name=model_pvc_name,
+                                             download_or_snapshot_data=True,
+                                             data_pvc=vop).after(_preprocess_data),
+
+            with dsl.Condition(use_existing_model_pvc == "False"):
+                train_create_model_pvc(model_name=model_name,
+                                       itr=itr,
+                                       input_features=input_features,
+                                       model_tag=model_tag,
+                                       processed_data_dir=processed_data_dir,
+                                       model_path=model_path,
+                                       model_pvc_name=model_pvc_name,
+                                       model_pvc_size=model_pvc_size,
+                                       download_or_snapshot_data=True,
+                                       data_pvc=vop).after(_preprocess_data)
 
 
 if __name__ == '__main__':
 
-    # Using Jenkins build number with pipeline name to create unique pipeline version names linked with Jenkins build
+    # Using git_commit id passed by Jenkins at runtime with pipeline name to create unique pipeline version names linked with Jenkins build
     parser = argparse.ArgumentParser()
-    parser.add_argument('--build_num', required=True)
+    parser.add_argument('--git_commit', required=True)
     args = parser.parse_args()
 
     pipeline_file_name = "fintech_timeseries-prep-train-pipeline.yaml"
@@ -296,11 +345,21 @@ if __name__ == '__main__':
         pipeline_metadata = data['pipeline_metadata']
 
     if pipeline_metadata['use_existing_pipeline'] == "True":
-        kfp.Client().upload_pipeline_version(pipeline_package_path=pipeline_file_name,
+        resp = kfp.Client().upload_pipeline_version(pipeline_package_path=pipeline_file_name,
                                              pipeline_id=pipeline_metadata['pipeline_id'],
                                              pipeline_version_name=pipeline_metadata['pipeline_name'] + str(
-                                                 args.build_num))
+                                                 args.git_commit))
     else:
-        kfp.Client().upload_pipeline(pipeline_package_path=pipeline_file_name,
-                                     pipeline_name=pipeline_metadata['pipeline_name'] + str(args.build_num),
+        resp = kfp.Client().upload_pipeline(pipeline_package_path=pipeline_file_name,
+                                     pipeline_name=pipeline_metadata['pipeline_name'] + str(args.git_commit),
                                      description=pipeline_metadata['description'])
+
+    # Updating pipeline_id in pipeline.config with newly created pipeline id
+    pipeline_metadata['pipeline_id'] = resp.to_dict()['id']
+
+    # Updating pipeline_version_id pipeline.config
+    pipeline_metadata['pipeline_version_id'] = resp.to_dict()['default_version']['id']
+
+    # flag used as a check whether git push is needed or not. Saving it to file so it will be used later by Jenkins
+    with open('git_push.txt', 'w') as git_push:
+        git_push.write("True")

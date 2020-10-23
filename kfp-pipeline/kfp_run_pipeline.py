@@ -13,12 +13,19 @@ with open('./config/pipeline.json') as pipeline_config:
     pipeline_run_params = data['pipeline_run_params']
     pipeline_metadata = data['pipeline_metadata']
 
-experiment_id = pipeline_metadata['experiment_id']
 pipeline_id = pipeline_metadata['pipeline_id']
 run_name = pipeline_metadata['pipeline_run_name']
 pipeline_version_id = pipeline_metadata['pipeline_version_id']
 
 client = kfp.Client()
+
+if pipeline_metadata['use_existing_experiment'] == "False":
+    # Create a new experiment
+    exp_resp = client.create_experiment(pipeline_metadata['experiment_name'])
+    experiment_id = exp_resp.to_dict()['id']
+else:
+    # Retrieve id of an existing experiment
+    experiment_id = client.get_experiment(experiment_name=pipeline_metadata['experiment_name']).to_dict()['id']
 
 if pipeline_metadata['use_existing_pipeline'] == "True":
     run = client.run_pipeline(experiment_id=experiment_id, version_id=pipeline_version_id,
