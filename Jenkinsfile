@@ -3,10 +3,10 @@ node {
 
     stage('Prepare') {
 
-      sh "git clean -fdx"
+      /* sh "git clean -fdx" */
       def scmVars = checkout scm
       env.GIT_COMMIT = scmVars.GIT_COMMIT
-
+      echo "git commit id: ${scmVars.GIT_COMMIT}"
     /*  sh "git config user.name 'dedmari'" */
     /*  sh "git config user.email 'muneer7589@gmail.com'" */
     /*  withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) { */
@@ -52,13 +52,14 @@ node {
 
     }
     stage('Kubeflow Pipeline Update') {
-      if (env.BRANCH_NAME.startsWith("kf-pipeline")) {
+      def auto_git_commit = sh (script: "git log -1 | grep 'Skip: Jenkins updated Pipeline config'", returnStatus: true)
+      if (env.BRANCH_NAME.startsWith("kf-pipeline") && auto_git_commit != 0) {
         /* sh "python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_timeseries_prepro_train.py --build_num ${env.BUILD_NUMBER}" */
         sh "python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_timeseries_prepro_train.py --git_commit ${env.GIT_COMMIT}"
       }
     }
     stage('Kubeflow Pipeline Run') {
-      def auto_git_commit = sh (script: "git log -1 | grep 'Jenkins: Updated Pipeline config'", returnStatus: true)
+      def auto_git_commit = sh (script: "git log -1 | grep 'Skip: Jenkins updated Pipeline config'", returnStatus: true)
       if (env.BRANCH_NAME.startsWith("training") && auto_git_commit != 0) {
         def run_script_output = sh(script:"python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_run_pipeline.py", returnStdout:true)
         office365ConnectorSend webhookUrl: 'https://outlook.office.com/webhook/8ff9afd3-5134-49a0-8dca-be6884951125@4b0911a0-929b-4715-944b-c03745165b3a/JenkinsCI/6d2b6238d4b74f6ba1541496b8aad9ab/02438fa1-3250-4de7-a462-8238a6e99ca9',
@@ -67,7 +68,7 @@ node {
       }
     }
     stage('Kubeflow Pipeline Run Status') {
-      def auto_git_commit = sh (script: "git log -1 | grep 'Jenkins: Updated Pipeline config'", returnStatus: true)
+      def auto_git_commit = sh (script: "git log -1 | grep 'Skip: Jenkins updated Pipeline config'", returnStatus: true)
       if (env.BRANCH_NAME.startsWith("training") && auto_git_commit != 0) {
         def run_id = sh(script:"python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_run_completion.py", returnStdout:true)
         office365ConnectorSend webhookUrl: 'https://outlook.office.com/webhook/8ff9afd3-5134-49a0-8dca-be6884951125@4b0911a0-929b-4715-944b-c03745165b3a/JenkinsCI/6d2b6238d4b74f6ba1541496b8aad9ab/02438fa1-3250-4de7-a462-8238a6e99ca9',
@@ -76,37 +77,41 @@ node {
       }
     }
     stage('Data and Model versioning') {
-      def auto_git_commit = sh (script: "git log -1 | grep 'Jenkins: Updated Pipeline config'", returnStatus: true)
+      def auto_git_commit = sh (script: "git log -1 | grep 'Skip: Jenkins updated Pipeline config'", returnStatus: true)
       if (env.BRANCH_NAME.startsWith("training") && auto_git_commit != 0) {
         sh "python3.6 ${env.WORKSPACE}/config/create_snapshot.py --git_commit ${env.GIT_COMMIT}"
       }
     }
     stage('Push changes to repo'){
-      /* Updating pipeline config after run. Mainly used to update pvc names as kubeflow pipeline is prepends workspace name before volume name */
+      /* Updating pipeline config after run. Mainly used to update training metrics and pvc names as kubeflow pipeline is prepends workspace name before volume name */
       /* Currently just testing pushing updates to git. Later this code is going to be executd only for training brancg, hence goes in "if" block above. */
       /* Later utilise script used to get new volume names with update_config script to automate updating newly created volume names */
       /* It can also be used to upload model metrics to git and run some-tests before deploying model to production */
 
-      def auto_git_commit = sh (script: "git log -1 | grep 'Jenkins: Updated Pipeline config'", returnStatus: true)
-      if (env.BRANCH_NAME.startsWith("training") && auto_git_commit != 0) {
-        sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
+      def auto_git_commit = sh (script: "git log -1 | grep 'Skip: Jenkins updated Pipeline config'", returnStatus: true)
+      if ((env.BRANCH_NAME.startsWith("training") || env.BRANCH_NAME.startsWith("kf-pipeline")) && auto_git_commit != 0) {
+        if (env.BRANCH_NAME.startsWith("training")) {
+          sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
+        }
 
         def git_push_flag = sh(script:"python3.6 ${env.WORKSPACE}/config/return_git_flag.py", returnStdout:true).toString().trim().toUpperCase()
 
-        if (git_push_flag == "TRUE"){
+        if (git_push_flag == "TRUE") {
           sh "git config user.name 'dedmari'"
           sh "git config user.email 'muneer7589@gmail.com'"
           withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
             sh "git config --local credential.helper \"!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f\""
             sh "git add ."
-            sh "git commit -m 'Jenkins: Updated Pipeline config'"
+            sh "git commit -m 'Skip: Jenkins updated Pipeline config'"
             sh "git push origin ${env.BRANCH_NAME}"
           }
         }
       }
     }
-    stage('deploy') {
-      echo "deploy model in production..."
+    stage('Deploy Model') {
+      if (env.BRANCH_NAME.startsWith("deploy")) {
+        sh "python3.6 ${env.WORKSPACE}/config/update_model_serve.py"
+      }
     }
   } finally {
     stage('cleanup') {

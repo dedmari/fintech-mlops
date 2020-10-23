@@ -1,3 +1,4 @@
+import os
 import kfp
 from kfp import dsl
 from kubernetes import client as k8s_client
@@ -341,15 +342,36 @@ if __name__ == '__main__':
     kfp.compiler.Compiler().compile(stock_time_series, pipeline_file_name)
 
     with open('./config/pipeline.json') as pipeline_config:
-        data = json.load(pipeline_config)
-        pipeline_metadata = data['pipeline_metadata']
+        pipeline_config_data = json.load(pipeline_config)
+        pipeline_metadata = pipeline_config_data['pipeline_metadata']
 
     if pipeline_metadata['use_existing_pipeline'] == "True":
-        kfp.Client().upload_pipeline_version(pipeline_package_path=pipeline_file_name,
+        resp = kfp.Client().upload_pipeline_version(pipeline_package_path=pipeline_file_name,
                                              pipeline_id=pipeline_metadata['pipeline_id'],
                                              pipeline_version_name=pipeline_metadata['pipeline_name'] + str(
                                                  args.git_commit))
+
+        # Updating pipeline_version_id pipeline.config
+        pipeline_config_data['pipeline_metadata']['pipeline_version_id'] = resp.to_dict()['id']
+
     else:
-        kfp.Client().upload_pipeline(pipeline_package_path=pipeline_file_name,
+        resp = kfp.Client().upload_pipeline(pipeline_package_path=pipeline_file_name,
                                      pipeline_name=pipeline_metadata['pipeline_name'] + str(args.git_commit),
                                      description=pipeline_metadata['description'])
+
+        # Updating pipeline_id in pipeline.config with newly created pipeline id
+        pipeline_config_data['pipeline_metadata']['pipeline_id'] = resp.to_dict()['id']
+
+        # Updating pipeline_version_id pipeline.config
+        pipeline_config_data['pipeline_metadata']['pipeline_version_id'] = resp.to_dict()['default_version']['id']
+        
+    # Delete KF pipeline file after upload
+    os.remove(pipeline_file_name)
+
+    # Updating config file
+    with open('./config/pipeline.json', 'w+') as pipeline_config:
+        json.dump(pipeline_config_data, pipeline_config)
+
+    # flag used as a check whether git push is needed or not. Saving it to file so it will be used later by Jenkins
+    with open('git_push.txt', 'w') as git_push:
+        git_push.write("True")
