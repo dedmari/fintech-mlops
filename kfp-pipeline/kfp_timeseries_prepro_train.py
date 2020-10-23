@@ -350,19 +350,25 @@ if __name__ == '__main__':
                                              pipeline_id=pipeline_metadata['pipeline_id'],
                                              pipeline_version_name=pipeline_metadata['pipeline_name'] + str(
                                                  args.git_commit))
+
+        # Updating pipeline_version_id pipeline.config
+        pipeline_config_data['pipeline_metadata']['pipeline_version_id'] = resp.to_dict()['id']
+
     else:
         resp = kfp.Client().upload_pipeline(pipeline_package_path=pipeline_file_name,
                                      pipeline_name=pipeline_metadata['pipeline_name'] + str(args.git_commit),
                                      description=pipeline_metadata['description'])
+
+        # Updating pipeline_id in pipeline.config with newly created pipeline id
+        pipeline_config_data['pipeline_metadata']['pipeline_id'] = resp.to_dict()['id']
+
+        # Updating pipeline_version_id pipeline.config
+        pipeline_config_data['pipeline_metadata']['pipeline_version_id'] = resp.to_dict()['default_version']['id']
         
     # Delete KF pipeline file after upload
     os.remove(pipeline_file_name)
 
-    # Print resp for testing purpose. Delete it after testing
-    print(resp.to_dict())
 
-    # Updating pipeline_id in pipeline.config with newly created pipeline id
-    pipeline_config_data['pipeline_metadata']['pipeline_id'] = resp.to_dict()['id']
     
     # Updating pipeline_version_id pipeline.config
     pipeline_config_data['pipeline_metadata']['pipeline_version_id'] = resp.to_dict()['default_version']['id']
