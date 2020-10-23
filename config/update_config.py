@@ -1,6 +1,5 @@
 import json
 import kfp
-import ast
 import os
 
 # def update_pipeline_config(key_type, key, value):
@@ -44,14 +43,14 @@ if __name__ == '__main__':
     run_info_dict = kfp_client.runs.get_run(run_id).to_dict()
 
     # kubeflow pipeline run always prepends workflow name with volume name.
-    # content within 'workflow_manifest' key is string. Using ast.literal_eval to convert it to dict and return run's workflow name
-    run_workflow_name = ast.literal_eval(run_info_dict['pipeline_runtime']['workflow_manifest'])['metadata']['name']
+    # content within 'workflow_manifest' key is string. Using json.loads to convert it to dict and return run's workflow name
+    run_workflow_name = json.loads(run_info_dict['pipeline_runtime']['workflow_manifest'])['metadata']['name']
+    model_metrics = run_info_dict['run']['metrics']
 
     config_updated = False
     # data PVC name update
     if (pipeline_config_data["pipeline_run_params"]["download_data"] == "True") or (
             pipeline_config_data["pipeline_run_params"]["restore_data_from_snasphot"] == "True"):
-
         # get kubeflow_run workspace name and prepend to data_pvc_name
         existing_pvc_name = pipeline_config_data["pipeline_run_params"]["data_pvc_name"]
 
@@ -63,13 +62,19 @@ if __name__ == '__main__':
 
     # model PVC name update
     if pipeline_config_data["pipeline_run_params"]["use_existing_model_pvc"] == "False":
-
         # get kubeflow_run workspace name and prepend to model_pvc_name
         existing_pvc_name = pipeline_config_data["pipeline_run_params"]["model_pvc_name"]
 
         # Append run_workflow_name with "-"+volume_name passed as runtime parameter (Kubeflow pipeline style)
         new_pvc_name = run_workflow_name + "-" + existing_pvc_name
         pipeline_config_data["pipeline_run_params"]["model_pvc_name"] = new_pvc_name
+
+        config_updated = True
+
+    # model metrics
+    if pipeline_config_data['model_metrics'] != model_metrics:
+        # if model_metrics has changed
+        pipeline_config_data['model_metrics'] = model_metrics
 
         config_updated = True
 

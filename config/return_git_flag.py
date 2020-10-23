@@ -5,4 +5,4 @@ with open('git_push.txt') as git_push:
 os.remove('git_push.txt')
 
 # printing git_push_flag to access it in Jenkins
-print(git_push_flag)
+print(str(git_push_flag))
