@@ -7,7 +7,7 @@
     "processed_data_dir": "preproc_djia_30_stock_data/",
     "data_pvc_size": "1Gi",
     "restore_data_from_snasphot": "False",
-    "data_snapshot_name": "test-jenkins-client-snapshot",
+    "data_snapshot_name": "snapshot-djia-kaggle-dataset",
     "kaggle_credentials_k8s_secret": "muneer-kaggle-credentials",
     "itr": "3000",
     "input_features": "24",
@@ -19,31 +19,17 @@
     "model_pvc_size": "1Gi"
   },
   "pipeline_metadata": {
-    "pipeline_name": "Stock Time-series Forecast",
+    "pipeline_name": "Stock Time-series Forecast Pipeline",
     "description": "Time Series Forecast for stock based on historic data.",
-    "pipeline_run_name": "Fintech Jenkins triggered run",
-    "use_existing_pipeline": "True",
-    "pipeline_id": "dc89851a-f50f-4109-be03-87ad9d84d040",
-    "pipeline_version_id": "2fde92f8-2ce2-4ffe-9137-2dbce30055c7",
-    "use_existing_experiment": "True",
-    "experiment_name": "Team: Fintech",
+    "pipeline_run_name": "Fintech Jenkins triggered run 1",
+    "use_existing_pipeline": "False",
+    "pipeline_id": "",
+    "pipeline_version_id": "",
+    "use_existing_experiment": "False",
+    "experiment_name": "Team: Stock Fintech",
     "enable_snapshot": "True",
     "volume_snapshot_class_name": "netapp-snapclass"
   },
-  "model_metrics": [
-    {
-      "name": "accuracy_test",
-      "node_id": "stock-abc",
-      "number_value": 0.787,
-      "format": "PERCENT"
-    },
-    {
-      "name": "accuracy_train",
-      "node_id": "stock-abc",
-      "number_value": 0.9,
-      "format": "PERCENT"
-    }
-  ],
   "model_serve": {
     "tf_serve_name": "fintech",
     "base_path": "/mnt",
