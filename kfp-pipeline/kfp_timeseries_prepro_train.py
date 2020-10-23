@@ -358,6 +358,9 @@ if __name__ == '__main__':
     # Delete KF pipeline file after upload
     os.remove(pipeline_file_name)
 
+    # Print resp for testing purpose. Delete it after testing
+    print(resp.to_dict())
+
     # Updating pipeline_id in pipeline.config with newly created pipeline id
     pipeline_config_data['pipeline_metadata']['pipeline_id'] = resp.to_dict()['id']
     
