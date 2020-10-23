@@ -90,11 +90,13 @@ node {
 
       def auto_git_commit = sh (script: "git log -1 | grep 'Skip: Jenkins updated Pipeline config'", returnStatus: true)
       if ((env.BRANCH_NAME.startsWith("training") || env.BRANCH_NAME.startsWith("kf-pipeline")) && auto_git_commit != 0) {
-        sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
+        if (env.BRANCH_NAME.startsWith("training") {
+          sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
+        }
 
         def git_push_flag = sh(script:"python3.6 ${env.WORKSPACE}/config/return_git_flag.py", returnStdout:true).toString().trim().toUpperCase()
 
-        if (git_push_flag == "TRUE"){
+        if (git_push_flag == "TRUE") {
           sh "git config user.name 'dedmari'"
           sh "git config user.email 'muneer7589@gmail.com'"
           withCredentials([usernamePassword(credentialsId: 'dedmari_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
