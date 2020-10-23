@@ -90,7 +90,7 @@ node {
 
       def auto_git_commit = sh (script: "git log -1 | grep 'Skip: Jenkins updated Pipeline config'", returnStatus: true)
       if ((env.BRANCH_NAME.startsWith("training") || env.BRANCH_NAME.startsWith("kf-pipeline")) && auto_git_commit != 0) {
-        if (env.BRANCH_NAME.startsWith("training") {
+        if (env.BRANCH_NAME.startsWith("training")) {
           sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
         }
 
