@@ -3,6 +3,7 @@ from kubernetes.client.api import core_v1_api
 from kubernetes.client import V1DeleteOptions
 import json
 
+
 def update_model_config(model_pvc_name="fintech-model-pvc", model_version=3,
                         namespace="kubeflow", tf_serve_name='fintech', base_path='/mnt'):
     create_model_config_cmd = 'mkdir -p /mnt/model_config && echo "model_config_list {\\n  config {\\n    name: \'' + tf_serve_name + '\'\\n    base_path: \'' + base_path + '\'\\n    model_platform: \'tensorflow\'\\n    model_version_policy {\\n       specific {\\n        versions: ' + str(
@@ -47,17 +48,20 @@ def update_model_config(model_pvc_name="fintech-model-pvc", model_version=3,
     # print(resp.status.phase)
     if resp.status.phase == 'Succeeded':
         print("Model config updated successfully!!!")
-        # delete pod
-        core_v1.delete_namespaced_pod(name='update-model-config',
-                                      namespace=namespace,
-                                      body=V1DeleteOptions(),
-                                      grace_period_seconds=0,
-                                      propagation_policy="Background")
     else:
+        print("pod status: ", resp.status.phase)
         print("Model config not updated. Please check for pod 'test-python-pod' in 'kubeflow' namespace for details.")
 
+    # delete pod
+    core_v1.delete_namespaced_pod(name='update-model-config',
+                                  namespace=namespace,
+                                  body=V1DeleteOptions(),
+                                  grace_period_seconds=0,
+                                  propagation_policy="Background")
 
-def deploy_model(model_pvc="fintech-model-pvc", tf_serve_deploy_name="fintech-v1", namespace="kubeflow", label_selector="app=fintech"):
+
+def deploy_model(model_pvc="fintech-model-pvc", tf_serve_deploy_name="fintech-v1", namespace="kubeflow",
+                 label_selector="app=fintech"):
     config.load_incluster_config()
     apps_api = client.AppsV1Api()
     resp = apps_api.read_namespaced_deployment(name=tf_serve_deploy_name, namespace=namespace)
@@ -98,4 +102,5 @@ if __name__ == '__main__':
     update_model_config(model_pvc_name=model_pvc_name, model_version=model_version,
                         namespace=namespace, tf_serve_name=tf_serve_name, base_path=base_path)
 
-    deploy_model(model_pvc=model_pvc_name, tf_serve_deploy_name=tf_serve_deploy_name, namespace=namespace, label_selector=label_selector)
+    deploy_model(model_pvc=model_pvc_name, tf_serve_deploy_name=tf_serve_deploy_name, namespace=namespace,
+                 label_selector=label_selector)
