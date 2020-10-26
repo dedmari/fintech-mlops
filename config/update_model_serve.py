@@ -45,13 +45,6 @@ def update_model_config(model_pvc_name="fintech-model-pvc", model_version=3,
         if resp.status.phase != 'Pending':
             break
 
-    # print(resp.status.phase)
-    if resp.status.phase == 'Succeeded':
-        print("Model config updated successfully!!!")
-    else:
-        print("pod status: ", resp.status.phase)
-        print("Model config not updated. Please check for pod 'test-python-pod' in 'kubeflow' namespace for details.")
-
     # delete pod
     core_v1.delete_namespaced_pod(name='update-model-config',
                                   namespace=namespace,
