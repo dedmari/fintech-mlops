@@ -4,7 +4,7 @@ import argparse
 
 def download_dataset_from_kaggle(
         dataset_name = 'szrlee/stock-time-series-20050101-to-20171231',
-        download_dir = 'djia_30_stock_data',
+        download_dir = 'djia_30_stock_data/',
         parent_dir = '/mnt/data/'
 ):
     """
@@ -35,12 +35,12 @@ def download_dataset_from_kaggle(
     os.system('kaggle datasets download -d ' + dataset_name + ' -p ' + parent_dir + download_dir)
 
     # unzip and delete tar file
-    with ZipFile(parent_dir + download_dir + '/' + dataset_name.split('/')[1] + '.zip', 'r') as zipObj:
+    with ZipFile(parent_dir + download_dir + dataset_name.split('/')[1] + '.zip', 'r') as zipObj:
         # Extract all the contents of zip file in different directory
         zipObj.extractall(parent_dir + download_dir)
 
     # deleting zip file
-    os.remove(parent_dir + download_dir + '/' + dataset_name.split('/')[1] + '.zip')
+    os.remove(parent_dir + download_dir + dataset_name.split('/')[1] + '.zip')
 
 
 if __name__ == '__main__':
