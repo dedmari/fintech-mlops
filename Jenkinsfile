@@ -88,7 +88,7 @@ node {
       /* Later utilise script used to get new volume names with update_config script to automate updating newly created volume names */
       /* It can also be used to upload model metrics to git and run some-tests before deploying model to production */
 
-      def auto_git_commit = sh (script: "git log -1 | grep 'Skip: Jenkins updated Pipeline config'", returnStatus: true)
+      def auto_git_commit = sh (script: "git log -1 | grep 'Jenkins: updated Pipeline config'", returnStatus: true)
       if ((env.BRANCH_NAME.startsWith("training") || env.BRANCH_NAME.startsWith("kf-pipeline")) && auto_git_commit != 0) {
         if (env.BRANCH_NAME.startsWith("training")) {
           sh "python3.6 ${env.WORKSPACE}/config/update_config.py"
