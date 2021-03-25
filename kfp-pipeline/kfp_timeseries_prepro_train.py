@@ -25,6 +25,10 @@ def download_kaggle_dataset(
     Return (dsl.VolumeOp, dsl.ContainerOp): Volume operator created to store data and Container operator for preprocessing
 
     """
+
+    if data_pvc_name == "":
+        data_pvc_name = "djia-kaggle-dataset"
+
     vop = dsl.VolumeOp(
         name="Volume for Kaggle dataset",
         resource_name=data_pvc_name,
@@ -178,6 +182,10 @@ def train_create_model_pvc(model_name='FlatModel',
                            data_pvc='djia-kaggle-dataset',
                            data_pvc_name='djia-kaggle-dataset'
                            ):
+
+    if model_pvc_name == "":
+        data_pvc_name = "djia-time-series-model"
+
     if download_or_snapshot_data:
         data_volume = data_pvc.volume
     else:
