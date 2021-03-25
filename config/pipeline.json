@@ -2,7 +2,7 @@
   "pipeline_run_params": {
     "download_data": "True",
     "kaggle_dataset_name": "szrlee/stock-time-series-20050101-to-20171231",
-    "data_pvc_name": "stock-time-series-forecast-mfwxp-djia-kaggle-dataset",
+    "data_pvc_name": "",
     "raw_data_dir": "djia_30_stock_data/",
     "processed_data_dir": "preproc_djia_30_stock_data/",
     "data_pvc_size": "401Gi",
@@ -15,7 +15,7 @@
     "model_tag": "2",
     "model_path": "models/",
     "use_existing_model_pvc": "False",
-    "model_pvc_name": "stock-time-series-forecast-hm54g-stock-time-series-forecast-cmltl-stock-time-series-forecast-nmz6z-djia-time-series-model",
+    "model_pvc_name": "",
     "model_pvc_size": "401Gi"
   },
   "pipeline_metadata": {
@@ -26,20 +26,20 @@
     "pipeline_id": "",
     "pipeline_version_id": "",
     "use_existing_experiment": "False",
-    "experiment_name": "Team: Stock Fintech",
+    "experiment_name": "Team: GTC",
     "enable_snapshot": "True",
     "volume_snapshot_class_name": "netapp-csi-snapclass"
   },
   "model_metrics": [
     {
       "name": "accuracy-test",
-      "node_id": "stock-time-series-forecast-mfwxp-3008534431",
+      "node_id": "stock-time-series-forecast",
       "number_value": 0.0,
       "format": "PERCENTAGE"
     },
     {
       "name": "accuracy-train",
-      "node_id": "stock-time-series-forecast-mfwxp-3008534431",
+      "node_id": "stock-time-series-forecast",
       "number_value": 0.0,
       "format": "PERCENTAGE"
     }
