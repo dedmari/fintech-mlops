@@ -184,7 +184,7 @@ def train_create_model_pvc(model_name='FlatModel',
                            ):
 
     if model_pvc_name == "":
-        data_pvc_name = "djia-kaggle-dataset"
+        data_pvc_name = "djia-time-series-model"
 
     if download_or_snapshot_data:
         data_volume = data_pvc.volume
