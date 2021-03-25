@@ -52,14 +52,14 @@ node {
 
     }
     stage('Kubeflow Pipeline Update') {
-      def auto_git_commit = sh (script: "git log -1 | grep 'Skip: Jenkins updated Pipeline config'", returnStatus: true)
+      def auto_git_commit = sh (script: "git log -1 | grep 'Jenkins: updated Pipeline config'", returnStatus: true)
       if (env.BRANCH_NAME.startsWith("kf-pipeline") && auto_git_commit != 0) {
         /* sh "python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_timeseries_prepro_train.py --build_num ${env.BUILD_NUMBER}" */
         sh "python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_timeseries_prepro_train.py --git_commit ${env.GIT_COMMIT}"
       }
     }
     stage('Kubeflow Pipeline Run') {
-      def auto_git_commit = sh (script: "git log -1 | grep 'Skip: Jenkins updated Pipeline config'", returnStatus: true)
+      def auto_git_commit = sh (script: "git log -1 | grep 'Jenkins: updated Pipeline config'", returnStatus: true)
       if (env.BRANCH_NAME.startsWith("training") && auto_git_commit != 0) {
         def run_script_output = sh(script:"python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_run_pipeline.py", returnStdout:true)
         office365ConnectorSend webhookUrl: 'https://outlook.office.com/webhook/8ff9afd3-5134-49a0-8dca-be6884951125@4b0911a0-929b-4715-944b-c03745165b3a/JenkinsCI/6d2b6238d4b74f6ba1541496b8aad9ab/02438fa1-3250-4de7-a462-8238a6e99ca9',
@@ -68,7 +68,7 @@ node {
       }
     }
     stage('Kubeflow Pipeline Run Status') {
-      def auto_git_commit = sh (script: "git log -1 | grep 'Skip: Jenkins updated Pipeline config'", returnStatus: true)
+      def auto_git_commit = sh (script: "git log -1 | grep 'Jenkins: updated Pipeline config'", returnStatus: true)
       if (env.BRANCH_NAME.startsWith("training") && auto_git_commit != 0) {
         def run_id = sh(script:"python3.6 ${env.WORKSPACE}/kfp-pipeline/kfp_run_completion.py", returnStdout:true)
         office365ConnectorSend webhookUrl: 'https://outlook.office.com/webhook/8ff9afd3-5134-49a0-8dca-be6884951125@4b0911a0-929b-4715-944b-c03745165b3a/JenkinsCI/6d2b6238d4b74f6ba1541496b8aad9ab/02438fa1-3250-4de7-a462-8238a6e99ca9',
@@ -77,7 +77,7 @@ node {
       }
     }
     stage('Data and Model versioning') {
-      def auto_git_commit = sh (script: "git log -1 | grep 'Skip: Jenkins updated Pipeline config'", returnStatus: true)
+      def auto_git_commit = sh (script: "git log -1 | grep 'Jenkins: updated Pipeline config'", returnStatus: true)
       if (env.BRANCH_NAME.startsWith("training") && auto_git_commit != 0) {
         sh "python3.6 ${env.WORKSPACE}/config/create_snapshot.py --git_commit ${env.GIT_COMMIT}"
       }
