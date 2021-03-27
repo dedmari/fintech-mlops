@@ -51,12 +51,12 @@ if __name__ == '__main__':
     if bool(pipeline_config_data["pipeline_metadata"]["enable_snapshot"]):
         # create data snapshot
         data_snapshot_name = create_snapshot(git_commit=args.git_commit,
-                                             pvc_name=pipeline_config_data["pipeline_run_params"]["data_pvc_name"],
+                                             pvc_name=pipeline_config_data["pipeline_run_params"]["data_pvc_name"] +"data",
                                              snapshot_class_name=pipeline_config_data["pipeline_metadata"][
                                                  "volume_snapshot_class_name"])
 
         model_snapshot_name = create_snapshot(git_commit=args.git_commit,
-                                              pvc_name=pipeline_config_data["pipeline_run_params"]["model_pvc_name"],
+                                              pvc_name=pipeline_config_data["pipeline_run_params"]["model_pvc_name"] + "model",
                                               snapshot_class_name=pipeline_config_data["pipeline_metadata"][
                                                   "volume_snapshot_class_name"]
                                               )
