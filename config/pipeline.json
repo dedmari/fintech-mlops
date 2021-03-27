@@ -2,7 +2,7 @@
   "pipeline_run_params": {
     "download_data": "True",
     "kaggle_dataset_name": "szrlee/stock-time-series-20050101-to-20171231",
-    "data_pvc_name": "",
+    "data_pvc_name": "stock-time-series",
     "raw_data_dir": "djia_30_stock_data/",
     "processed_data_dir": "preproc_djia_30_stock_data/",
     "data_pvc_size": "401Gi",
@@ -15,7 +15,7 @@
     "model_tag": "2",
     "model_path": "models/",
     "use_existing_model_pvc": "False",
-    "model_pvc_name": "",
+    "model_pvc_name": "stock-time-series",
     "model_pvc_size": "401Gi"
   },
   "pipeline_metadata": {
