@@ -19,6 +19,7 @@ Lets use the underneath yaml fie to create storage class.
 
 Copy  and store it as mlops_sc.yaml
  - create storage class
+ 
 	`kubectl create sc  -f mlops.yaml`
 
 ## Install Jenkins with required plugins
@@ -30,7 +31,7 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyMjcxOTUxNiwxNjA3MTE4MzQ4LC0xOT
-E5NjcxODc4LC0yMDg2ODkwMyw2MTY0NTgzNTMsLTc0MDUzNjAz
-OCwtODEyNjIyMjc4XX0=
+eyJoaXN0b3J5IjpbLTEwMTMwMTcwNTAsMTYwNzExODM0OCwtMT
+kxOTY3MTg3OCwtMjA4Njg5MDMsNjE2NDU4MzUzLC03NDA1MzYw
+MzgsLTgxMjYyMjI3OF19
 -->
