@@ -16,10 +16,11 @@ This repository contains the implementation of MLOps setup discussed in articles
 We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) cluster as that of Kubeflow, follow the steps mentioned underneath:
 
  - Create K8s namespace for Jenkins:
+ 
  `kubectl create namespace jenkins`
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5Nzk2MTE5NSwxNjA3MTE4MzQ4LC0xOT
-E5NjcxODc4LC0yMDg2ODkwMyw2MTY0NTgzNTMsLTc0MDUzNjAz
-OCwtODEyNjIyMjc4XX0=
+eyJoaXN0b3J5IjpbLTIxMTQyNjgzNjMsMTYwNzExODM0OCwtMT
+kxOTY3MTg3OCwtMjA4Njg5MDMsNjE2NDU4MzUzLC03NDA1MzYw
+MzgsLTgxMjYyMjI3OF19
 -->
