@@ -9,7 +9,7 @@ This repository contains the implementation of MLOps setup discussed in articles
 
 ## Prerequisite
 - [Kubernetes v1.18](https://v1-18.docs.kubernetes.io/docs/setup/) or above
-- NetApp Trident
+- [NetApp Trident](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/tridentctl-install.html)
 - [Kubeflow v1.0](https://v1-0-branch.kubeflow.org/docs/started/getting-started/)
 
 ## Install Jenkins with required plugins
@@ -18,6 +18,7 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes cluste
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTk2NzE4NzgsLTIwODY4OTAzLDYxNj
-Q1ODM1MywtNzQwNTM2MDM4LC04MTI2MjIyNzhdfQ==
+eyJoaXN0b3J5IjpbMTYwNzExODM0OCwtMTkxOTY3MTg3OCwtMj
+A4Njg5MDMsNjE2NDU4MzUzLC03NDA1MzYwMzgsLTgxMjYyMjI3
+OF19
 -->
