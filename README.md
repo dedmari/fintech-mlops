@@ -18,9 +18,10 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
  - Create K8s namespace for Jenkins:
  
 	 `kubectl create namespace jenkins`
+- Create Persistent Volume Claim for Jenkins. It 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDAxNjc4NTksMTYwNzExODM0OCwtMT
-kxOTY3MTg3OCwtMjA4Njg5MDMsNjE2NDU4MzUzLC03NDA1MzYw
-MzgsLTgxMjYyMjI3OF19
+eyJoaXN0b3J5IjpbLTU2MDAwMTA1NywxNjA3MTE4MzQ4LC0xOT
+E5NjcxODc4LC0yMDg2ODkwMyw2MTY0NTgzNTMsLTc0MDUzNjAz
+OCwtODEyNjIyMjc4XX0=
 -->
