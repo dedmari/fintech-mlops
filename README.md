@@ -8,11 +8,12 @@ This repository contains the implementation of MLOps setup discussed in articles
  - [Demystifying MLOps : Part 2](#)
 
 ## Prerequisite
-- Kubeflow v1.0
+- 
+- [Kubeflow v1.0](https://v1-0-branch.kubeflow.org/docs/started/getting-started/)
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzMjgzMzU1NywtMjA4Njg5MDMsNjE2ND
-U4MzUzLC03NDA1MzYwMzgsLTgxMjYyMjI3OF19
+eyJoaXN0b3J5IjpbLTE1MjUyMjkzMTAsLTIwODY4OTAzLDYxNj
+Q1ODM1MywtNzQwNTM2MDM4LC04MTI2MjIyNzhdfQ==
 -->
