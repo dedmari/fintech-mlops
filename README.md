@@ -1,6 +1,6 @@
 <div align="center">
 <h1>MLOps for Production Grade Machine Learning</h1>
-MLOps: Fintech use-case
+## MLOps: Fintech use-case
 </div>
 This repository contains the implementation of MLOps setup discussed in articles:
 
@@ -12,6 +12,6 @@ This repository contains the implementation of MLOps setup discussed in articles
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjE2NDU4MzUzLC03NDA1MzYwMzgsLTgxMj
-YyMjI3OF19
+eyJoaXN0b3J5IjpbLTIwODY4OTAzLDYxNjQ1ODM1MywtNzQwNT
+M2MDM4LC04MTI2MjIyNzhdfQ==
 -->
