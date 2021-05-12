@@ -13,7 +13,11 @@ This repository contains the implementation of MLOps setup discussed in articles
 - [Kubeflow v1.0](https://v1-0-branch.kubeflow.org/docs/started/getting-started/)
 
 ## Create a storage class (if not already) for Trident
-This storage class will be used to create Persistent Volume Claims (PVCs) 
+This storage class will be used to create Persistent Volume Claims (PVCs) and store persistent data.
+
+ - create storage class
+	`kubectl create `
+
 ## Install Jenkins with required plugins
 We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) cluster as that of Kubeflow, follow the steps mentioned underneath:
 
@@ -23,7 +27,7 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0MTY0MDI0LDE2MDcxMTgzNDgsLTE5MT
-k2NzE4NzgsLTIwODY4OTAzLDYxNjQ1ODM1MywtNzQwNTM2MDM4
-LC04MTI2MjIyNzhdfQ==
+eyJoaXN0b3J5IjpbLTIwMTYzMjcyMTMsMTYwNzExODM0OCwtMT
+kxOTY3MTg3OCwtMjA4Njg5MDMsNjE2NDU4MzUzLC03NDA1MzYw
+MzgsLTgxMjYyMjI3OF19
 -->
