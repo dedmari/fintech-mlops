@@ -17,10 +17,10 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 
  - Create K8s namespace for Jenkins:
  
- `kubectl create namespace jenkins`
+	 `kubectl create namespace jenkins`
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTQyNjgzNjMsMTYwNzExODM0OCwtMT
+eyJoaXN0b3J5IjpbLTEzNDAxNjc4NTksMTYwNzExODM0OCwtMT
 kxOTY3MTg3OCwtMjA4Njg5MDMsNjE2NDU4MzUzLC03NDA1MzYw
 MzgsLTgxMjYyMjI3OF19
 -->
