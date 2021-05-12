@@ -3,8 +3,16 @@
 MLOps: Fintech use-case
 </div>
 This repository contains an implementation of MLOps setup. For more details visit:
-[enter link description here](#)
+
+ - [Demystifying MLOps : Part 1](#)
+ - 
+
+List item
+
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTU3Njg2NTQsLTc0MDUzNjAzOCwtOD
-EyNjIyMjc4XX0=
+eyJoaXN0b3J5IjpbLTg5MDk5NjQwOCwtNzQwNTM2MDM4LC04MT
+I2MjIyNzhdfQ==
 -->
