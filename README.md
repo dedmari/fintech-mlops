@@ -54,7 +54,12 @@ The simplest storage class to start with is one based on the `trident-installer/
 ## Install Kubeflow v1.0
 Visit [https://v1-0-branch.kubeflow.org/docs/started/k8s/kfctl-k8s-istio/](https://v1-0-branch.kubeflow.org/docs/started/k8s/kfctl-k8s-istio/) and follow the installation instructions 
 ## Deploying and setting up volume snapshot components on K8s
-<![endif]--> If your cluster does not come pre-installed with the correct volume-snapshot components, you may manually install these components by executing the following steps
+If your cluster does not come pre-installed with the correct volume-snapshot components, you may manually install these components by executing the following steps:
+
+ - Install Snapshot Beta CRDs:
+
+    $kubectl create -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+
 ## Install Jenkins with required plugins
 We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) cluster as that of Kubeflow, follow the steps mentioned underneath:
 
@@ -64,9 +69,9 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMxMDQ0OTQ2NSwtMTQyNjg5MDkxLDY2Nz
-k1MDYyMCwxNTMzMjUxMjk1LC0xNzI4OTgxMDgsLTg0NTkyNzU5
-OCwtMTAxMzAxNzA1MCwxNjA3MTE4MzQ4LC0xOTE5NjcxODc4LC
-0yMDg2ODkwMyw2MTY0NTgzNTMsLTc0MDUzNjAzOCwtODEyNjIy
-Mjc4XX0=
+eyJoaXN0b3J5IjpbNjIzMjAxNjM3LC0xNDI2ODkwOTEsNjY3OT
+UwNjIwLDE1MzMyNTEyOTUsLTE3Mjg5ODEwOCwtODQ1OTI3NTk4
+LC0xMDEzMDE3MDUwLDE2MDcxMTgzNDgsLTE5MTk2NzE4NzgsLT
+IwODY4OTAzLDYxNjQ1ODM1MywtNzQwNTM2MDM4LC04MTI2MjIy
+NzhdfQ==
 -->
