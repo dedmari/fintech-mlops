@@ -18,7 +18,11 @@ Install helm, if not already available:
     $echo "deb [https://baltocdn.com/helm/stable/debian/](https://baltocdn.com/helm/stable/debian/) all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
     $sudo apt-get update
     $sudo apt-get install helm
+Download and extract Trident 20.01.1 installer:
 
+    $wget https://github.com/NetApp/trident/releases/download/v21.01.1/trident-installer-21.01.1.tar.gz
+    $tar -xf trident-installer-21.01.1.tar.gz
+    $
 
 - [NetApp Trident](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/tridentctl-install.html)
 - [Kubeflow v1.0](https://v1-0-branch.kubeflow.org/docs/started/getting-started/)
@@ -42,8 +46,8 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMwOTMxMDg0MSwtODQ1OTI3NTk4LC0xMD
-EzMDE3MDUwLDE2MDcxMTgzNDgsLTE5MTk2NzE4NzgsLTIwODY4
-OTAzLDYxNjQ1ODM1MywtNzQwNTM2MDM4LC04MTI2MjIyNzhdfQ
-==
+eyJoaXN0b3J5IjpbLTE5NTY4NDMxOTAsLTg0NTkyNzU5OCwtMT
+AxMzAxNzA1MCwxNjA3MTE4MzQ4LC0xOTE5NjcxODc4LC0yMDg2
+ODkwMyw2MTY0NTgzNTMsLTc0MDUzNjAzOCwtODEyNjIyMjc4XX
+0=
 -->
