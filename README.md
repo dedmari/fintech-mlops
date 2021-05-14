@@ -63,6 +63,9 @@ If your cluster does not come pre-installed with the correct volume-snapshot com
 
       `$kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml`
 
+	
+    `$kubectl create -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml`
+
 ## Install Jenkins with required plugins
 We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) cluster as that of Kubeflow, follow the steps mentioned underneath:
 
@@ -72,7 +75,7 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNzA2MjA1MDIsLTE2NzkxMDU3ODAsLT
+eyJoaXN0b3J5IjpbLTE1ODkzODgyODYsLTE2NzkxMDU3ODAsLT
 E0MjY4OTA5MSw2Njc5NTA2MjAsMTUzMzI1MTI5NSwtMTcyODk4
 MTA4LC04NDU5Mjc1OTgsLTEwMTMwMTcwNTAsMTYwNzExODM0OC
 wtMTkxOTY3MTg3OCwtMjA4Njg5MDMsNjE2NDU4MzUzLC03NDA1
