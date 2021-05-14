@@ -46,7 +46,7 @@ Lets use the underneath yaml fie to create storage class.
 The simplest storage class to start with is one based on the `trident-installer/sample-input/storage-class-csi.yaml.templ` file that comes with the installer, replacing `__BACKEND_TYPE__` with the storage driver name.
 
     $kubectl create -f sample-input/storage-class-basic-csi.yaml
- Kubeflow installation requires a default storage class. We can patch the storage class created above:
+ Kubeflow installation requires a default storage class. We can patch the storage class created above (if not already set to default):
  
 
     $kubectl patch storageclass basic-csi -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
@@ -63,8 +63,8 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjY3OTUwNjIwLDE1MzMyNTEyOTUsLTE3Mj
-g5ODEwOCwtODQ1OTI3NTk4LC0xMDEzMDE3MDUwLDE2MDcxMTgz
-NDgsLTE5MTk2NzE4NzgsLTIwODY4OTAzLDYxNjQ1ODM1MywtNz
-QwNTM2MDM4LC04MTI2MjIyNzhdfQ==
+eyJoaXN0b3J5IjpbLTE0MjY4OTA5MSw2Njc5NTA2MjAsMTUzMz
+I1MTI5NSwtMTcyODk4MTA4LC04NDU5Mjc1OTgsLTEwMTMwMTcw
+NTAsMTYwNzExODM0OCwtMTkxOTY3MTg3OCwtMjA4Njg5MDMsNj
+E2NDU4MzUzLC03NDA1MzYwMzgsLTgxMjYyMjI3OF19
 -->
