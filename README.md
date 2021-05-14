@@ -28,6 +28,7 @@ Download and extract Trident 20.01.1 installer:
  
     $helm install trident trident-operator-21.01.0.tgz --namespace trident --create-namespace
   Creating a Trident backend:
+  
   You can now go ahead and create a backend that will be used by Trident to provision volumes. To do this, create a  `backend.json`  file that contains the necessary parameters. Sample configuration files for different backend types can be found in the  `sample-input`  directory.
 
 Visit the  [backend configuration guide](https://netapp-trident.readthedocs.io/en/stable-v21.01/kubernetes/operations/tasks/backends/index.html#backend-configuration)  for more details about how to craft the configuration file for your backend type.
@@ -55,8 +56,8 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzMzI1MTI5NSwtMTcyODk4MTA4LC04ND
-U5Mjc1OTgsLTEwMTMwMTcwNTAsMTYwNzExODM0OCwtMTkxOTY3
-MTg3OCwtMjA4Njg5MDMsNjE2NDU4MzUzLC03NDA1MzYwMzgsLT
-gxMjYyMjI3OF19
+eyJoaXN0b3J5IjpbMzI4MDQ2NTc3LDE1MzMyNTEyOTUsLTE3Mj
+g5ODEwOCwtODQ1OTI3NTk4LC0xMDEzMDE3MDUwLDE2MDcxMTgz
+NDgsLTE5MTk2NzE4NzgsLTIwODY4OTAzLDYxNjQ1ODM1MywtNz
+QwNTM2MDM4LC04MTI2MjIyNzhdfQ==
 -->
