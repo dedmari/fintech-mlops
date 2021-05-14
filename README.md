@@ -57,21 +57,14 @@ If your cluster does not come pre-installed with the correct volume-snapshot com
 
  - Install Snapshot Beta CRDs:
  
-    `$kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml`
-
-
-      `$kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml`
-
-	
-    `$kubectl create -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml`
+       $kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+       $kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
+       $kubectl create -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
   - Install Snapshot Controller:
    
         $kubectl apply -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
-
         $kubectl apply -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
     
-
-    enter code here
 
 ## Install Jenkins with required plugins
 We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) cluster as that of Kubeflow, follow the steps mentioned underneath:
@@ -82,7 +75,7 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDc2MTU0LC0xNTg5Mzg4Mjg2LC0xNj
+eyJoaXN0b3J5IjpbNzE4Nzc4NDUxLC0xNTg5Mzg4Mjg2LC0xNj
 c5MTA1NzgwLC0xNDI2ODkwOTEsNjY3OTUwNjIwLDE1MzMyNTEy
 OTUsLTE3Mjg5ODEwOCwtODQ1OTI3NTk4LC0xMDEzMDE3MDUwLD
 E2MDcxMTgzNDgsLTE5MTk2NzE4NzgsLTIwODY4OTAzLDYxNjQ1
