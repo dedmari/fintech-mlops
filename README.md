@@ -40,7 +40,7 @@ Visit the  [backend configuration guide](https://netapp-trident.readthedocs.io/e
 
 - [Kubeflow v1.0](https://v1-0-branch.kubeflow.org/docs/started/getting-started/)
 
-## Create a storage class (if not already) for Trident
+## Create a storage class for Trident
 This storage class will be used to create Persistent Volume Claims (PVCs) and store persistent data.
 Lets use the underneath yaml fie to create storage class.
 The simplest storage class to start with is one based on the `trident-installer/sample-input/storage-class-csi.yaml.templ` file that comes with the installer, replacing `__BACKEND_TYPE__` with the storage driver name.
@@ -62,7 +62,7 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4Nzc3MzY5MiwxNTMzMjUxMjk1LC0xNz
+eyJoaXN0b3J5IjpbMTA1ODg1MzE2MywxNTMzMjUxMjk1LC0xNz
 I4OTgxMDgsLTg0NTkyNzU5OCwtMTAxMzAxNzA1MCwxNjA3MTE4
 MzQ4LC0xOTE5NjcxODc4LC0yMDg2ODkwMyw2MTY0NTgzNTMsLT
 c0MDUzNjAzOCwtODEyNjIyMjc4XX0=
