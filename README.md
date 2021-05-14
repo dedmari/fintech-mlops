@@ -57,8 +57,7 @@ Visit [https://v1-0-branch.kubeflow.org/docs/started/k8s/kfctl-k8s-istio/](https
 If your cluster does not come pre-installed with the correct volume-snapshot components, you may manually install these components by executing the following steps:
 
  - Install Snapshot Beta CRDs:
-
-    $kubectl create -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+    `$kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml`
 
 ## Install Jenkins with required plugins
 We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) cluster as that of Kubeflow, follow the steps mentioned underneath:
@@ -69,9 +68,9 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjIzMjAxNjM3LC0xNDI2ODkwOTEsNjY3OT
-UwNjIwLDE1MzMyNTEyOTUsLTE3Mjg5ODEwOCwtODQ1OTI3NTk4
-LC0xMDEzMDE3MDUwLDE2MDcxMTgzNDgsLTE5MTk2NzE4NzgsLT
-IwODY4OTAzLDYxNjQ1ODM1MywtNzQwNTM2MDM4LC04MTI2MjIy
-NzhdfQ==
+eyJoaXN0b3J5IjpbLTE2NzkxMDU3ODAsLTE0MjY4OTA5MSw2Nj
+c5NTA2MjAsMTUzMzI1MTI5NSwtMTcyODk4MTA4LC04NDU5Mjc1
+OTgsLTEwMTMwMTcwNTAsMTYwNzExODM0OCwtMTkxOTY3MTg3OC
+wtMjA4Njg5MDMsNjE2NDU4MzUzLC03NDA1MzYwMzgsLTgxMjYy
+MjI3OF19
 -->
