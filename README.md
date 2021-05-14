@@ -38,7 +38,6 @@ Visit the  [backend configuration guide](https://netapp-trident.readthedocs.io/e
     $vi backend.json
     $./tridentctl -n trident create backend -f backend.json
 
-Kubeflow installation requires a default storage class. We can patch the storage class created earlier:
 - [Kubeflow v1.0](https://v1-0-branch.kubeflow.org/docs/started/getting-started/)
 
 ## Create a storage class (if not already) for Trident
@@ -47,6 +46,10 @@ Lets use the underneath yaml fie to create storage class.
 The simplest storage class to start with is one based on the `trident-installer/sample-input/storage-class-csi.yaml.templ` file that comes with the installer, replacing `__BACKEND_TYPE__` with the storage driver name.
 
     $kubectl create -f sample-input/storage-class-basic-csi.yaml
+ Kubeflow installation requires a default storage class. We can patch the storage class created above:
+ 
+
+    enter code here
 
 
 ## Install Jenkins with required plugins
@@ -58,7 +61,7 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODE0ODc4OTY3LDE1MzMyNTEyOTUsLTE3Mj
+eyJoaXN0b3J5IjpbODk4MjQzNDI1LDE1MzMyNTEyOTUsLTE3Mj
 g5ODEwOCwtODQ1OTI3NTk4LC0xMDEzMDE3MDUwLDE2MDcxMTgz
 NDgsLTE5MTk2NzE4NzgsLTIwODY4OTAzLDYxNjQ1ODM1MywtNz
 QwNTM2MDM4LC04MTI2MjIyNzhdfQ==
