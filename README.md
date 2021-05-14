@@ -10,7 +10,7 @@ This repository contains the implementation of MLOps setup discussed in articles
 ## Prerequisite
 - [Kubernetes v1.18](https://v1-18.docs.kubernetes.io/docs/setup/) or above
 
-## Install Trident, dynamic storage orchestrator, using helm
+## Install Trident (dynamic storage orchestrator) using helm
 Install helm, if not already available:
 
     $curl [https://baltocdn.com/helm/signing.asc](https://baltocdn.com/helm/signing.asc) | sudo apt-key add -  
@@ -50,7 +50,8 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0NzE2NTcxLC04NDU5Mjc1OTgsLTEwMT
-MwMTcwNTAsMTYwNzExODM0OCwtMTkxOTY3MTg3OCwtMjA4Njg5
-MDMsNjE2NDU4MzUzLC03NDA1MzYwMzgsLTgxMjYyMjI3OF19
+eyJoaXN0b3J5IjpbLTE3Mjg5ODEwOCwtODQ1OTI3NTk4LC0xMD
+EzMDE3MDUwLDE2MDcxMTgzNDgsLTE5MTk2NzE4NzgsLTIwODY4
+OTAzLDYxNjQ1ODM1MywtNzQwNTM2MDM4LC04MTI2MjIyNzhdfQ
+==
 -->
