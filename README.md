@@ -70,6 +70,8 @@ If your cluster does not come pre-installed with the correct volume-snapshot com
     $kubectl apply -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
 
     $kubectl apply -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
+    
+
     enter code here
 
 ## Install Jenkins with required plugins
@@ -81,9 +83,9 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNTIxOTg3NjAsLTE1ODkzODgyODYsLT
-E2NzkxMDU3ODAsLTE0MjY4OTA5MSw2Njc5NTA2MjAsMTUzMzI1
-MTI5NSwtMTcyODk4MTA4LC04NDU5Mjc1OTgsLTEwMTMwMTcwNT
-AsMTYwNzExODM0OCwtMTkxOTY3MTg3OCwtMjA4Njg5MDMsNjE2
-NDU4MzUzLC03NDA1MzYwMzgsLTgxMjYyMjI3OF19
+eyJoaXN0b3J5IjpbMTg3MzgxODIyOCwtMTU4OTM4ODI4NiwtMT
+Y3OTEwNTc4MCwtMTQyNjg5MDkxLDY2Nzk1MDYyMCwxNTMzMjUx
+Mjk1LC0xNzI4OTgxMDgsLTg0NTkyNzU5OCwtMTAxMzAxNzA1MC
+wxNjA3MTE4MzQ4LC0xOTE5NjcxODc4LC0yMDg2ODkwMyw2MTY0
+NTgzNTMsLTc0MDUzNjAzOCwtODEyNjIyMjc4XX0=
 -->
