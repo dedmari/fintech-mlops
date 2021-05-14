@@ -51,6 +51,7 @@ The simplest storage class to start with is one based on the `trident-installer/
 
     $kubectl patch storageclass basic-csi -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
+## Install Kubeflow v1.0.0
 
 
 ## Install Jenkins with required plugins
@@ -62,8 +63,8 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA1ODg1MzE2MywxNTMzMjUxMjk1LC0xNz
-I4OTgxMDgsLTg0NTkyNzU5OCwtMTAxMzAxNzA1MCwxNjA3MTE4
-MzQ4LC0xOTE5NjcxODc4LC0yMDg2ODkwMyw2MTY0NTgzNTMsLT
-c0MDUzNjAzOCwtODEyNjIyMjc4XX0=
+eyJoaXN0b3J5IjpbNjY3OTUwNjIwLDE1MzMyNTEyOTUsLTE3Mj
+g5ODEwOCwtODQ1OTI3NTk4LC0xMDEzMDE3MDUwLDE2MDcxMTgz
+NDgsLTE5MTk2NzE4NzgsLTIwODY4OTAzLDYxNjQ1ODM1MywtNz
+QwNTM2MDM4LC04MTI2MjIyNzhdfQ==
 -->
