@@ -27,6 +27,7 @@ Download and extract Trident 20.01.1 installer:
   Install trident with Helm
  
     $helm install trident trident-operator-21.01.0.tgz --namespace trident --create-namespace
+   
 
 - [NetApp Trident](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/tridentctl-install.html)
 - [Kubeflow v1.0](https://v1-0-branch.kubeflow.org/docs/started/getting-started/)
@@ -50,8 +51,8 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3Mjg5ODEwOCwtODQ1OTI3NTk4LC0xMD
-EzMDE3MDUwLDE2MDcxMTgzNDgsLTE5MTk2NzE4NzgsLTIwODY4
-OTAzLDYxNjQ1ODM1MywtNzQwNTM2MDM4LC04MTI2MjIyNzhdfQ
-==
+eyJoaXN0b3J5IjpbLTM4OTQyNDEyMiwtMTcyODk4MTA4LC04ND
+U5Mjc1OTgsLTEwMTMwMTcwNTAsMTYwNzExODM0OCwtMTkxOTY3
+MTg3OCwtMjA4Njg5MDMsNjE2NDU4MzUzLC03NDA1MzYwMzgsLT
+gxMjYyMjI3OF19
 -->
