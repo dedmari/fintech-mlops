@@ -32,9 +32,11 @@ Download and extract Trident 20.01.1 installer:
 
 Visit the  [backend configuration guide](https://netapp-trident.readthedocs.io/en/stable-v21.01/kubernetes/operations/tasks/backends/index.html#backend-configuration)  for more details about how to craft the configuration file for your backend type.
 
-    e 
+    $cp sample-input/<backend template>.json backend.json
+    # Edit backend.json and fill out the template for your backend
+    $vi backend.json
+    $./tridentctl -n trident create backend -f backend.json
 
-- [NetApp Trident](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/tridentctl-install.html)
 - [Kubeflow v1.0](https://v1-0-branch.kubeflow.org/docs/started/getting-started/)
 
 ## Create a storage class (if not already) for Trident
@@ -56,8 +58,8 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4ODIzNDk4NDAsLTE3Mjg5ODEwOCwtOD
-Q1OTI3NTk4LC0xMDEzMDE3MDUwLDE2MDcxMTgzNDgsLTE5MTk2
-NzE4NzgsLTIwODY4OTAzLDYxNjQ1ODM1MywtNzQwNTM2MDM4LC
-04MTI2MjIyNzhdfQ==
+eyJoaXN0b3J5IjpbMTE2NTgyMjg1MCwtMTcyODk4MTA4LC04ND
+U5Mjc1OTgsLTEwMTMwMTcwNTAsMTYwNzExODM0OCwtMTkxOTY3
+MTg3OCwtMjA4Njg5MDMsNjE2NDU4MzUzLC03NDA1MzYwMzgsLT
+gxMjYyMjI3OF19
 -->
