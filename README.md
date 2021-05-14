@@ -48,7 +48,6 @@ The simplest storage class to start with is one based on the `trident-installer/
     $kubectl create -f sample-input/storage-class-basic-csi.yaml
  Kubeflow installation requires a default storage class. We can patch the storage class created above (if not already set to default):
  
-
     $kubectl patch storageclass basic-csi -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
 ## Install Kubeflow v1.0
@@ -67,9 +66,9 @@ If your cluster does not come pre-installed with the correct volume-snapshot com
     `$kubectl create -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml`
   - Install Snapshot Controller:
    
-    $kubectl apply -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
+        $kubectl apply -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
 
-    $kubectl apply -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
+        $kubectl apply -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
     
 
     enter code here
@@ -83,9 +82,9 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg3MzgxODIyOCwtMTU4OTM4ODI4NiwtMT
-Y3OTEwNTc4MCwtMTQyNjg5MDkxLDY2Nzk1MDYyMCwxNTMzMjUx
-Mjk1LC0xNzI4OTgxMDgsLTg0NTkyNzU5OCwtMTAxMzAxNzA1MC
-wxNjA3MTE4MzQ4LC0xOTE5NjcxODc4LC0yMDg2ODkwMyw2MTY0
-NTgzNTMsLTc0MDUzNjAzOCwtODEyNjIyMjc4XX0=
+eyJoaXN0b3J5IjpbLTE4NDc2MTU0LC0xNTg5Mzg4Mjg2LC0xNj
+c5MTA1NzgwLC0xNDI2ODkwOTEsNjY3OTUwNjIwLDE1MzMyNTEy
+OTUsLTE3Mjg5ODEwOCwtODQ1OTI3NTk4LC0xMDEzMDE3MDUwLD
+E2MDcxMTgzNDgsLTE5MTk2NzE4NzgsLTIwODY4OTAzLDYxNjQ1
+ODM1MywtNzQwNTM2MDM4LC04MTI2MjIyNzhdfQ==
 -->
