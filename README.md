@@ -103,15 +103,15 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 
 > *Warning*: By executing above command on K8s nodes, you are exposing docker.sock file to all users and services
 
-- Set Docker and GitHub credentials in Jenkins:
-You need to create
+- Add Docker and GitHub credentials in Jenkins:
+You need to create Docker and GitHub credentials to allow Jenkins to push container image to Docker repository and pull / push changes to GitHub that you are going to 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDQwMTE5NjQsMTQ3Njk1OTY5MiwtOD
-E3Njc3MDMyLDE3Mzk4NjY2MSwtMTYzNzIyODExNCwtMjE2NTYy
-MTA0LC0xOTU4NDQyNDIwLC0xMzcwNzEzMzY2LC04MDk5MTY1Mz
-ksLTYzODgyNDMyMCwxNjYzODE5MTY0LDI4Njk4NjIxOCwtMTU4
-OTM4ODI4NiwtMTY3OTEwNTc4MCwtMTQyNjg5MDkxLDY2Nzk1MD
-YyMCwxNTMzMjUxMjk1LC0xNzI4OTgxMDgsLTg0NTkyNzU5OCwt
-MTAxMzAxNzA1MF19
+eyJoaXN0b3J5IjpbLTI3NTA4MzMxMCwtMTQ0NDAxMTk2NCwxND
+c2OTU5NjkyLC04MTc2NzcwMzIsMTczOTg2NjYxLC0xNjM3MjI4
+MTE0LC0yMTY1NjIxMDQsLTE5NTg0NDI0MjAsLTEzNzA3MTMzNj
+YsLTgwOTkxNjUzOSwtNjM4ODI0MzIwLDE2NjM4MTkxNjQsMjg2
+OTg2MjE4LC0xNTg5Mzg4Mjg2LC0xNjc5MTA1NzgwLC0xNDI2OD
+kwOTEsNjY3OTUwNjIwLDE1MzMyNTEyOTUsLTE3Mjg5ODEwOCwt
+ODQ1OTI3NTk4XX0=
 -->
