@@ -75,14 +75,14 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
  - Create K8s namespace for Jenkins:
  
 	   kubectl create namespace jenkins
-- Create Persistent Volume Claim for Jenkins. It will be used to store Jenkins application data. Trident is going to dynamically allocate Persistent Volume:
+- Create Persistent Volume Claim for Jenkins. It will be used to store Jenkins application data. Trident is going to dynamically allocate Persistent Volume. All the 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNjU2MjEwNCwtMTk1ODQ0MjQyMCwtMT
-M3MDcxMzM2NiwtODA5OTE2NTM5LC02Mzg4MjQzMjAsMTY2Mzgx
-OTE2NCwyODY5ODYyMTgsLTE1ODkzODgyODYsLTE2NzkxMDU3OD
-AsLTE0MjY4OTA5MSw2Njc5NTA2MjAsMTUzMzI1MTI5NSwtMTcy
-ODk4MTA4LC04NDU5Mjc1OTgsLTEwMTMwMTcwNTAsMTYwNzExOD
-M0OCwtMTkxOTY3MTg3OCwtMjA4Njg5MDMsNjE2NDU4MzUzLC03
-NDA1MzYwMzhdfQ==
+eyJoaXN0b3J5IjpbLTE2MzcyMjgxMTQsLTIxNjU2MjEwNCwtMT
+k1ODQ0MjQyMCwtMTM3MDcxMzM2NiwtODA5OTE2NTM5LC02Mzg4
+MjQzMjAsMTY2MzgxOTE2NCwyODY5ODYyMTgsLTE1ODkzODgyOD
+YsLTE2NzkxMDU3ODAsLTE0MjY4OTA5MSw2Njc5NTA2MjAsMTUz
+MzI1MTI5NSwtMTcyODk4MTA4LC04NDU5Mjc1OTgsLTEwMTMwMT
+cwNTAsMTYwNzExODM0OCwtMTkxOTY3MTg3OCwtMjA4Njg5MDMs
+NjE2NDU4MzUzXX0=
 -->
