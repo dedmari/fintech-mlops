@@ -58,11 +58,14 @@ If your cluster does not come pre-installed with the correct volume-snapshot com
        $kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
        $kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
        $kubectl create -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
-  - Install Snapshot Controller:
+ - Install Snapshot Controller:
    
         $kubectl apply -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
         $kubectl apply -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
-   - Setup K8s VolumeSnapshotClass:
+## Setup K8s VolumeSnapshotClass
+ For creating a Volume Snapshot, a [VolumeSnapshotClass](https://netapp-trident.readthedocs.io/en/stable-v20.01/kubernetes/concepts/objects.html#kubernetes-volumesnapshotclass-objects) must be set up. We will create a volume snapshot class and it will be used to achieve ML versioning by leveraging NetApp Snapshot technology.
+ 
+ - Let's create VolumeSnapshotClass  `netapp-csi-snapclass`  and set it to default VolumeSnapshotClass:
 
 ## Install Jenkins with required plugins
 We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) cluster as that of Kubeflow, follow the steps mentioned underneath:
@@ -73,10 +76,10 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYzODgyNDMyMCwxNjYzODE5MTY0LDI4Nj
-k4NjIxOCwtMTU4OTM4ODI4NiwtMTY3OTEwNTc4MCwtMTQyNjg5
-MDkxLDY2Nzk1MDYyMCwxNTMzMjUxMjk1LC0xNzI4OTgxMDgsLT
-g0NTkyNzU5OCwtMTAxMzAxNzA1MCwxNjA3MTE4MzQ4LC0xOTE5
-NjcxODc4LC0yMDg2ODkwMyw2MTY0NTgzNTMsLTc0MDUzNjAzOC
-wtODEyNjIyMjc4XX0=
+eyJoaXN0b3J5IjpbLTgwOTkxNjUzOSwtNjM4ODI0MzIwLDE2Nj
+M4MTkxNjQsMjg2OTg2MjE4LC0xNTg5Mzg4Mjg2LC0xNjc5MTA1
+NzgwLC0xNDI2ODkwOTEsNjY3OTUwNjIwLDE1MzMyNTEyOTUsLT
+E3Mjg5ODEwOCwtODQ1OTI3NTk4LC0xMDEzMDE3MDUwLDE2MDcx
+MTgzNDgsLTE5MTk2NzE4NzgsLTIwODY4OTAzLDYxNjQ1ODM1My
+wtNzQwNTM2MDM4LC04MTI2MjIyNzhdfQ==
 -->
