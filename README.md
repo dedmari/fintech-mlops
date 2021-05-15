@@ -84,6 +84,7 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 - Create service for Jenkins:
 
       $kubectl create -f jenkins-k8s/jenkins-svc.yaml --namespace jenkins
+  - 
       
 
 > Note: I am using LoadBalancer as a type under spec of service. If you don't have load-balancer on your K8s cluster, you could change it to NodePort in `jenkins-k8s/jenkins-svc.yaml`
@@ -96,11 +97,11 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 > Note: Replace pod name, in this case `jenkins-deployment-b89c6f57d-gblmx`, with your's
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxNzY3NzAzMiwxNzM5ODY2NjEsLTE2Mz
-cyMjgxMTQsLTIxNjU2MjEwNCwtMTk1ODQ0MjQyMCwtMTM3MDcx
-MzM2NiwtODA5OTE2NTM5LC02Mzg4MjQzMjAsMTY2MzgxOTE2NC
-wyODY5ODYyMTgsLTE1ODkzODgyODYsLTE2NzkxMDU3ODAsLTE0
-MjY4OTA5MSw2Njc5NTA2MjAsMTUzMzI1MTI5NSwtMTcyODk4MT
-A4LC04NDU5Mjc1OTgsLTEwMTMwMTcwNTAsMTYwNzExODM0OCwt
-MTkxOTY3MTg3OF19
+eyJoaXN0b3J5IjpbLTExMzAxMTQyNDMsLTgxNzY3NzAzMiwxNz
+M5ODY2NjEsLTE2MzcyMjgxMTQsLTIxNjU2MjEwNCwtMTk1ODQ0
+MjQyMCwtMTM3MDcxMzM2NiwtODA5OTE2NTM5LC02Mzg4MjQzMj
+AsMTY2MzgxOTE2NCwyODY5ODYyMTgsLTE1ODkzODgyODYsLTE2
+NzkxMDU3ODAsLTE0MjY4OTA5MSw2Njc5NTA2MjAsMTUzMzI1MT
+I5NSwtMTcyODk4MTA4LC04NDU5Mjc1OTgsLTEwMTMwMTcwNTAs
+MTYwNzExODM0OF19
 -->
