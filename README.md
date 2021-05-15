@@ -87,14 +87,15 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
       
 
 > Note: I am using LoadBalancer as a type under spec of service. If you don't have load-balancer on your K8s cluster, you could change it to NodePort in `jenkins-k8s/jenkins-svc.yaml`
-- Get the default password for logging in first time to Jen
+- Get the default password for logging in first time to Jenkins:
+ Jenkins is going to set default password and 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTc2MDY0NDYsLTE2MzcyMjgxMTQsLT
-IxNjU2MjEwNCwtMTk1ODQ0MjQyMCwtMTM3MDcxMzM2NiwtODA5
-OTE2NTM5LC02Mzg4MjQzMjAsMTY2MzgxOTE2NCwyODY5ODYyMT
-gsLTE1ODkzODgyODYsLTE2NzkxMDU3ODAsLTE0MjY4OTA5MSw2
-Njc5NTA2MjAsMTUzMzI1MTI5NSwtMTcyODk4MTA4LC04NDU5Mj
-c1OTgsLTEwMTMwMTcwNTAsMTYwNzExODM0OCwtMTkxOTY3MTg3
-OCwtMjA4Njg5MDNdfQ==
+eyJoaXN0b3J5IjpbMTg5MTg3MTEsLTE2MzcyMjgxMTQsLTIxNj
+U2MjEwNCwtMTk1ODQ0MjQyMCwtMTM3MDcxMzM2NiwtODA5OTE2
+NTM5LC02Mzg4MjQzMjAsMTY2MzgxOTE2NCwyODY5ODYyMTgsLT
+E1ODkzODgyODYsLTE2NzkxMDU3ODAsLTE0MjY4OTA5MSw2Njc5
+NTA2MjAsMTUzMzI1MTI5NSwtMTcyODk4MTA4LC04NDU5Mjc1OT
+gsLTEwMTMwMTcwNTAsMTYwNzExODM0OCwtMTkxOTY3MTg3OCwt
+MjA4Njg5MDNdfQ==
 -->
