@@ -65,7 +65,9 @@ If your cluster does not come pre-installed with the correct volume-snapshot com
 ## Setup K8s VolumeSnapshotClass
  For creating a Volume Snapshot, a [VolumeSnapshotClass](https://netapp-trident.readthedocs.io/en/stable-v20.01/kubernetes/concepts/objects.html#kubernetes-volumesnapshotclass-objects) must be set up. We will create a volume snapshot class and it will be used to achieve ML versioning by leveraging NetApp Snapshot technology.
  
- - Let's create VolumeSnapshotClass  `netapp-csi-snapclass`  and set it to default VolumeSnapshotClass. In this repository, you will find a folder `netapp-snaphot-class-config` having a VolumeSnapshotClass yaml file, namely `netapp-volume-snapshot-class.yaml`. 
+ - In this repository, you will find a folder `netapp-snaphot-class-config` having a VolumeSnapshotClass yaml file, namely `netapp-volume-snapshot-class.yaml`. Let's create VolumeSnapshotClass  `netapp-csi-snapclass`  and set it to default VolumeSnapshotClass:
+ 
+       kubectl create -f netapp-snaphot-class-config/netapp-volume-snapshot-class.yaml
 
 ## Install Jenkins with required plugins
 We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) cluster as that of Kubeflow, follow the steps mentioned underneath:
@@ -76,10 +78,11 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTk4ODY1Mjk0LC04MDk5MTY1MzksLTYzOD
-gyNDMyMCwxNjYzODE5MTY0LDI4Njk4NjIxOCwtMTU4OTM4ODI4
-NiwtMTY3OTEwNTc4MCwtMTQyNjg5MDkxLDY2Nzk1MDYyMCwxNT
-MzMjUxMjk1LC0xNzI4OTgxMDgsLTg0NTkyNzU5OCwtMTAxMzAx
-NzA1MCwxNjA3MTE4MzQ4LC0xOTE5NjcxODc4LC0yMDg2ODkwMy
-w2MTY0NTgzNTMsLTc0MDUzNjAzOCwtODEyNjIyMjc4XX0=
+eyJoaXN0b3J5IjpbLTEzNzA3MTMzNjYsLTgwOTkxNjUzOSwtNj
+M4ODI0MzIwLDE2NjM4MTkxNjQsMjg2OTg2MjE4LC0xNTg5Mzg4
+Mjg2LC0xNjc5MTA1NzgwLC0xNDI2ODkwOTEsNjY3OTUwNjIwLD
+E1MzMyNTEyOTUsLTE3Mjg5ODEwOCwtODQ1OTI3NTk4LC0xMDEz
+MDE3MDUwLDE2MDcxMTgzNDgsLTE5MTk2NzE4NzgsLTIwODY4OT
+AzLDYxNjQ1ODM1MywtNzQwNTM2MDM4LC04MTI2MjIyNzhdfQ==
+
 -->
