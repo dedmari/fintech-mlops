@@ -50,6 +50,7 @@ The simplest storage class to start with is one based on the `trident-installer/
 
 ## Install Kubeflow v1.0
 Visit [https://v1-0-branch.kubeflow.org/docs/started/k8s/kfctl-k8s-istio/](https://v1-0-branch.kubeflow.org/docs/started/k8s/kfctl-k8s-istio/) and follow the installation instructions 
+
 ## Deploying and setting up volume snapshot components on K8s
 If your cluster does not come pre-installed with the correct volume-snapshot components, you may manually install these components by executing the following steps:
 
@@ -111,8 +112,10 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 
   You need to install [Docker Pipeline](https://plugins.jenkins.io/docker-workflow/) plugin. If you are not familiar with installing Jenkins plugins, please visit [https://www.jenkins.io/doc/book/managing/plugins/#from-the-web-ui](https://www.jenkins.io/doc/book/managing/plugins/#from-the-web-ui)
 
+## Setup K8s secret for Kaggle credentials
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxNzQ5NzM4MSwtMTQ0NDAxMTk2NCwxND
+eyJoaXN0b3J5IjpbMTE5OTMxNTEzNCwtMTQ0NDAxMTk2NCwxND
 c2OTU5NjkyLC04MTc2NzcwMzIsMTczOTg2NjYxLC0xNjM3MjI4
 MTE0LC0yMTY1NjIxMDQsLTE5NTg0NDI0MjAsLTEzNzA3MTMzNj
 YsLTgwOTkxNjUzOSwtNjM4ODI0MzIwLDE2NjM4MTkxNjQsMjg2
