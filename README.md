@@ -88,10 +88,13 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 
 > Note: I am using LoadBalancer as a type under spec of service. If you don't have load-balancer on your K8s cluster, you could change it to NodePort in `jenkins-k8s/jenkins-svc.yaml`
 - Get the default password for logging in first time to Jenkins:
- Jenkins is going to set default password and you can find it under the logs of pod created by the Jenkins deployment. First find the pod name by `kubectl get pods -n jenkins`. It should start with `jenkins-deployment-` followed by 
+ Jenkins is going to set default password and you can find it under the logs of pod created by the Jenkins deployment. First find the pod name by `kubectl get pods -n jenkins`. It should start with `jenkins-deployment-` followed by universally unique identifiers (also known as UUIDs). After identifying the pod, check the logs for this particular pod:
+ 
+
+      $kubectl logs -n jenkins jenkins-deployment-b89c6f57d-gblmx
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4MjE3NDk5MywtMTYzNzIyODExNCwtMj
+eyJoaXN0b3J5IjpbLTY0MjAwNjg4NCwtMTYzNzIyODExNCwtMj
 E2NTYyMTA0LC0xOTU4NDQyNDIwLC0xMzcwNzEzMzY2LC04MDk5
 MTY1MzksLTYzODgyNDMyMCwxNjYzODE5MTY0LDI4Njk4NjIxOC
 wtMTU4OTM4ODI4NiwtMTY3OTEwNTc4MCwtMTQyNjg5MDkxLDY2
