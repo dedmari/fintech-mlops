@@ -97,13 +97,17 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 -  Create ClusterRole and ClusterRoleBinding for allowing Jenkins to take VolumeSnapshot and other associated operations:
 
        $kubectl create -f jenkins-k8s/jenkins-rbac-snapshot-controller.yaml --namespace jenkins
-- To allow running docker build within Jenkins, you need to allow pods to access docker.sock file, located on K8s nodes 
+- To allow running docker build within Jenkins, you need to allow pods to access `/var/run/docker.sock` file, located on K8s nodes where Jenkins application is running:
+
+      $sudo chmod 777 /var/run/docker.sock
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyOTM3MTA1MSwtODE3Njc3MDMyLDE3Mz
-k4NjY2MSwtMTYzNzIyODExNCwtMjE2NTYyMTA0LC0xOTU4NDQy
-NDIwLC0xMzcwNzEzMzY2LC04MDk5MTY1MzksLTYzODgyNDMyMC
-wxNjYzODE5MTY0LDI4Njk4NjIxOCwtMTU4OTM4ODI4NiwtMTY3
-OTEwNTc4MCwtMTQyNjg5MDkxLDY2Nzk1MDYyMCwxNTMzMjUxMj
-k1LC0xNzI4OTgxMDgsLTg0NTkyNzU5OCwtMTAxMzAxNzA1MCwx
-NjA3MTE4MzQ4XX0=
+eyJoaXN0b3J5IjpbLTE3NzgxNjkzMjgsLTgxNzY3NzAzMiwxNz
+M5ODY2NjEsLTE2MzcyMjgxMTQsLTIxNjU2MjEwNCwtMTk1ODQ0
+MjQyMCwtMTM3MDcxMzM2NiwtODA5OTE2NTM5LC02Mzg4MjQzMj
+AsMTY2MzgxOTE2NCwyODY5ODYyMTgsLTE1ODkzODgyODYsLTE2
+NzkxMDU3ODAsLTE0MjY4OTA5MSw2Njc5NTA2MjAsMTUzMzI1MT
+I5NSwtMTcyODk4MTA4LC04NDU5Mjc1OTgsLTEwMTMwMTcwNTAs
+MTYwNzExODM0OF19
 -->
