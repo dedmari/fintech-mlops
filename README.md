@@ -88,7 +88,7 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 
 > Note: I am using LoadBalancer as a type under spec of service. If you don't have load-balancer on your K8s cluster, you could change it to NodePort in `jenkins-k8s/jenkins-svc.yaml`
 - Get the default password for logging in first time to Jenkins:
- Jenkins is going to set default password and you can find it under the logs of pod created by the Jenkins deployment. First find the pod name by `kubectl get pods -n jenkins`. It should start with `jenkins-deployment-` followed by universally unique identifiers (also known as UUIDs). After identifying the pod, check the logs for this particular pod to get the password, like:
+ Jenkins is going to set default password and you can find it under the logs of pod created by the Jenkins deployment. First find the pod name by `kubectl get pods -n jenkins`. It should start with `jenkins-deployment-` followed by universally unique identifiers (also known as UUIDs). After identifying the pod, check the logs for this particular pod to get the password:
  
 
       $kubectl logs -n jenkins jenkins-deployment-b89c6f57d-gblmx
@@ -96,11 +96,11 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 > Note: Replace pod name, in this case `jenkins-deployment-b89c6f57d-gblmx`, with your's
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzODg4MTY5NzYsLTE2MzcyMjgxMTQsLT
-IxNjU2MjEwNCwtMTk1ODQ0MjQyMCwtMTM3MDcxMzM2NiwtODA5
-OTE2NTM5LC02Mzg4MjQzMjAsMTY2MzgxOTE2NCwyODY5ODYyMT
-gsLTE1ODkzODgyODYsLTE2NzkxMDU3ODAsLTE0MjY4OTA5MSw2
-Njc5NTA2MjAsMTUzMzI1MTI5NSwtMTcyODk4MTA4LC04NDU5Mj
-c1OTgsLTEwMTMwMTcwNTAsMTYwNzExODM0OCwtMTkxOTY3MTg3
-OCwtMjA4Njg5MDNdfQ==
+eyJoaXN0b3J5IjpbMTczOTg2NjYxLC0xNjM3MjI4MTE0LC0yMT
+Y1NjIxMDQsLTE5NTg0NDI0MjAsLTEzNzA3MTMzNjYsLTgwOTkx
+NjUzOSwtNjM4ODI0MzIwLDE2NjM4MTkxNjQsMjg2OTg2MjE4LC
+0xNTg5Mzg4Mjg2LC0xNjc5MTA1NzgwLC0xNDI2ODkwOTEsNjY3
+OTUwNjIwLDE1MzMyNTEyOTUsLTE3Mjg5ODEwOCwtODQ1OTI3NT
+k4LC0xMDEzMDE3MDUwLDE2MDcxMTgzNDgsLTE5MTk2NzE4Nzgs
+LTIwODY4OTAzXX0=
 -->
