@@ -80,11 +80,16 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
       $kubectl create -f jenkins-k8s/jenkins-pvc.yaml -n jenkins
 - Deploy Jenkins on K8s cluster:
 
-      $kubectl create -f jenkins-deployment.yaml -n jenkins
+      $kubectl create -f jenkins-k8s/jenkins-deployment.yaml -n jenkins
 - Create service for Jenkins:
-       $kubectl create -f jenkins-svc.yaml --namespace jenkins
+
+      $kubectl create -f jenkins-k8s/jenkins-svc.yaml --namespace jenkins
+      
+
+> Note: I am using LoadBalancer as a  type. If you don't have load-
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5NDY5OTM1MiwtMTYzNzIyODExNCwtMj
+eyJoaXN0b3J5IjpbMTgwNzM1Mzk3NSwtMTYzNzIyODExNCwtMj
 E2NTYyMTA0LC0xOTU4NDQyNDIwLC0xMzcwNzEzMzY2LC04MDk5
 MTY1MzksLTYzODgyNDMyMCwxNjYzODE5MTY0LDI4Njk4NjIxOC
 wtMTU4OTM4ODI4NiwtMTY3OTEwNTc4MCwtMTQyNjg5MDkxLDY2
