@@ -75,10 +75,12 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
  - Create K8s namespace for Jenkins:
  
 	   kubectl create namespace jenkins
-- Create Persistent Volume Claim for Jenkins. It will be used to store Jenkins application data. Trident is going to dynamically allocate Persistent Volume. All the 
+- Create Persistent Volume Claim for Jenkins. It will be used to store Jenkins application data. Trident is going to dynamically allocate Persistent Volume. 
+
+      kubectl create -f jenkins-k8s/jenkins-pvc.yaml -n jenkins
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgyMTUyMDEwMCwtMTYzNzIyODExNCwtMj
+eyJoaXN0b3J5IjpbMTE3NDg3NzIwNywtMTYzNzIyODExNCwtMj
 E2NTYyMTA0LC0xOTU4NDQyNDIwLC0xMzcwNzEzMzY2LC04MDk5
 MTY1MzksLTYzODgyNDMyMCwxNjYzODE5MTY0LDI4Njk4NjIxOC
 wtMTU4OTM4ODI4NiwtMTY3OTEwNTc4MCwtMTQyNjg5MDkxLDY2
