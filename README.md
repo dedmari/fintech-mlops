@@ -63,6 +63,7 @@ If your cluster does not come pre-installed with the correct volume-snapshot com
    
         $kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
         $kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
+        
 ## Setup K8s VolumeSnapshotClass
  For creating a Volume Snapshot, a [VolumeSnapshotClass](https://netapp-trident.readthedocs.io/en/stable-v20.01/kubernetes/concepts/objects.html#kubernetes-volumesnapshotclass-objects) must be set up. We will create a volume snapshot class and it will be used to achieve ML versioning by leveraging NetApp Snapshot technology.
  
@@ -115,11 +116,11 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 ## Setup K8s secret for Kaggle credentials
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5OTMxNTEzNCwtMTQ0NDAxMTk2NCwxND
-c2OTU5NjkyLC04MTc2NzcwMzIsMTczOTg2NjYxLC0xNjM3MjI4
-MTE0LC0yMTY1NjIxMDQsLTE5NTg0NDI0MjAsLTEzNzA3MTMzNj
-YsLTgwOTkxNjUzOSwtNjM4ODI0MzIwLDE2NjM4MTkxNjQsMjg2
-OTg2MjE4LC0xNTg5Mzg4Mjg2LC0xNjc5MTA1NzgwLC0xNDI2OD
-kwOTEsNjY3OTUwNjIwLDE1MzMyNTEyOTUsLTE3Mjg5ODEwOCwt
-ODQ1OTI3NTk4XX0=
+eyJoaXN0b3J5IjpbLTE4NDYyNTAyODgsLTE0NDQwMTE5NjQsMT
+Q3Njk1OTY5MiwtODE3Njc3MDMyLDE3Mzk4NjY2MSwtMTYzNzIy
+ODExNCwtMjE2NTYyMTA0LC0xOTU4NDQyNDIwLC0xMzcwNzEzMz
+Y2LC04MDk5MTY1MzksLTYzODgyNDMyMCwxNjYzODE5MTY0LDI4
+Njk4NjIxOCwtMTU4OTM4ODI4NiwtMTY3OTEwNTc4MCwtMTQyNj
+g5MDkxLDY2Nzk1MDYyMCwxNTMzMjUxMjk1LC0xNzI4OTgxMDgs
+LTg0NTkyNzU5OF19
 -->
