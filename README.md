@@ -84,7 +84,9 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 - Create service for Jenkins:
 
       $kubectl create -f jenkins-k8s/jenkins-svc.yaml --namespace jenkins
-- Create ClusterRole and ClusterRoleBinding for allowing Jenkins to take Snaps
+- Create ClusterRole and ClusterRoleBinding for allowing Jenkins to take VolumeSnapshot and other associated operations:
+
+      $kubectl create -f jenkins-k8s/jenkins-rbac-snapshot-controller.yaml --namespace jenkins
       
 
 > Note: I am using LoadBalancer as a type under spec of service. If you don't have load-balancer on your K8s cluster, you could change it to NodePort in `jenkins-k8s/jenkins-svc.yaml`
@@ -97,11 +99,11 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 > Note: Replace pod name, in this case `jenkins-deployment-b89c6f57d-gblmx`, with your's
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQyNjg5NDk3MCwtODE3Njc3MDMyLDE3Mz
-k4NjY2MSwtMTYzNzIyODExNCwtMjE2NTYyMTA0LC0xOTU4NDQy
-NDIwLC0xMzcwNzEzMzY2LC04MDk5MTY1MzksLTYzODgyNDMyMC
-wxNjYzODE5MTY0LDI4Njk4NjIxOCwtMTU4OTM4ODI4NiwtMTY3
-OTEwNTc4MCwtMTQyNjg5MDkxLDY2Nzk1MDYyMCwxNTMzMjUxMj
-k1LC0xNzI4OTgxMDgsLTg0NTkyNzU5OCwtMTAxMzAxNzA1MCwx
-NjA3MTE4MzQ4XX0=
+eyJoaXN0b3J5IjpbLTEwMDYzNzQwNTIsLTgxNzY3NzAzMiwxNz
+M5ODY2NjEsLTE2MzcyMjgxMTQsLTIxNjU2MjEwNCwtMTk1ODQ0
+MjQyMCwtMTM3MDcxMzM2NiwtODA5OTE2NTM5LC02Mzg4MjQzMj
+AsMTY2MzgxOTE2NCwyODY5ODYyMTgsLTE1ODkzODgyODYsLTE2
+NzkxMDU3ODAsLTE0MjY4OTA5MSw2Njc5NTA2MjAsMTUzMzI1MT
+I5NSwtMTcyODk4MTA4LC04NDU5Mjc1OTgsLTEwMTMwMTcwNTAs
+MTYwNzExODM0OF19
 -->
