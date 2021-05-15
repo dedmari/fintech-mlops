@@ -65,7 +65,7 @@ If your cluster does not come pre-installed with the correct volume-snapshot com
 ## Setup K8s VolumeSnapshotClass
  For creating a Volume Snapshot, a [VolumeSnapshotClass](https://netapp-trident.readthedocs.io/en/stable-v20.01/kubernetes/concepts/objects.html#kubernetes-volumesnapshotclass-objects) must be set up. We will create a volume snapshot class and it will be used to achieve ML versioning by leveraging NetApp Snapshot technology.
  
- - Let's create VolumeSnapshotClass  `netapp-csi-snapclass`  and set it to default VolumeSnapshotClass:
+ - Let's create VolumeSnapshotClass  `netapp-csi-snapclass`  and set it to default VolumeSnapshotClass. In this repository, you will find a folder `netapp-snaphot-class-config` having a volume snap
 
 ## Install Jenkins with required plugins
 We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) cluster as that of Kubeflow, follow the steps mentioned underneath:
@@ -76,10 +76,10 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwOTkxNjUzOSwtNjM4ODI0MzIwLDE2Nj
-M4MTkxNjQsMjg2OTg2MjE4LC0xNTg5Mzg4Mjg2LC0xNjc5MTA1
-NzgwLC0xNDI2ODkwOTEsNjY3OTUwNjIwLDE1MzMyNTEyOTUsLT
-E3Mjg5ODEwOCwtODQ1OTI3NTk4LC0xMDEzMDE3MDUwLDE2MDcx
-MTgzNDgsLTE5MTk2NzE4NzgsLTIwODY4OTAzLDYxNjQ1ODM1My
-wtNzQwNTM2MDM4LC04MTI2MjIyNzhdfQ==
+eyJoaXN0b3J5IjpbLTc0NzM0MDg4MywtODA5OTE2NTM5LC02Mz
+g4MjQzMjAsMTY2MzgxOTE2NCwyODY5ODYyMTgsLTE1ODkzODgy
+ODYsLTE2NzkxMDU3ODAsLTE0MjY4OTA5MSw2Njc5NTA2MjAsMT
+UzMzI1MTI5NSwtMTcyODk4MTA4LC04NDU5Mjc1OTgsLTEwMTMw
+MTcwNTAsMTYwNzExODM0OCwtMTkxOTY3MTg3OCwtMjA4Njg5MD
+MsNjE2NDU4MzUzLC03NDA1MzYwMzgsLTgxMjYyMjI3OF19
 -->
