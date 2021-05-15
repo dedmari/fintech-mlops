@@ -87,8 +87,8 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 
 > *Note*: I am using LoadBalancer as a type under spec of service. If you don't have load-balancer on your K8s cluster, you could change it to NodePort in `jenkins-k8s/jenkins-svc.yaml`
 - Get the default password for logging in first time to Jenkins:
-
- Jenkins is going to set default password and you can find it under the logs of pod created by the Jenkins deployment. First find the pod name by `kubectl get pods -n jenkins`. It should start with `jenkins-deployment-` followed by universally unique identifiers (also known as UUIDs). After identifying the pod, check the logs for this particular pod to get the password:
+  
+  Jenkins is going to set default password and you can find it under the logs of pod created by the Jenkins deployment. First find the pod name by `kubectl get pods -n jenkins`. It should start with `jenkins-deployment-` followed by universally unique identifiers (also known as UUIDs). After identifying the pod, check the logs for this particular pod to get the password:
  
 
       $kubectl logs -n jenkins jenkins-deployment-b89c6f57d-gblmx
@@ -109,11 +109,11 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 You need to create Docker and GitHub credentials allowing Jenkins to push container image to Docker repository and pull / push changes to GitHub repository that you are going to use for the project. Name these credentials as `docker_login` and `dedmari_github`. These credentials are going to be used by the Jenkins pipeline, provided with this repository. If you are not aware of setting global credentials in Jenkins, please visit https://www.jenkins.io/doc/book/using/using-credentials/ for further information.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTE5NjA0NzQsLTE0NDQwMTE5NjQsMT
-Q3Njk1OTY5MiwtODE3Njc3MDMyLDE3Mzk4NjY2MSwtMTYzNzIy
-ODExNCwtMjE2NTYyMTA0LC0xOTU4NDQyNDIwLC0xMzcwNzEzMz
-Y2LC04MDk5MTY1MzksLTYzODgyNDMyMCwxNjYzODE5MTY0LDI4
-Njk4NjIxOCwtMTU4OTM4ODI4NiwtMTY3OTEwNTc4MCwtMTQyNj
-g5MDkxLDY2Nzk1MDYyMCwxNTMzMjUxMjk1LC0xNzI4OTgxMDgs
-LTg0NTkyNzU5OF19
+eyJoaXN0b3J5IjpbMzE4NjcwNTQsLTE0NDQwMTE5NjQsMTQ3Nj
+k1OTY5MiwtODE3Njc3MDMyLDE3Mzk4NjY2MSwtMTYzNzIyODEx
+NCwtMjE2NTYyMTA0LC0xOTU4NDQyNDIwLC0xMzcwNzEzMzY2LC
+04MDk5MTY1MzksLTYzODgyNDMyMCwxNjYzODE5MTY0LDI4Njk4
+NjIxOCwtMTU4OTM4ODI4NiwtMTY3OTEwNTc4MCwtMTQyNjg5MD
+kxLDY2Nzk1MDYyMCwxNTMzMjUxMjk1LC0xNzI4OTgxMDgsLTg0
+NTkyNzU5OF19
 -->
