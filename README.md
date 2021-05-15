@@ -57,11 +57,11 @@ If your cluster does not come pre-installed with the correct volume-snapshot com
  
        $kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
        $kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
-       $kubectl create -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
+       $kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
  - Install Snapshot Controller:
    
-        $kubectl apply -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
-        $kubectl apply -f [https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
+        $kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
+        $kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
 ## Setup K8s VolumeSnapshotClass
  For creating a Volume Snapshot, a [VolumeSnapshotClass](https://netapp-trident.readthedocs.io/en/stable-v20.01/kubernetes/concepts/objects.html#kubernetes-volumesnapshotclass-objects) must be set up. We will create a volume snapshot class and it will be used to achieve ML versioning by leveraging NetApp Snapshot technology.
  
@@ -96,11 +96,11 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 > Note: Replace pod name, in this case `jenkins-deployment-b89c6f57d-gblmx`, with your's
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTczOTg2NjYxLC0xNjM3MjI4MTE0LC0yMT
-Y1NjIxMDQsLTE5NTg0NDI0MjAsLTEzNzA3MTMzNjYsLTgwOTkx
-NjUzOSwtNjM4ODI0MzIwLDE2NjM4MTkxNjQsMjg2OTg2MjE4LC
-0xNTg5Mzg4Mjg2LC0xNjc5MTA1NzgwLC0xNDI2ODkwOTEsNjY3
-OTUwNjIwLDE1MzMyNTEyOTUsLTE3Mjg5ODEwOCwtODQ1OTI3NT
-k4LC0xMDEzMDE3MDUwLDE2MDcxMTgzNDgsLTE5MTk2NzE4Nzgs
-LTIwODY4OTAzXX0=
+eyJoaXN0b3J5IjpbLTgxNzY3NzAzMiwxNzM5ODY2NjEsLTE2Mz
+cyMjgxMTQsLTIxNjU2MjEwNCwtMTk1ODQ0MjQyMCwtMTM3MDcx
+MzM2NiwtODA5OTE2NTM5LC02Mzg4MjQzMjAsMTY2MzgxOTE2NC
+wyODY5ODYyMTgsLTE1ODkzODgyODYsLTE2NzkxMDU3ODAsLTE0
+MjY4OTA5MSw2Njc5NTA2MjAsMTUzMzI1MTI5NSwtMTcyODk4MT
+A4LC04NDU5Mjc1OTgsLTEwMTMwMTcwNTAsMTYwNzExODM0OCwt
+MTkxOTY3MTg3OF19
 -->
