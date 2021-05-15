@@ -106,14 +106,16 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 
 - Add Docker and GitHub credentials in Jenkins:
   
-  You need to create Docker and GitHub credentials allowing Jenkins to push container image to Docker repository and pull / push changes to GitHub repository that you are going to use for the project. Name these credentials as `docker_login` and `dedmari_github`. These credentials are going to be used by the Jenkins pipeline, provided with this repository. If you are not aware of setting global credentials in Jenkins, please visit https://www.jenkins.io/doc/book/using/using-credentials/ for further information.
+  You need to create Docker and GitHub credentials allowing Jenkins to push container image to Docker repository and pull / push changes to GitHub repository that you are going to use for the project. Name these credentials as `docker_login` and `dedmari_github`. These credentials are going to be used by the Jenkins pipeline, provided with this repository. If you are not aware of setting global credentials in Jenkins, please visit https://www.jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials for further information.
+- Jenkins plugins needed:
+You need to i
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4ODQ1MzAzOCwtMTQ0NDAxMTk2NCwxND
-c2OTU5NjkyLC04MTc2NzcwMzIsMTczOTg2NjYxLC0xNjM3MjI4
-MTE0LC0yMTY1NjIxMDQsLTE5NTg0NDI0MjAsLTEzNzA3MTMzNj
-YsLTgwOTkxNjUzOSwtNjM4ODI0MzIwLDE2NjM4MTkxNjQsMjg2
-OTg2MjE4LC0xNTg5Mzg4Mjg2LC0xNjc5MTA1NzgwLC0xNDI2OD
-kwOTEsNjY3OTUwNjIwLDE1MzMyNTEyOTUsLTE3Mjg5ODEwOCwt
-ODQ1OTI3NTk4XX0=
+eyJoaXN0b3J5IjpbLTIwOTQ2MzUxLC0xNDQ0MDExOTY0LDE0Nz
+Y5NTk2OTIsLTgxNzY3NzAzMiwxNzM5ODY2NjEsLTE2MzcyMjgx
+MTQsLTIxNjU2MjEwNCwtMTk1ODQ0MjQyMCwtMTM3MDcxMzM2Ni
+wtODA5OTE2NTM5LC02Mzg4MjQzMjAsMTY2MzgxOTE2NCwyODY5
+ODYyMTgsLTE1ODkzODgyODYsLTE2NzkxMDU3ODAsLTE0MjY4OT
+A5MSw2Njc5NTA2MjAsMTUzMzI1MTI5NSwtMTcyODk4MTA4LC04
+NDU5Mjc1OThdfQ==
 -->
