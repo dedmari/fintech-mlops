@@ -70,7 +70,7 @@ If your cluster does not come pre-installed with the correct volume-snapshot com
        $kubectl create -f netapp-snaphot-class-config/netapp-volume-snapshot-class.yaml
 
 ## Install Jenkins with required plugins
-We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) cluster as that of Kubeflow, follow the steps mentioned underneath:
+We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant files for deploying Jenkins. To install Jenkins on the same Kubernetes (K8s) cluster as that of Kubeflow, follow the steps mentioned underneath:
 
  - Create K8s namespace for Jenkins:
  
@@ -78,11 +78,11 @@ We are using Jenkins for CI/CD. To install Jenkins on the same Kubernetes (K8s) 
 - Create Persistent Volume Claim for Jenkins. It will be used to store Jenkins application data. Trident is going to dynamically allocate Persistent Volume. All the 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MzcyMjgxMTQsLTIxNjU2MjEwNCwtMT
-k1ODQ0MjQyMCwtMTM3MDcxMzM2NiwtODA5OTE2NTM5LC02Mzg4
-MjQzMjAsMTY2MzgxOTE2NCwyODY5ODYyMTgsLTE1ODkzODgyOD
-YsLTE2NzkxMDU3ODAsLTE0MjY4OTA5MSw2Njc5NTA2MjAsMTUz
-MzI1MTI5NSwtMTcyODk4MTA4LC04NDU5Mjc1OTgsLTEwMTMwMT
-cwNTAsMTYwNzExODM0OCwtMTkxOTY3MTg3OCwtMjA4Njg5MDMs
-NjE2NDU4MzUzXX0=
+eyJoaXN0b3J5IjpbLTgyMTUyMDEwMCwtMTYzNzIyODExNCwtMj
+E2NTYyMTA0LC0xOTU4NDQyNDIwLC0xMzcwNzEzMzY2LC04MDk5
+MTY1MzksLTYzODgyNDMyMCwxNjYzODE5MTY0LDI4Njk4NjIxOC
+wtMTU4OTM4ODI4NiwtMTY3OTEwNTc4MCwtMTQyNjg5MDkxLDY2
+Nzk1MDYyMCwxNTMzMjUxMjk1LC0xNzI4OTgxMDgsLTg0NTkyNz
+U5OCwtMTAxMzAxNzA1MCwxNjA3MTE4MzQ4LC0xOTE5NjcxODc4
+LC0yMDg2ODkwM119
 -->
