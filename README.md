@@ -86,14 +86,14 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
       $kubectl create -f jenkins-k8s/jenkins-svc.yaml --namespace jenkins
       
 
-> Note: I am using LoadBalancer as a  type. If you don't have load-
+> Note: I am using LoadBalancer as a type under spec of service. If you don't have load-balancer on your K8s cluster, you could change it to NodePort in jenkins-k8s/jenkins-svc.yaml
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwNzM1Mzk3NSwtMTYzNzIyODExNCwtMj
-E2NTYyMTA0LC0xOTU4NDQyNDIwLC0xMzcwNzEzMzY2LC04MDk5
-MTY1MzksLTYzODgyNDMyMCwxNjYzODE5MTY0LDI4Njk4NjIxOC
-wtMTU4OTM4ODI4NiwtMTY3OTEwNTc4MCwtMTQyNjg5MDkxLDY2
-Nzk1MDYyMCwxNTMzMjUxMjk1LC0xNzI4OTgxMDgsLTg0NTkyNz
-U5OCwtMTAxMzAxNzA1MCwxNjA3MTE4MzQ4LC0xOTE5NjcxODc4
-LC0yMDg2ODkwM119
+eyJoaXN0b3J5IjpbLTExNzk0MzM0MjQsLTE2MzcyMjgxMTQsLT
+IxNjU2MjEwNCwtMTk1ODQ0MjQyMCwtMTM3MDcxMzM2NiwtODA5
+OTE2NTM5LC02Mzg4MjQzMjAsMTY2MzgxOTE2NCwyODY5ODYyMT
+gsLTE1ODkzODgyODYsLTE2NzkxMDU3ODAsLTE0MjY4OTA5MSw2
+Njc5NTA2MjAsMTUzMzI1MTI5NSwtMTcyODk4MTA4LC04NDU5Mj
+c1OTgsLTEwMTMwMTcwNTAsMTYwNzExODM0OCwtMTkxOTY3MTg3
+OCwtMjA4Njg5MDNdfQ==
 -->
