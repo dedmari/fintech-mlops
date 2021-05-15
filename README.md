@@ -106,12 +106,12 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 
 - Add Docker and GitHub credentials in Jenkins:
   
-  You need to create Docker and GitHub credentials allowing Jenkins to push container image to Docker repository and pull / push changes to GitHub repository that you are going to use for the project. Name these credentials as `docker_login` and `dedmari_github`. These credentials are going to be used by the Jenkins pipeline, provided with this repository. If you are not aware of setting global credentials in Jenkins, please visit https://www.jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials for further information.
+  You need to create Docker and GitHub credentials allowing Jenkins to push container image to Docker repository and pull / push changes to GitHub repository that you are going to use for the project. Name these credentials as `docker_login` and `dedmari_github`. These credentials are going to be used by the Jenkins pipeline, provided with this repository. If you are not aware of setting global credentials in Jenkins, please visit [https://www.jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials](https://www.jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials) for further information.
 - Jenkins plugins needed:
-  You need to install [Docker Pipeline](https://plugins.jenkins.io/docker-workflow/) plugin. If you are not familiar with installing Jenkins plugins, please visit https://www.jenkins.io/doc/book/managing/plugins/#from-the-web-ui
+  You need to install [Docker Pipeline](https://plugins.jenkins.io/docker-workflow/) plugin. If you are not familiar with installing Jenkins plugins, please visit [https://www.jenkins.io/doc/book/managing/plugins/#from-the-web-ui](https://www.jenkins.io/doc/book/managing/plugins/#from-the-web-ui)
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ0Njg0MDE0NSwtMTQ0NDAxMTk2NCwxND
+eyJoaXN0b3J5IjpbMTQ4MDYyNTM2MSwtMTQ0NDAxMTk2NCwxND
 c2OTU5NjkyLC04MTc2NzcwMzIsMTczOTg2NjYxLC0xNjM3MjI4
 MTE0LC0yMTY1NjIxMDQsLTE5NTg0NDI0MjAsLTEzNzA3MTMzNj
 YsLTgwOTkxNjUzOSwtNjM4ODI0MzIwLDE2NjM4MTkxNjQsMjg2
