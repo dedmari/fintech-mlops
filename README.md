@@ -101,9 +101,10 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 
       $sudo chmod 777 /var/run/docker.sock
 
+> Warning: By executing above command on K8s nodes, you are exposing dock
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NzgxNjkzMjgsLTgxNzY3NzAzMiwxNz
+eyJoaXN0b3J5IjpbLTExNTM1OTIxODYsLTgxNzY3NzAzMiwxNz
 M5ODY2NjEsLTE2MzcyMjgxMTQsLTIxNjU2MjEwNCwtMTk1ODQ0
 MjQyMCwtMTM3MDcxMzM2NiwtODA5OTE2NTM5LC02Mzg4MjQzMj
 AsMTY2MzgxOTE2NCwyODY5ODYyMTgsLTE1ODkzODgyODYsLTE2
