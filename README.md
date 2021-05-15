@@ -103,14 +103,15 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 
 > *Warning*: By executing above command on K8s nodes, you are exposing docker.sock file to all users and services
 
-
+- Set Docker and GitHub credentials in Jenkins:
+You need to create
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ3Njk1OTY5MiwtODE3Njc3MDMyLDE3Mz
-k4NjY2MSwtMTYzNzIyODExNCwtMjE2NTYyMTA0LC0xOTU4NDQy
-NDIwLC0xMzcwNzEzMzY2LC04MDk5MTY1MzksLTYzODgyNDMyMC
-wxNjYzODE5MTY0LDI4Njk4NjIxOCwtMTU4OTM4ODI4NiwtMTY3
-OTEwNTc4MCwtMTQyNjg5MDkxLDY2Nzk1MDYyMCwxNTMzMjUxMj
-k1LC0xNzI4OTgxMDgsLTg0NTkyNzU5OCwtMTAxMzAxNzA1MCwx
-NjA3MTE4MzQ4XX0=
+eyJoaXN0b3J5IjpbLTE0NDQwMTE5NjQsMTQ3Njk1OTY5MiwtOD
+E3Njc3MDMyLDE3Mzk4NjY2MSwtMTYzNzIyODExNCwtMjE2NTYy
+MTA0LC0xOTU4NDQyNDIwLC0xMzcwNzEzMzY2LC04MDk5MTY1Mz
+ksLTYzODgyNDMyMCwxNjYzODE5MTY0LDI4Njk4NjIxOCwtMTU4
+OTM4ODI4NiwtMTY3OTEwNTc4MCwtMTQyNjg5MDkxLDY2Nzk1MD
+YyMCwxNTMzMjUxMjk1LC0xNzI4OTgxMDgsLTg0NTkyNzU5OCwt
+MTAxMzAxNzA1MF19
 -->
