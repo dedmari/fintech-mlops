@@ -4,8 +4,8 @@
 </div>
 This repository contains the implementation of MLOps setup discussed in articles:
 
- - [Demystifying MLOps : Part 1](#)
- - [Demystifying MLOps : Part 2](#)
+ - [Demystifying MLOps : Part 1](#)🚀
+ - [Demystifying MLOps : Part 2](#)🚀
 
 ## Prerequisite
 - [Kubernetes v1.18](https://v1-18.docs.kubernetes.io/docs/setup/) or above
@@ -170,11 +170,11 @@ In Jenkins, you need to create a Multibranch Pipeline and link Git repository to
 
 If you are interested to see it in action, please visit NVIDIA GTC 2021 session [E31919: From Research to Production—Effective Tools and Methodologies for Deploying AI Enabled Products](https://gtc21.event.nvidia.com/media/1_gt53r6i5?ncid=ref-spo-57504) , there you will find a demo along with the basic walkthrough.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0Nzc0ODQ1LDEzMzc4OTA4OTUsLTY3MT
-g1ODgwLDI5Mjk4NDcwMCwxMTU2MDM2Mzk4LC0xNzk2MDM0OTc0
-LC0yMzAxODMyMzIsNjA5OTE1MzgzLC0xODQ2MjUwMjg4LC0xND
-Q0MDExOTY0LDE0NzY5NTk2OTIsLTgxNzY3NzAzMiwxNzM5ODY2
-NjEsLTE2MzcyMjgxMTQsLTIxNjU2MjEwNCwtMTk1ODQ0MjQyMC
-wtMTM3MDcxMzM2NiwtODA5OTE2NTM5LC02Mzg4MjQzMjAsMTY2
-MzgxOTE2NF19
+eyJoaXN0b3J5IjpbMzQ4NjIxMDIxLDE5NDc3NDg0NSwxMzM3OD
+kwODk1LC02NzE4NTg4MCwyOTI5ODQ3MDAsMTE1NjAzNjM5OCwt
+MTc5NjAzNDk3NCwtMjMwMTgzMjMyLDYwOTkxNTM4MywtMTg0Nj
+I1MDI4OCwtMTQ0NDAxMTk2NCwxNDc2OTU5NjkyLC04MTc2Nzcw
+MzIsMTczOTg2NjYxLC0xNjM3MjI4MTE0LC0yMTY1NjIxMDQsLT
+E5NTg0NDI0MjAsLTEzNzA3MTMzNjYsLTgwOTkxNjUzOSwtNjM4
+ODI0MzIwXX0=
 -->
