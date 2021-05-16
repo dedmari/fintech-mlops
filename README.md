@@ -51,7 +51,7 @@ The simplest storage class to start with is one based on the `trident-installer/
 ## Install Kubeflow v1.0
 Visit [https://v1-0-branch.kubeflow.org/docs/started/k8s/kfctl-k8s-istio/](https://v1-0-branch.kubeflow.org/docs/started/k8s/kfctl-k8s-istio/) and follow the installation instructions 
 
-## Deploying and setting up volume snapshot components on K8s
+## Deploy and set up volume snapshot components on K8s
 If your cluster does not come pre-installed with the correct volume-snapshot components, you may manually install these components by executing the following steps:
 
  - Install Snapshot Beta CRDs:
@@ -121,12 +121,13 @@ Finally, create secret in kubeflow namespace using `kaggle-secret/muneer-kaggle-
 
     $kubectl create -f kaggle-secret/muneer-kaggle-credentials.yaml -n kubeflow
 
+## 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTYwMzQ5NzQsLTIzMDE4MzIzMiw2MD
-k5MTUzODMsLTE4NDYyNTAyODgsLTE0NDQwMTE5NjQsMTQ3Njk1
-OTY5MiwtODE3Njc3MDMyLDE3Mzk4NjY2MSwtMTYzNzIyODExNC
-wtMjE2NTYyMTA0LC0xOTU4NDQyNDIwLC0xMzcwNzEzMzY2LC04
-MDk5MTY1MzksLTYzODgyNDMyMCwxNjYzODE5MTY0LDI4Njk4Nj
-IxOCwtMTU4OTM4ODI4NiwtMTY3OTEwNTc4MCwtMTQyNjg5MDkx
-LDY2Nzk1MDYyMF19
+eyJoaXN0b3J5IjpbNjA2ODQ1NTQ4LC0xNzk2MDM0OTc0LC0yMz
+AxODMyMzIsNjA5OTE1MzgzLC0xODQ2MjUwMjg4LC0xNDQ0MDEx
+OTY0LDE0NzY5NTk2OTIsLTgxNzY3NzAzMiwxNzM5ODY2NjEsLT
+E2MzcyMjgxMTQsLTIxNjU2MjEwNCwtMTk1ODQ0MjQyMCwtMTM3
+MDcxMzM2NiwtODA5OTE2NTM5LC02Mzg4MjQzMjAsMTY2MzgxOT
+E2NCwyODY5ODYyMTgsLTE1ODkzODgyODYsLTE2NzkxMDU3ODAs
+LTE0MjY4OTA5MV19
 -->
