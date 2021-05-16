@@ -114,13 +114,13 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
   You need to install [Docker Pipeline](https://plugins.jenkins.io/docker-workflow/) plugin. If you are not familiar with installing Jenkins plugins, please visit [https://www.jenkins.io/doc/book/managing/plugins/#from-the-web-ui](https://www.jenkins.io/doc/book/managing/plugins/#from-the-web-ui)
 
 ## Setup K8s secret for Kaggle credentials
-In this use-case we are using [**DJIA 30 Stock Time Series**](https://www.kaggle.com/szrlee/stock-time-series-20050101-to-20171231) Kaggle dataset. We need to create a K8s secret that holds the Kaggle credentials 
+In this use-case we are using [**DJIA 30 Stock Time Series**](https://www.kaggle.com/szrlee/stock-time-series-20050101-to-20171231) Kaggle dataset. We need to create a K8s secret in kubeflow namespace that holds the Kaggle credentials. 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyODMyNjYzNDIsLTE4NDYyNTAyODgsLT
-E0NDQwMTE5NjQsMTQ3Njk1OTY5MiwtODE3Njc3MDMyLDE3Mzk4
-NjY2MSwtMTYzNzIyODExNCwtMjE2NTYyMTA0LC0xOTU4NDQyND
-IwLC0xMzcwNzEzMzY2LC04MDk5MTY1MzksLTYzODgyNDMyMCwx
-NjYzODE5MTY0LDI4Njk4NjIxOCwtMTU4OTM4ODI4NiwtMTY3OT
-EwNTc4MCwtMTQyNjg5MDkxLDY2Nzk1MDYyMCwxNTMzMjUxMjk1
-LC0xNzI4OTgxMDhdfQ==
+eyJoaXN0b3J5IjpbNjA5OTE1MzgzLC0xODQ2MjUwMjg4LC0xND
+Q0MDExOTY0LDE0NzY5NTk2OTIsLTgxNzY3NzAzMiwxNzM5ODY2
+NjEsLTE2MzcyMjgxMTQsLTIxNjU2MjEwNCwtMTk1ODQ0MjQyMC
+wtMTM3MDcxMzM2NiwtODA5OTE2NTM5LC02Mzg4MjQzMjAsMTY2
+MzgxOTE2NCwyODY5ODYyMTgsLTE1ODkzODgyODYsLTE2NzkxMD
+U3ODAsLTE0MjY4OTA5MSw2Njc5NTA2MjAsMTUzMzI1MTI5NSwt
+MTcyODk4MTA4XX0=
 -->
