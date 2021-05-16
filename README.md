@@ -160,8 +160,8 @@ config/
 ├── pipeline.json        - Kubeflow pipeline config, model metrics and TFServe config. Update it as per your requirements
 
 components/
-├── data-consolidation     - scripts and Docker file for downloading Kaggle dataset
-├── data.py       - data processing components
+├── data-consolidation     - Kubeflow pipeline component. Consist scripts and Docker file for downloading Kaggle dataset
+├── timeseries-preprocessing      - Kubeflow pipeline component. Consist scripts and Docker file for downloading Kaggle dataset
 ├── eval.py       - evaluation components
 ├── main.py       - training/optimization pipelines
 ├── models.py     - model architectures
@@ -171,11 +171,11 @@ components/
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NzIzMzQzODQsMTMzNzg5MDg5NSwtNj
-cxODU4ODAsMjkyOTg0NzAwLDExNTYwMzYzOTgsLTE3OTYwMzQ5
-NzQsLTIzMDE4MzIzMiw2MDk5MTUzODMsLTE4NDYyNTAyODgsLT
-E0NDQwMTE5NjQsMTQ3Njk1OTY5MiwtODE3Njc3MDMyLDE3Mzk4
-NjY2MSwtMTYzNzIyODExNCwtMjE2NTYyMTA0LC0xOTU4NDQyND
-IwLC0xMzcwNzEzMzY2LC04MDk5MTY1MzksLTYzODgyNDMyMCwx
-NjYzODE5MTY0XX0=
+eyJoaXN0b3J5IjpbMzgzMzQwOTg0LDEzMzc4OTA4OTUsLTY3MT
+g1ODgwLDI5Mjk4NDcwMCwxMTU2MDM2Mzk4LC0xNzk2MDM0OTc0
+LC0yMzAxODMyMzIsNjA5OTE1MzgzLC0xODQ2MjUwMjg4LC0xND
+Q0MDExOTY0LDE0NzY5NTk2OTIsLTgxNzY3NzAzMiwxNzM5ODY2
+NjEsLTE2MzcyMjgxMTQsLTIxNjU2MjEwNCwtMTk1ODQ0MjQyMC
+wtMTM3MDcxMzM2NiwtODA5OTE2NTM5LC02Mzg4MjQzMjAsMTY2
+MzgxOTE2NF19
 -->
