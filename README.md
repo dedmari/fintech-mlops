@@ -140,10 +140,10 @@ All the files relevant to TFServe is located at `tfserve-config` directory in th
           $kubectl cp tfserve-config/model_model_config kubeflow/copy-model-to-tfserve:/mnt/
   - Delete temporary pod `copy-model-to-tfserve`:
 
-          $kubectl delete -f 
+          $kubectl delete -f tfserve-config/tf-serve-fintech-pvc.yaml -n kubeflow
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzEwOTI2NDkwLC02NzE4NTg4MCwyOTI5OD
+eyJoaXN0b3J5IjpbNjc3MTAzMzkyLC02NzE4NTg4MCwyOTI5OD
 Q3MDAsMTE1NjAzNjM5OCwtMTc5NjAzNDk3NCwtMjMwMTgzMjMy
 LDYwOTkxNTM4MywtMTg0NjI1MDI4OCwtMTQ0NDAxMTk2NCwxND
 c2OTU5NjkyLC04MTc2NzcwMzIsMTczOTg2NjYxLC0xNjM3MjI4
