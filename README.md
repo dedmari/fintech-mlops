@@ -149,10 +149,13 @@ All the files relevant to TFServe is located at `tfserve-config` directory in th
   
 
       $kubectl create -f tfserve-config/tf-serve-fintech-svc.yaml -n kubeflow 
-- Create virtual service
+- Create virtual service `fintech-service` for TFServe:
+  
+
+      $kubectl create -f tfserve-config/tf-serve-fintech-virtual-svc.yaml -n kubeflow 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4NjQ5NDA3NiwtNjcxODU4ODAsMjkyOT
+eyJoaXN0b3J5IjpbLTMzOTkzNDk4OSwtNjcxODU4ODAsMjkyOT
 g0NzAwLDExNTYwMzYzOTgsLTE3OTYwMzQ5NzQsLTIzMDE4MzIz
 Miw2MDk5MTUzODMsLTE4NDYyNTAyODgsLTE0NDQwMTE5NjQsMT
 Q3Njk1OTY5MiwtODE3Njc3MDMyLDE3Mzk4NjY2MSwtMTYzNzIy
