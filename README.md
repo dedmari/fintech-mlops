@@ -127,10 +127,11 @@ All the files relevant to TFServe is located at `tfserve-config` directory in th
    This PVC is going to be pre-loaded with trained model at the time of TFServe deployment. Later, this will be automatically updated when you train new models.
    
 
-       $kubectl create -f initial-model-pvc.yaml -n kubeflow
+       $kubectl create -f tfserve-config/tf-serve-fintech-pvc.yaml -n kubeflow
+- 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg5Njk3NjI4LDExNTYwMzYzOTgsLTE3OT
+eyJoaXN0b3J5IjpbMjkyOTg0NzAwLDExNTYwMzYzOTgsLTE3OT
 YwMzQ5NzQsLTIzMDE4MzIzMiw2MDk5MTUzODMsLTE4NDYyNTAy
 ODgsLTE0NDQwMTE5NjQsMTQ3Njk1OTY5MiwtODE3Njc3MDMyLD
 E3Mzk4NjY2MSwtMTYzNzIyODExNCwtMjE2NTYyMTA0LC0xOTU4
