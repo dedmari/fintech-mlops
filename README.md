@@ -115,14 +115,14 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
 
 ## Setup K8s secret for Kaggle credentials
 In this use-case we are using [**DJIA 30 Stock Time Series**](https://www.kaggle.com/szrlee/stock-time-series-20050101-to-20171231) Kaggle dataset. We need to create a K8s secret in kubeflow namespace that holds the Kaggle credentials. To create a new Kaggle token, under `Account` click on the `Create New API Token` button. This will download a fresh authentication token (consisting username and key) onto your machine. We are storing base64 encrypted kaggle usrername and key in the secret yaml file. You can encrypt using [https://www.base64encode.org/](https://www.base64encode.org/) or create a python script locally and use [base64](https://docs.python.org/3/library/base64.html) python module.
-Replace 
+Replace 'username' and 'key' in `kaggle-secret/muneer-kaggle-credentials.yaml` with your base64 encrypted values.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTc4ODMxMzA1LC0yMzAxODMyMzIsNjA5OT
-E1MzgzLC0xODQ2MjUwMjg4LC0xNDQ0MDExOTY0LDE0NzY5NTk2
-OTIsLTgxNzY3NzAzMiwxNzM5ODY2NjEsLTE2MzcyMjgxMTQsLT
-IxNjU2MjEwNCwtMTk1ODQ0MjQyMCwtMTM3MDcxMzM2NiwtODA5
-OTE2NTM5LC02Mzg4MjQzMjAsMTY2MzgxOTE2NCwyODY5ODYyMT
-gsLTE1ODkzODgyODYsLTE2NzkxMDU3ODAsLTE0MjY4OTA5MSw2
-Njc5NTA2MjBdfQ==
+eyJoaXN0b3J5IjpbLTExMTY2NzY1MzUsLTIzMDE4MzIzMiw2MD
+k5MTUzODMsLTE4NDYyNTAyODgsLTE0NDQwMTE5NjQsMTQ3Njk1
+OTY5MiwtODE3Njc3MDMyLDE3Mzk4NjY2MSwtMTYzNzIyODExNC
+wtMjE2NTYyMTA0LC0xOTU4NDQyNDIwLC0xMzcwNzEzMzY2LC04
+MDk5MTY1MzksLTYzODgyNDMyMCwxNjYzODE5MTY0LDI4Njk4Nj
+IxOCwtMTU4OTM4ODI4NiwtMTY3OTEwNTc4MCwtMTQyNjg5MDkx
+LDY2Nzk1MDYyMF19
 -->
