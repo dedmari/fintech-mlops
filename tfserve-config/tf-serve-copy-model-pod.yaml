@@ -1,0 +1,15 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: copy-model-to-tfserve
+spec:
+  volumes:
+    - name: models
+      persistentVolumeClaim:
+       claimName: fintech-model-pvc 
+  containers:
+    - name: copy-model-container
+      image: nginx
+      volumeMounts:
+        - mountPath: "/mnt"
+          name: models

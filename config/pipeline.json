@@ -1,1 +1,53 @@
-{"pipeline_run_params": {"download_data": "True", "kaggle_dataset_name": "szrlee/stock-time-series-20050101-to-20171231", "data_pvc_name": "stock-time-series", "raw_data_dir": "djia_30_stock_data/", "processed_data_dir": "preproc_djia_30_stock_data/", "data_pvc_size": "401Gi", "restore_data_from_snasphot": "False", "data_snapshot_name": "", "kaggle_credentials_k8s_secret": "muneer-kaggle-credentials", "itr": "3000", "input_features": "24", "model_name": "DeepModel", "model_tag": "2", "model_path": "models/", "use_existing_model_pvc": "False", "model_pvc_name": "stock-time-series", "model_pvc_size": "401Gi"}, "pipeline_metadata": {"pipeline_name": "Stock Time-series Forecast Pipeline", "description": "Time Series Forecast for stock based on historic data.", "pipeline_run_name": "Fintech Jenkins triggered run 1", "use_existing_pipeline": "False", "pipeline_id": "f59c68f6-b2af-4c4d-8ebc-ca094c4c56d6", "pipeline_version_id": "f59c68f6-b2af-4c4d-8ebc-ca094c4c56d6", "use_existing_experiment": "False", "experiment_name": "Team: A", "enable_snapshot": "True", "volume_snapshot_class_name": "netapp-csi-snapclass"}, "model_metrics": [{"name": "accuracy-test", "node_id": "stock-time-series", "number_value": 0, "format": "PERCENTAGE"}, {"name": "accuracy-train", "node_id": "stock-time-series", "number_value": 0, "format": "PERCENTAGE"}], "model_serve": {"tf_serve_name": "fintech", "base_path": "/mnt", "tf_serve_deploy_name": "fintech-v1", "label_selector": "app=fintech"}}
+{
+  "pipeline_run_params": {
+    "download_data": "True",
+    "kaggle_dataset_name": "szrlee/stock-time-series-20050101-to-20171231",
+    "data_pvc_name": "stock-time-series-forecast",
+    "raw_data_dir": "djia_30_stock_data/",
+    "processed_data_dir": "preproc_djia_30_stock_data/",
+    "data_pvc_size": "10Gi",
+    "restore_data_from_snasphot": "False",
+    "data_snapshot_name": "snapshot-djia-kaggle-dataset",
+    "kaggle_credentials_k8s_secret": "muneer-kaggle-credentials",
+    "itr": "3000",
+    "input_features": "24",
+    "model_name": "DeepModel",
+    "model_tag": "2",
+    "model_path": "models/",
+    "use_existing_model_pvc": "False",
+    "model_pvc_name": "stock-time-series-forecast",
+    "model_pvc_size": "10Gi"
+  },
+  "pipeline_metadata": {
+    "pipeline_name": "Stock Time-series Forecast Pipeline",
+    "description": "Time Series Forecast for stock based on historic data.",
+    "pipeline_run_name": "Fintech Jenkins triggered run 1",
+    "use_existing_pipeline": "False",
+    "pipeline_id": "",
+    "pipeline_version_id": "",
+    "use_existing_experiment": "False",
+    "experiment_name": "Team: MLOps",
+    "enable_snapshot": "True",
+    "volume_snapshot_class_name": "netapp-csi-snapclass"
+  },
+  "model_metrics": [
+    {
+      "name": "accuracy-test",
+      "node_id": "stock-time-series-forecast-z6rgg-3593817919",
+      "number_value": 0.6633499170812603,
+      "format": "PERCENTAGE"
+    },
+    {
+      "name": "accuracy-train",
+      "node_id": "stock-time-series-forecast-z6rgg-3593817919",
+      "number_value": 0.6762142181396484,
+      "format": "PERCENTAGE"
+    }
+  ],
+  "model_serve": {
+    "tf_serve_name": "fintech",
+    "base_path": "/mnt",
+    "tf_serve_deploy_name": "fintech-v1",
+    "label_selector": "app=fintech"
+  }
+}
