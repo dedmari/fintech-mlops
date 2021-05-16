@@ -157,9 +157,8 @@ All the files relevant to TFServe is located at `tfserve-config` directory in th
 ## Directory structure
 ```bash
 config/
-├── pipeline.json        - Kubeflow pipeline config, model metrics and TF
-└── cli.py        - CLI app
-├── schemas.py    - API model schemas
+├── pipeline.json        - Kubeflow pipeline config, model metrics and TFServe config. Update it as per your requirements
+
 tagifai/
 ├── config.py     - configuration setup
 ├── data.py       - data processing components
@@ -172,11 +171,11 @@ tagifai/
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjIyMDU4MDYsMTMzNzg5MDg5NSwtNj
-cxODU4ODAsMjkyOTg0NzAwLDExNTYwMzYzOTgsLTE3OTYwMzQ5
-NzQsLTIzMDE4MzIzMiw2MDk5MTUzODMsLTE4NDYyNTAyODgsLT
-E0NDQwMTE5NjQsMTQ3Njk1OTY5MiwtODE3Njc3MDMyLDE3Mzk4
-NjY2MSwtMTYzNzIyODExNCwtMjE2NTYyMTA0LC0xOTU4NDQyND
-IwLC0xMzcwNzEzMzY2LC04MDk5MTY1MzksLTYzODgyNDMyMCwx
-NjYzODE5MTY0XX0=
+eyJoaXN0b3J5IjpbLTI2Nzc2NjQ5MSwxMzM3ODkwODk1LC02Nz
+E4NTg4MCwyOTI5ODQ3MDAsMTE1NjAzNjM5OCwtMTc5NjAzNDk3
+NCwtMjMwMTgzMjMyLDYwOTkxNTM4MywtMTg0NjI1MDI4OCwtMT
+Q0NDAxMTk2NCwxNDc2OTU5NjkyLC04MTc2NzcwMzIsMTczOTg2
+NjYxLC0xNjM3MjI4MTE0LC0yMTY1NjIxMDQsLTE5NTg0NDI0Mj
+AsLTEzNzA3MTMzNjYsLTgwOTkxNjUzOSwtNjM4ODI0MzIwLDE2
+NjM4MTkxNjRdfQ==
 -->
