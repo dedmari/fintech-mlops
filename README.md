@@ -141,17 +141,18 @@ All the files relevant to TFServe is located at `tfserve-config` directory in th
   - Delete temporary pod `copy-model-to-tfserve`:
 
           $kubectl delete -f tfserve-config/tf-serve-fintech-pvc.yaml -n kubeflow
-- Deplot TFServe on K8s cluster:
+- Deploy TFServe on K8s cluster:
   
 
-      $
+      $kubectl create -f tfserve-config/tf-serve-fintech-dep.yaml -n kubeflow
+- Create service for TFServe
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzY5NzI1Mjc4LC02NzE4NTg4MCwyOTI5OD
-Q3MDAsMTE1NjAzNjM5OCwtMTc5NjAzNDk3NCwtMjMwMTgzMjMy
-LDYwOTkxNTM4MywtMTg0NjI1MDI4OCwtMTQ0NDAxMTk2NCwxND
-c2OTU5NjkyLC04MTc2NzcwMzIsMTczOTg2NjYxLC0xNjM3MjI4
-MTE0LC0yMTY1NjIxMDQsLTE5NTg0NDI0MjAsLTEzNzA3MTMzNj
-YsLTgwOTkxNjUzOSwtNjM4ODI0MzIwLDE2NjM4MTkxNjQsMjg2
-OTg2MjE4XX0=
+eyJoaXN0b3J5IjpbLTExOTk3OTUxMCwtNjcxODU4ODAsMjkyOT
+g0NzAwLDExNTYwMzYzOTgsLTE3OTYwMzQ5NzQsLTIzMDE4MzIz
+Miw2MDk5MTUzODMsLTE4NDYyNTAyODgsLTE0NDQwMTE5NjQsMT
+Q3Njk1OTY5MiwtODE3Njc3MDMyLDE3Mzk4NjY2MSwtMTYzNzIy
+ODExNCwtMjE2NTYyMTA0LC0xOTU4NDQyNDIwLC0xMzcwNzEzMz
+Y2LC04MDk5MTY1MzksLTYzODgyNDMyMCwxNjYzODE5MTY0LDI4
+Njk4NjIxOF19
 -->
