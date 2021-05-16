@@ -168,13 +168,13 @@ components/
 ## How it all works together:
 In Jenkins, you need to create a Multibranch Pipeline and link Git repository to it. Before you do so, clone the this git repository and push to your git repository with all the branches as that of this repository. If you are not familiar with Jenkins Multibranch Pipeline, visit [https://dzone.com/articles/implement-ci-for-multibranch-pipeline-in-jenkins](https://dzone.com/articles/implement-ci-for-multibranch-pipeline-in-jenkins) and follow the `Steps to Create a Simple Multibranch Pipeline Project` section only,  it will get you started. 
 
-If you are interested to see it in action, please visit NVIDIA GTC 2021 session , there you will find a demo along with the basic walkthrough.
+If you are interested to see it in action, please visit NVIDIA GTC 2021 session [E31919: From Research to Production—Effective Tools and Methodologies for Deploying AI Enabled Products](https://gtc21.event.nvidia.com/media/1_gt53r6i5?ncid=ref-spo-57504) , there you will find a demo along with the basic walkthrough.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwOTU4MjA2NSwxMzM3ODkwODk1LC02Nz
-E4NTg4MCwyOTI5ODQ3MDAsMTE1NjAzNjM5OCwtMTc5NjAzNDk3
-NCwtMjMwMTgzMjMyLDYwOTkxNTM4MywtMTg0NjI1MDI4OCwtMT
-Q0NDAxMTk2NCwxNDc2OTU5NjkyLC04MTc2NzcwMzIsMTczOTg2
-NjYxLC0xNjM3MjI4MTE0LC0yMTY1NjIxMDQsLTE5NTg0NDI0Mj
-AsLTEzNzA3MTMzNjYsLTgwOTkxNjUzOSwtNjM4ODI0MzIwLDE2
-NjM4MTkxNjRdfQ==
+eyJoaXN0b3J5IjpbMTk0Nzc0ODQ1LDEzMzc4OTA4OTUsLTY3MT
+g1ODgwLDI5Mjk4NDcwMCwxMTU2MDM2Mzk4LC0xNzk2MDM0OTc0
+LC0yMzAxODMyMzIsNjA5OTE1MzgzLC0xODQ2MjUwMjg4LC0xND
+Q0MDExOTY0LDE0NzY5NTk2OTIsLTgxNzY3NzAzMiwxNzM5ODY2
+NjEsLTE2MzcyMjgxMTQsLTIxNjU2MjEwNCwtMTk1ODQ0MjQyMC
+wtMTM3MDcxMzM2NiwtODA5OTE2NTM5LC02Mzg4MjQzMjAsMTY2
+MzgxOTE2NF19
 -->
