@@ -114,14 +114,14 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
   You need to install [Docker Pipeline](https://plugins.jenkins.io/docker-workflow/) plugin. If you are not familiar with installing Jenkins plugins, please visit [https://www.jenkins.io/doc/book/managing/plugins/#from-the-web-ui](https://www.jenkins.io/doc/book/managing/plugins/#from-the-web-ui)
 
 ## Setup K8s secret for Kaggle credentials
-In this use-case we are using [**DJIA 30 Stock Time Series**](https://www.kaggle.com/szrlee/stock-time-series-20050101-to-20171231) Kaggle dataset. We need to create a K8s secret in kubeflow namespace that holds the Kaggle credentials. To create a new Kaggle token, under `Account` click on the `Create New API Token` button. This will download a fresh authentication token () onto your machine. We are storing base64 encrypted kaggle usrername and key 
+In this use-case we are using [**DJIA 30 Stock Time Series**](https://www.kaggle.com/szrlee/stock-time-series-20050101-to-20171231) Kaggle dataset. We need to create a K8s secret in kubeflow namespace that holds the Kaggle credentials. To create a new Kaggle token, under `Account` click on the `Create New API Token` button. This will download a fresh authentication token (consisting username and key) onto your machine. We are storing base64 encrypted kaggle usrername and key in the secret yaml file. You can encrypt using 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTUzOTk4ODAsNjA5OTE1MzgzLC0xOD
-Q2MjUwMjg4LC0xNDQ0MDExOTY0LDE0NzY5NTk2OTIsLTgxNzY3
-NzAzMiwxNzM5ODY2NjEsLTE2MzcyMjgxMTQsLTIxNjU2MjEwNC
-wtMTk1ODQ0MjQyMCwtMTM3MDcxMzM2NiwtODA5OTE2NTM5LC02
-Mzg4MjQzMjAsMTY2MzgxOTE2NCwyODY5ODYyMTgsLTE1ODkzOD
-gyODYsLTE2NzkxMDU3ODAsLTE0MjY4OTA5MSw2Njc5NTA2MjAs
-MTUzMzI1MTI5NV19
+eyJoaXN0b3J5IjpbLTIzMDE4MzIzMiw2MDk5MTUzODMsLTE4ND
+YyNTAyODgsLTE0NDQwMTE5NjQsMTQ3Njk1OTY5MiwtODE3Njc3
+MDMyLDE3Mzk4NjY2MSwtMTYzNzIyODExNCwtMjE2NTYyMTA0LC
+0xOTU4NDQyNDIwLC0xMzcwNzEzMzY2LC04MDk5MTY1MzksLTYz
+ODgyNDMyMCwxNjYzODE5MTY0LDI4Njk4NjIxOCwtMTU4OTM4OD
+I4NiwtMTY3OTEwNTc4MCwtMTQyNjg5MDkxLDY2Nzk1MDYyMCwx
+NTMzMjUxMjk1XX0=
 -->
