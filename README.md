@@ -128,14 +128,15 @@ All the files relevant to TFServe is located at `tfserve-config` directory in th
    
 
        $kubectl create -f tfserve-config/tf-serve-fintech-pvc.yaml -n kubeflow
-- 
+- Copy pre-trained model with model configuration to PVC:
+  We will create a temporay pod to copy model and model configuration to  
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjkyOTg0NzAwLDExNTYwMzYzOTgsLTE3OT
-YwMzQ5NzQsLTIzMDE4MzIzMiw2MDk5MTUzODMsLTE4NDYyNTAy
-ODgsLTE0NDQwMTE5NjQsMTQ3Njk1OTY5MiwtODE3Njc3MDMyLD
-E3Mzk4NjY2MSwtMTYzNzIyODExNCwtMjE2NTYyMTA0LC0xOTU4
-NDQyNDIwLC0xMzcwNzEzMzY2LC04MDk5MTY1MzksLTYzODgyND
-MyMCwxNjYzODE5MTY0LDI4Njk4NjIxOCwtMTU4OTM4ODI4Niwt
-MTY3OTEwNTc4MF19
+eyJoaXN0b3J5IjpbMTAxNzA3NTY3LDI5Mjk4NDcwMCwxMTU2MD
+M2Mzk4LC0xNzk2MDM0OTc0LC0yMzAxODMyMzIsNjA5OTE1Mzgz
+LC0xODQ2MjUwMjg4LC0xNDQ0MDExOTY0LDE0NzY5NTk2OTIsLT
+gxNzY3NzAzMiwxNzM5ODY2NjEsLTE2MzcyMjgxMTQsLTIxNjU2
+MjEwNCwtMTk1ODQ0MjQyMCwtMTM3MDcxMzM2NiwtODA5OTE2NT
+M5LC02Mzg4MjQzMjAsMTY2MzgxOTE2NCwyODY5ODYyMTgsLTE1
+ODkzODgyODZdfQ==
 -->
