@@ -154,14 +154,29 @@ All the files relevant to TFServe is located at `tfserve-config` directory in th
 
       $kubectl create -f tfserve-config/tf-serve-fintech-virtual-svc.yaml -n kubeflow 
 
-
+## Directory structure
+```bash
+config/
+├── pipeline.json        - Kubeflow pipeline config, model metrics and TF
+└── cli.py        - CLI app
+├── schemas.py    - API model schemas
+tagifai/
+├── config.py     - configuration setup
+├── data.py       - data processing components
+├── eval.py       - evaluation components
+├── main.py       - training/optimization pipelines
+├── models.py     - model architectures
+├── predict.py    - inference components
+├── train.py      - training components
+└── utils.py      - supplementary utilities
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzNzg5MDg5NSwtNjcxODU4ODAsMjkyOT
-g0NzAwLDExNTYwMzYzOTgsLTE3OTYwMzQ5NzQsLTIzMDE4MzIz
-Miw2MDk5MTUzODMsLTE4NDYyNTAyODgsLTE0NDQwMTE5NjQsMT
-Q3Njk1OTY5MiwtODE3Njc3MDMyLDE3Mzk4NjY2MSwtMTYzNzIy
-ODExNCwtMjE2NTYyMTA0LC0xOTU4NDQyNDIwLC0xMzcwNzEzMz
-Y2LC04MDk5MTY1MzksLTYzODgyNDMyMCwxNjYzODE5MTY0LDI4
-Njk4NjIxOF19
+eyJoaXN0b3J5IjpbLTE5MjIyMDU4MDYsMTMzNzg5MDg5NSwtNj
+cxODU4ODAsMjkyOTg0NzAwLDExNTYwMzYzOTgsLTE3OTYwMzQ5
+NzQsLTIzMDE4MzIzMiw2MDk5MTUzODMsLTE4NDYyNTAyODgsLT
+E0NDQwMTE5NjQsMTQ3Njk1OTY5MiwtODE3Njc3MDMyLDE3Mzk4
+NjY2MSwtMTYzNzIyODExNCwtMjE2NTYyMTA0LC0xOTU4NDQyND
+IwLC0xMzcwNzEzMzY2LC04MDk5MTY1MzksLTYzODgyNDMyMCwx
+NjYzODE5MTY0XX0=
 -->
