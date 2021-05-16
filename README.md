@@ -161,17 +161,12 @@ config/
 
 components/
 ├── data-consolidation     - Kubeflow pipeline component. Consist scripts and Docker file for downloading Kaggle dataset
-├── timeseries-preprocessing      - Kubeflow pipeline component. Consist scripts and Docker file for downloading Kaggle dataset
-├── eval.py       - evaluation components
-├── main.py       - training/optimization pipelines
-├── models.py     - model architectures
-├── predict.py    - inference components
-├── train.py      - training components
-└── utils.py      - supplementary utilities
+├── timeseries-preprocessing      - Kubeflow pipeline component. Consist scripts and Docker file for data processing
+├── timeseries-training       - Kubeflow pipeline component. Consist scripts and Docker file for training
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzgzMzQwOTg0LDEzMzc4OTA4OTUsLTY3MT
+eyJoaXN0b3J5IjpbMjIzMzQ0MzkwLDEzMzc4OTA4OTUsLTY3MT
 g1ODgwLDI5Mjk4NDcwMCwxMTU2MDM2Mzk4LC0xNzk2MDM0OTc0
 LC0yMzAxODMyMzIsNjA5OTE1MzgzLC0xODQ2MjUwMjg4LC0xND
 Q0MDExOTY0LDE0NzY5NTk2OTIsLTgxNzY3NzAzMiwxNzM5ODY2
