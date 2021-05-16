@@ -121,13 +121,14 @@ Finally, create secret in kubeflow namespace using `kaggle-secret/muneer-kaggle-
 
     $kubectl create -f kaggle-secret/muneer-kaggle-credentials.yaml -n kubeflow
 
-## 
+## Deploy and setup TFServe 
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjA2ODQ1NTQ4LC0xNzk2MDM0OTc0LC0yMz
-AxODMyMzIsNjA5OTE1MzgzLC0xODQ2MjUwMjg4LC0xNDQ0MDEx
-OTY0LDE0NzY5NTk2OTIsLTgxNzY3NzAzMiwxNzM5ODY2NjEsLT
-E2MzcyMjgxMTQsLTIxNjU2MjEwNCwtMTk1ODQ0MjQyMCwtMTM3
-MDcxMzM2NiwtODA5OTE2NTM5LC02Mzg4MjQzMjAsMTY2MzgxOT
-E2NCwyODY5ODYyMTgsLTE1ODkzODgyODYsLTE2NzkxMDU3ODAs
-LTE0MjY4OTA5MV19
+eyJoaXN0b3J5IjpbMTE1NjAzNjM5OCwtMTc5NjAzNDk3NCwtMj
+MwMTgzMjMyLDYwOTkxNTM4MywtMTg0NjI1MDI4OCwtMTQ0NDAx
+MTk2NCwxNDc2OTU5NjkyLC04MTc2NzcwMzIsMTczOTg2NjYxLC
+0xNjM3MjI4MTE0LC0yMTY1NjIxMDQsLTE5NTg0NDI0MjAsLTEz
+NzA3MTMzNjYsLTgwOTkxNjUzOSwtNjM4ODI0MzIwLDE2NjM4MT
+kxNjQsMjg2OTg2MjE4LC0xNTg5Mzg4Mjg2LC0xNjc5MTA1Nzgw
+LC0xNDI2ODkwOTFdfQ==
 -->
