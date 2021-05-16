@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  labels:
+  name: fintech-service
+  namespace: kubeflow
+spec:
+  gateways:
+  - kubeflow-gateway
+  hosts:
+  - '*'
+  http:
+  - match:
+    - method:
+        exact: POST
+      uri:
+        prefix: /tfserving/models/fintech
+    rewrite:
+      uri: /v1/models/fintech:predict
+    route:
+    - destination:
+        host: fintech-service
+        port:
+          number: 8500
+        subset: v1
+      weight: 100
