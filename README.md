@@ -136,10 +136,10 @@ All the files relevant to TFServe is located at `tfserve-config` directory in th
    - Copy model and model config (local) to PVC using pod `copy-model-to-tfserve`: 
  
 
-          $kubectl cp 
+          $kubectl cp tfserve-config/1 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzk3NDgwMTI0LDI5Mjk4NDcwMCwxMTU2MD
+eyJoaXN0b3J5IjpbLTY3MTg1ODgwLDI5Mjk4NDcwMCwxMTU2MD
 M2Mzk4LC0xNzk2MDM0OTc0LC0yMzAxODMyMzIsNjA5OTE1Mzgz
 LC0xODQ2MjUwMjg4LC0xNDQ0MDExOTY0LDE0NzY5NTk2OTIsLT
 gxNzY3NzAzMiwxNzM5ODY2NjEsLTE2MzcyMjgxMTQsLTIxNjU2
