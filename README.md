@@ -114,14 +114,14 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
   You need to install [Docker Pipeline](https://plugins.jenkins.io/docker-workflow/) plugin. If you are not familiar with installing Jenkins plugins, please visit [https://www.jenkins.io/doc/book/managing/plugins/#from-the-web-ui](https://www.jenkins.io/doc/book/managing/plugins/#from-the-web-ui)
 
 ## Setup K8s secret for Kaggle credentials
-In this use-case we are using [**DJIA 30 Stock Time Series**](https://www.kaggle.com/szrlee/stock-time-series-20050101-to-20171231) Kaggle dataset. We need to create a K8s secret in kubeflow namespace that holds the Kaggle credentials. To create a new Kaggle token, under `Account` click on the `Create New API Token` button. This will download a fresh authentication token (consisting username and key) onto your machine. We are storing base64 encrypted kaggle usrername and key in the secret yaml file. You can encrypt using [https://www.base64encode.org/](https://www.base64encode.org/) or create a python script locally and use [base64](https://docs.python.org/3/library/base64.html) python module.
+In this use-case we are using [**DJIA 30 Stock Time Series**](https://www.kaggle.com/szrlee/stock-time-series-20050101-to-20171231) Kaggle dataset. We need to create a K8s secret in kubeflow namespace that holds the Kaggle credentials and allows to download data from Kaggle. To create a new Kaggle token, under `Account` click on the `Create New API Token` button. This will download a fresh authentication token (consisting username and key) onto your machine. We are storing base64 encrypted kaggle usrername and key in the secret yaml file. You can encrypt using [https://www.base64encode.org/](https://www.base64encode.org/) or create a python script locally and use [base64](https://docs.python.org/3/library/base64.html) python module.
 Replace 'username' and 'key' in `kaggle-secret/muneer-kaggle-credentials.yaml` with your base64 encrypted values.
 Finally, create secret in kubeflow namespace using `kaggle-secret/muneer-kaggle-credentials.yaml`:
 
-    enter code here
+    $kubectl create -f kaggle-secret/muneer-kaggle-credentials.yaml -n kubeflow
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0NjUyNjg4NSwtMjMwMTgzMjMyLDYwOT
+eyJoaXN0b3J5IjpbMjExOTM4MjIxNSwtMjMwMTgzMjMyLDYwOT
 kxNTM4MywtMTg0NjI1MDI4OCwtMTQ0NDAxMTk2NCwxNDc2OTU5
 NjkyLC04MTc2NzcwMzIsMTczOTg2NjYxLC0xNjM3MjI4MTE0LC
 0yMTY1NjIxMDQsLTE5NTg0NDI0MjAsLTEzNzA3MTMzNjYsLTgw
