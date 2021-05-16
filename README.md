@@ -123,12 +123,15 @@ Finally, create secret in kubeflow namespace using `kaggle-secret/muneer-kaggle-
 
 ## Deploy and setup TFServe 
 
+ - Create PVC for TFServe to store model:
+   This PVC is going to be pre-loaded with trained model at the time of deployment. Later, this will be automatic
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE1NjAzNjM5OCwtMTc5NjAzNDk3NCwtMj
-MwMTgzMjMyLDYwOTkxNTM4MywtMTg0NjI1MDI4OCwtMTQ0NDAx
-MTk2NCwxNDc2OTU5NjkyLC04MTc2NzcwMzIsMTczOTg2NjYxLC
-0xNjM3MjI4MTE0LC0yMTY1NjIxMDQsLTE5NTg0NDI0MjAsLTEz
-NzA3MTMzNjYsLTgwOTkxNjUzOSwtNjM4ODI0MzIwLDE2NjM4MT
-kxNjQsMjg2OTg2MjE4LC0xNTg5Mzg4Mjg2LC0xNjc5MTA1Nzgw
-LC0xNDI2ODkwOTFdfQ==
+eyJoaXN0b3J5IjpbMTExMTA1Njc3OCwxMTU2MDM2Mzk4LC0xNz
+k2MDM0OTc0LC0yMzAxODMyMzIsNjA5OTE1MzgzLC0xODQ2MjUw
+Mjg4LC0xNDQ0MDExOTY0LDE0NzY5NTk2OTIsLTgxNzY3NzAzMi
+wxNzM5ODY2NjEsLTE2MzcyMjgxMTQsLTIxNjU2MjEwNCwtMTk1
+ODQ0MjQyMCwtMTM3MDcxMzM2NiwtODA5OTE2NTM5LC02Mzg4Mj
+QzMjAsMTY2MzgxOTE2NCwyODY5ODYyMTgsLTE1ODkzODgyODYs
+LTE2NzkxMDU3ODBdfQ==
 -->
