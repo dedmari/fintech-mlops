@@ -114,14 +114,15 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
   You need to install [Docker Pipeline](https://plugins.jenkins.io/docker-workflow/) plugin. If you are not familiar with installing Jenkins plugins, please visit [https://www.jenkins.io/doc/book/managing/plugins/#from-the-web-ui](https://www.jenkins.io/doc/book/managing/plugins/#from-the-web-ui)
 
 ## Setup K8s secret for Kaggle credentials
-In this use-case we are using [**DJIA 30 Stock Time Series**](https://www.kaggle.com/szrlee/stock-time-series-20050101-to-20171231) Kaggle dataset. We need to create a K8s secret in kubeflow namespace that holds the Kaggle credentials. To create a new Kaggle token, under `Account` click on the `Create New API Token` button. This will download a fresh authentication token (consisting username and key) onto your machine. We are storing base64 encrypted kaggle usrername and key in the secret yaml file. You can encrypt using [https://www.base64encode.org/](https://www.base64encode.org/) or create a python script locally
+In this use-case we are using [**DJIA 30 Stock Time Series**](https://www.kaggle.com/szrlee/stock-time-series-20050101-to-20171231) Kaggle dataset. We need to create a K8s secret in kubeflow namespace that holds the Kaggle credentials. To create a new Kaggle token, under `Account` click on the `Create New API Token` button. This will download a fresh authentication token (consisting username and key) onto your machine. We are storing base64 encrypted kaggle usrername and key in the secret yaml file. You can encrypt using [https://www.base64encode.org/](https://www.base64encode.org/) or create a python script locally and use [base64](https://docs.python.org/3/library/base64.html) python module.
+Replace 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA4ODk5NTk0MiwtMjMwMTgzMjMyLDYwOT
-kxNTM4MywtMTg0NjI1MDI4OCwtMTQ0NDAxMTk2NCwxNDc2OTU5
-NjkyLC04MTc2NzcwMzIsMTczOTg2NjYxLC0xNjM3MjI4MTE0LC
-0yMTY1NjIxMDQsLTE5NTg0NDI0MjAsLTEzNzA3MTMzNjYsLTgw
-OTkxNjUzOSwtNjM4ODI0MzIwLDE2NjM4MTkxNjQsMjg2OTg2Mj
-E4LC0xNTg5Mzg4Mjg2LC0xNjc5MTA1NzgwLC0xNDI2ODkwOTEs
-NjY3OTUwNjIwXX0=
+eyJoaXN0b3J5IjpbNTc4ODMxMzA1LC0yMzAxODMyMzIsNjA5OT
+E1MzgzLC0xODQ2MjUwMjg4LC0xNDQ0MDExOTY0LDE0NzY5NTk2
+OTIsLTgxNzY3NzAzMiwxNzM5ODY2NjEsLTE2MzcyMjgxMTQsLT
+IxNjU2MjEwNCwtMTk1ODQ0MjQyMCwtMTM3MDcxMzM2NiwtODA5
+OTE2NTM5LC02Mzg4MjQzMjAsMTY2MzgxOTE2NCwyODY5ODYyMT
+gsLTE1ODkzODgyODYsLTE2NzkxMDU3ODAsLTE0MjY4OTA5MSw2
+Njc5NTA2MjBdfQ==
 -->
