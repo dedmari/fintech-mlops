@@ -166,13 +166,13 @@ components/
 ```
 
 ## How it all works together:
-In Jenkins, you need to create a Multibranch Pipeline and link Git repository to it. Before you do so, clone the this git repository and push to your git repository with all the branches as that of this repository. If you are not familiar with MultiBRNA
+In Jenkins, you need to create a Multibranch Pipeline and link Git repository to it. Before you do so, clone the this git repository and push to your git repository with all the branches as that of this repository. If you are not familiar with Jenkins Multibranch Pipeline, visit [https://dzone.com/articles/implement-ci-for-multibranch-pipeline-in-jenkins](https://dzone.com/articles/implement-ci-for-multibranch-pipeline-in-jenkins) and follow the `Steps to Create a Simple Multibranch Pipeline Project` section, it will get you started. 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5MjIwMzQ0LDEzMzc4OTA4OTUsLTY3MT
-g1ODgwLDI5Mjk4NDcwMCwxMTU2MDM2Mzk4LC0xNzk2MDM0OTc0
-LC0yMzAxODMyMzIsNjA5OTE1MzgzLC0xODQ2MjUwMjg4LC0xND
-Q0MDExOTY0LDE0NzY5NTk2OTIsLTgxNzY3NzAzMiwxNzM5ODY2
-NjEsLTE2MzcyMjgxMTQsLTIxNjU2MjEwNCwtMTk1ODQ0MjQyMC
-wtMTM3MDcxMzM2NiwtODA5OTE2NTM5LC02Mzg4MjQzMjAsMTY2
-MzgxOTE2NF19
+eyJoaXN0b3J5IjpbLTE5NTk5MDgyNzcsMTMzNzg5MDg5NSwtNj
+cxODU4ODAsMjkyOTg0NzAwLDExNTYwMzYzOTgsLTE3OTYwMzQ5
+NzQsLTIzMDE4MzIzMiw2MDk5MTUzODMsLTE4NDYyNTAyODgsLT
+E0NDQwMTE5NjQsMTQ3Njk1OTY5MiwtODE3Njc3MDMyLDE3Mzk4
+NjY2MSwtMTYzNzIyODExNCwtMjE2NTYyMTA0LC0xOTU4NDQyND
+IwLC0xMzcwNzEzMzY2LC04MDk5MTY1MzksLTYzODgyNDMyMCwx
+NjYzODE5MTY0XX0=
 -->
