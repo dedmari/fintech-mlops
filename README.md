@@ -123,7 +123,7 @@ Finally, create secret in kubeflow namespace using `kaggle-secret/muneer-kaggle-
 
 ## Deploy and setup TFServe 
 All the files relevant to TFServe is located at `tfserve-config` directory in this repository
- - Create PVC, 'fintech-model-pvc' for TFServe to store model:
+ - Create PVC, `fintech-model-pvc` for TFServe to store model:
    This PVC is going to be pre-loaded with trained model at the time of TFServe deployment. Later, this will be automatically updated when you train new models.
    
 
@@ -133,18 +133,21 @@ All the files relevant to TFServe is located at `tfserve-config` directory in th
 	
 
 		    $kubectl create -f tfserve-config/tf-serve-copy-model-pod.yaml -n kubeflow
-   - Copy model and model config (local) to PVC using pod `copy-model-to-tfserve`: 
+   - Copy model and model config (local) to the PVC `fintech-model-pvc` using pod `copy-model-to-tfserve`: 
  
 
           $kubectl cp tfserve-config/1 kubeflow/copy-model-to-tfserve:/mnt/
           $kubectl cp tfserve-config/model_model_config kubeflow/copy-model-to-tfserve:/mnt/
+  - Delete temporary pod `copy-model-to-tfserve`:
+
+          $kubectl delete -f 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxODYxNDcxMywtNjcxODU4ODAsMjkyOT
-g0NzAwLDExNTYwMzYzOTgsLTE3OTYwMzQ5NzQsLTIzMDE4MzIz
-Miw2MDk5MTUzODMsLTE4NDYyNTAyODgsLTE0NDQwMTE5NjQsMT
-Q3Njk1OTY5MiwtODE3Njc3MDMyLDE3Mzk4NjY2MSwtMTYzNzIy
-ODExNCwtMjE2NTYyMTA0LC0xOTU4NDQyNDIwLC0xMzcwNzEzMz
-Y2LC04MDk5MTY1MzksLTYzODgyNDMyMCwxNjYzODE5MTY0LDI4
-Njk4NjIxOF19
+eyJoaXN0b3J5IjpbNzEwOTI2NDkwLC02NzE4NTg4MCwyOTI5OD
+Q3MDAsMTE1NjAzNjM5OCwtMTc5NjAzNDk3NCwtMjMwMTgzMjMy
+LDYwOTkxNTM4MywtMTg0NjI1MDI4OCwtMTQ0NDAxMTk2NCwxND
+c2OTU5NjkyLC04MTc2NzcwMzIsMTczOTg2NjYxLC0xNjM3MjI4
+MTE0LC0yMTY1NjIxMDQsLTE5NTg0NDI0MjAsLTEzNzA3MTMzNj
+YsLTgwOTkxNjUzOSwtNjM4ODI0MzIwLDE2NjM4MTkxNjQsMjg2
+OTg2MjE4XX0=
 -->
