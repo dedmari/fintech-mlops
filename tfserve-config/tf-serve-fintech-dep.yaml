@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: fintech
+  name: fintech-v1
+  namespace: kubeflow
+spec:
+  selector:
+    matchLabels:
+      app: fintech
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+      labels:
+        app: fintech
+        version: v1
+    spec:
+      containers:
+      - args:
+        - --port=9000
+        - --rest_api_port=8500
+        - --model_name=fintech
+        - --model_base_path=/mnt/
+        command:
+        - /usr/bin/tensorflow_model_server
+        image: tensorflow/serving:1.11.1
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          tcpSocket:
+            port: 9000
+        name: fintech
+        ports:
+        - containerPort: 9000
+        - containerPort: 8500
+        resources:
+          limits:
+            cpu: "4"
+            memory: 4Gi
+          requests:
+            cpu: "1"
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /mnt
+          name: model-pvc
+      volumes:
+      - name: model-pvc
+        persistentVolumeClaim:
+          claimName: fintech-model-pvc
