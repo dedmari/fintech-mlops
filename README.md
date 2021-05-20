@@ -13,7 +13,7 @@ This repository contains the implementation of MLOps setup discussed in articles
 ## Install Trident (dynamic storage orchestrator) using helm
 Install helm, if not already available:
 
-    $curl [https://baltocdn.com/helm/signing.asc](https://baltocdn.com/helm/signing.asc) | sudo apt-key add -  
+    $curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -  
     $sudo apt-get install apt-transport-https --yes
     $echo "deb [https://baltocdn.com/helm/stable/debian/](https://baltocdn.com/helm/stable/debian/) all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
     $sudo apt-get update
