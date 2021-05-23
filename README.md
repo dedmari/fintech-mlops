@@ -13,11 +13,11 @@ This repository contains the implementation of MLOps setup discussed in articles
 ## Install Trident (dynamic storage orchestrator) using helm
 Install helm, if not already available:
 
-    $curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -  
-    $sudo apt-get install apt-transport-https --yes
-    $echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
-    $sudo apt-get update
-    $sudo apt-get install helm
+    curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -  
+    sudo apt-get install apt-transport-https --yes
+    echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+    sudo apt-get update
+    sudo apt-get install helm
 Download and extract Trident 20.01.1 installer:
 
     $wget https://github.com/NetApp/trident/releases/download/v21.01.1/trident-installer-21.01.1.tar.gz
@@ -33,20 +33,20 @@ Download and extract Trident 20.01.1 installer:
 
 Visit the  [backend configuration guide](https://netapp-trident.readthedocs.io/en/stable-v21.01/kubernetes/operations/tasks/backends/index.html#backend-configuration)  for more details about how to craft the configuration file for your backend type.
 
-    $cp sample-input/<backend template>.json backend.json
+    cp sample-input/<backend template>.json backend.json
     # Edit backend.json and fill out the template for your backend
-    $vi backend.json
-    $./tridentctl -n trident create backend -f backend.json
+    vi backend.json
+    ./tridentctl -n trident create backend -f backend.json
 
 ## Create a storage class for Trident
 This storage class will be used to create Persistent Volume Claims (PVCs) and store persistent data.
 Lets use the underneath yaml fie to create storage class.
 The simplest storage class to start with is one based on the `trident-installer/sample-input/storage-class-csi.yaml.templ` file that comes with the installer, replacing `__BACKEND_TYPE__` with the storage driver name.
 
-    $kubectl create -f sample-input/storage-class-basic-csi.yaml
+    kubectl create -f sample-input/storage-class-basic-csi.yaml
  Kubeflow installation requires a default storage class. We can patch the storage class created above (if not already set to default):
  
-    $kubectl patch storageclass basic-csi -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+    kubectl patch storageclass basic-csi -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
 ## Install Kubeflow v1.0
 Visit [https://v1-0-branch.kubeflow.org/docs/started/k8s/kfctl-k8s-istio/](https://v1-0-branch.kubeflow.org/docs/started/k8s/kfctl-k8s-istio/) and follow the installation instructions 
@@ -56,36 +56,36 @@ If your cluster does not come pre-installed with the correct volume-snapshot com
 
  - Install Snapshot Beta CRDs:
  
-       $kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
-       $kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
-       $kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
+       kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+       kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
+       kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
  - Install Snapshot Controller:
    
-        $kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
-        $kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
+        kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
+        kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
         
 ## Setup K8s VolumeSnapshotClass
  For creating a Volume Snapshot, a [VolumeSnapshotClass](https://netapp-trident.readthedocs.io/en/stable-v20.01/kubernetes/concepts/objects.html#kubernetes-volumesnapshotclass-objects) must be set up. We will create a volume snapshot class and it will be used to achieve ML versioning by leveraging NetApp Snapshot technology.
  
  - In this repository, you will find a folder `netapp-snaphot-class-config` having a VolumeSnapshotClass yaml file, namely `netapp-volume-snapshot-class.yaml`. Let's create VolumeSnapshotClass  `netapp-csi-snapclass`  and set it to default VolumeSnapshotClass:
  
-       $kubectl create -f netapp-snaphot-class-config/netapp-volume-snapshot-class.yaml
+       kubectl create -f netapp-snaphot-class-config/netapp-volume-snapshot-class.yaml
 
 ## Install Jenkins with required plugins
 We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant files for deploying Jenkins. To install Jenkins on the same Kubernetes (K8s) cluster as that of Kubeflow, follow the steps mentioned underneath:
 
  - Create K8s namespace for Jenkins:
  
-	   $kubectl create namespace jenkins
+	   kubectl create namespace jenkins
 - Create Persistent Volume Claim for Jenkins. It will be used to store Jenkins application data. Trident is going to dynamically allocate Persistent Volume. 
 
-      $kubectl create -f jenkins-k8s/jenkins-pvc.yaml --namespace jenkins
+      kubectl create -f jenkins-k8s/jenkins-pvc.yaml --namespace jenkins
 - Deploy Jenkins on K8s cluster:
 
-      $kubectl create -f jenkins-k8s/jenkins-deployment.yaml --namespace jenkins
+      kubectl create -f jenkins-k8s/jenkins-deployment.yaml --namespace jenkins
 - Create service for Jenkins:
 
-      $kubectl create -f jenkins-k8s/jenkins-svc.yaml --namespace jenkins
+      kubectl create -f jenkins-k8s/jenkins-svc.yaml --namespace jenkins
 
 > *Note*: I am using LoadBalancer as a type under spec of service. If you don't have load-balancer on your K8s cluster, you could change it to NodePort in `jenkins-k8s/jenkins-svc.yaml`
 - Get the default password for logging in first time to Jenkins:
@@ -93,16 +93,16 @@ We are using Jenkins for CI/CD. Go to folder `jenkins-k8s` to find relevant file
   Jenkins is going to set default password and you can find it under the logs of pod created by the Jenkins deployment. First find the pod name by `kubectl get pods -n jenkins`. It should start with `jenkins-deployment-` followed by universally unique identifiers (also known as UUIDs). After identifying the pod, check the logs for this particular pod to get the password:
  
 
-      $kubectl logs -n jenkins jenkins-deployment-b89c6f57d-gblmx
+      kubectl logs -n jenkins jenkins-deployment-b89c6f57d-gblmx
 
 > *Note*: Replace pod name, in this case `jenkins-deployment-b89c6f57d-gblmx`, with your's
 
 -  Create ClusterRole and ClusterRoleBinding for allowing Jenkins to take VolumeSnapshot and other associated operations:
 
-       $kubectl create -f jenkins-k8s/jenkins-rbac-snapshot-controller.yaml --namespace jenkins
+       kubectl create -f jenkins-k8s/jenkins-rbac-snapshot-controller.yaml --namespace jenkins
 - To allow running docker build within Jenkins, you need to allow pods to access `/var/run/docker.sock` file, located on K8s nodes where Jenkins application is running:
 
-      $sudo chmod 777 /var/run/docker.sock
+      sudo chmod 777 /var/run/docker.sock
 
 > *Warning*: By executing above command on K8s nodes, you are exposing docker.sock file to all users and services
 
@@ -119,7 +119,7 @@ Replace 'username' and 'key' in `kaggle-secret/muneer-kaggle-credentials.yaml` w
 
 Finally, create secret in kubeflow namespace using `kaggle-secret/muneer-kaggle-credentials.yaml`:
 
-    $kubectl create -f kaggle-secret/muneer-kaggle-credentials.yaml -n kubeflow
+    kubectl create -f kaggle-secret/muneer-kaggle-credentials.yaml -n kubeflow
 
 ## Deploy and setup TFServe 
 All the files relevant to TFServe is located at `tfserve-config` directory in this repository
@@ -127,32 +127,32 @@ All the files relevant to TFServe is located at `tfserve-config` directory in th
    This PVC is going to be pre-loaded with trained model at the time of TFServe deployment. Later, this will be automatically updated when you train new models.
    
 
-       $kubectl create -f tfserve-config/tf-serve-fintech-pvc.yaml -n kubeflow
+       kubectl create -f tfserve-config/tf-serve-fintech-pvc.yaml -n kubeflow
 - Copy pre-trained model with model configuration to PVC:
 	- Create a temporary pod `copy-model-to-tfserve`, to copy model and model configuration to the PVC created earlier:
 	
 
-		    $kubectl create -f tfserve-config/tf-serve-copy-model-pod.yaml -n kubeflow
+		    kubectl create -f tfserve-config/tf-serve-copy-model-pod.yaml -n kubeflow
    - Copy pre-trained model and model config (local) to the PVC `fintech-model-pvc` using pod `copy-model-to-tfserve`: 
  
 
-          $kubectl cp tfserve-config/1 kubeflow/copy-model-to-tfserve:/mnt/
-          $kubectl cp tfserve-config/model_model_config kubeflow/copy-model-to-tfserve:/mnt/
+          kubectl cp tfserve-config/1 kubeflow/copy-model-to-tfserve:/mnt/
+          kubectl cp tfserve-config/model_model_config kubeflow/copy-model-to-tfserve:/mnt/
   - Delete temporary pod `copy-model-to-tfserve`:
 
-          $kubectl delete -f tfserve-config/tf-serve-fintech-pvc.yaml -n kubeflow
+          kubectl delete -f tfserve-config/tf-serve-fintech-pvc.yaml -n kubeflow
 - Deploy TFServe on K8s cluster:
   
 
-      $kubectl create -f tfserve-config/tf-serve-fintech-dep.yaml -n kubeflow
+      kubectl create -f tfserve-config/tf-serve-fintech-dep.yaml -n kubeflow
 - Create service `fintech-service` for TFServe:
   
 
-      $kubectl create -f tfserve-config/tf-serve-fintech-svc.yaml -n kubeflow 
+      kubectl create -f tfserve-config/tf-serve-fintech-svc.yaml -n kubeflow 
 - Create virtual service `fintech-service` for TFServe:
   
 
-      $kubectl create -f tfserve-config/tf-serve-fintech-virtual-svc.yaml -n kubeflow 
+      kubectl create -f tfserve-config/tf-serve-fintech-virtual-svc.yaml -n kubeflow 
 
 ## Directory structure
 ```bash
