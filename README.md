@@ -4,8 +4,8 @@
 </div>
 This repository contains the implementation of MLOps setup discussed in articles:
 
- - [Demystifying MLOps : Part 1](#)🚀
- - [Demystifying MLOps : Part 2](#)🚀
+ - [Demystifying MLOps : Part 1](https://blog.netapp.com/demystifying-mlops-part-1+)🚀
+ - [Demystifying MLOps : Part 2](https://community.netapp.com/t5/Tech-ONTAP-Blogs/Demystifying-MLOps-Part-2/ba-p/167865)🚀
 
 ## Prerequisite
 - [Kubernetes v1.18](https://v1-18.docs.kubernetes.io/docs/setup/) or above
